@@ -11,6 +11,9 @@ export default function App() {
           <h1>
             hi sky
           </h1>
+          <h2>
+            hi cakin
+          </h2>
         </Routes>
       </Router>
     </div>
