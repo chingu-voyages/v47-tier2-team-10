@@ -9,7 +9,7 @@ export default function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/ProductPage" element={<ProductPage />} />
           <h1>
-            hi
+            hi sky
           </h1>
         </Routes>
       </Router>
