@@ -6,7 +6,7 @@ export default function App() {
     <div>
       <Router>
         <Routes>
-          <Route path="" element={<Landing />} />
+          <Route path="/" element={<Landing />} />
           <Route path="/ProductPage" element={<ProductPage />} />
         </Routes>
       </Router>
