@@ -27,14 +27,14 @@ const Footer = () => {
         {/* Copyright Section */}
         <div className='container-none '>
           <p className="copyright-text md:text-left mt-0 md:mt-0 sm:mt-0">
-            <p className='text-xl text-center'>Copyright &copy; <br /></p>
-            <p className='text-center'> Voyage team 10 2024</p>
+            {/* <p className='text-xl text-center'>Copyright &copy; <br /></p> */}
+            <p className='text-center'> &copy;Voyage team 10 2024</p>
           </p>
      
             {/* Bottom Section (Terms and Policies) */}
           <div className="container-none mt-20 text-center">
             <br/>
-            <p className='font-bold text-xl'><a href="https://www.forbes.com/advisor/business/why-your-website-needs-terms-of-use-agreement/" className='text-blue-300'>terms and policy</a></p>
+            <p className='text-xl'><a href="https://www.forbes.com/advisor/business/why-your-website-needs-terms-of-use-agreement/" className='text-blue-300'>Terms and conditions</a></p>
             {/* Empty for now, add any additional sections if needed */}
           </div>
         </div>
