@@ -4,9 +4,8 @@ import Footer from './Footer'
 export default function ProductPage() {
   return (
     <div>ProductPage
-
-      <Footer/>
+       <Footer/>
     </div>
-    
+   
   )
 }

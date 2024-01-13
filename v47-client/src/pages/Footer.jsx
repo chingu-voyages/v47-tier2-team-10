@@ -15,7 +15,7 @@ const Footer = () => {
                 <li><a href="https://github.com/devavaz" className="text-blue-300">Avaz github.com/devavaz</a></li>
                 <li><a href="https://github.com/Choiz0" className="text-blue-300">Jiyoung github.com/Choiz0</a></li>
                 <li><a href="https://github.com/jessabc" className="text-blue-300">Jess github.com/jessabc</a></li>
-                <li><a href="#" className="text-blue-300">Lili github.com/Lili</a></li>
+                {/* <li><a href="#" className="text-blue-300">Lili github.com/Lili</a></li> */}
               </ul>
           </div>
         </div>
@@ -34,7 +34,7 @@ const Footer = () => {
             {/* Bottom Section (Terms and Policies) */}
           <div className="container-none mt-20 text-center">
             <br/>
-            <p className='text-xl'><a href="https://www.forbes.com/advisor/business/why-your-website-needs-terms-of-use-agreement/" className='text-blue-300'>Terms and conditions</a></p>
+            <p className='text-xl'><a href="https://www.forbes.com/advisor/business/why-your-website-needs-terms-of-use-agreement/" className='text-blue-300'>erms and conditions</a></p>
             {/* Empty for now, add any additional sections if needed */}
           </div>
         </div>
