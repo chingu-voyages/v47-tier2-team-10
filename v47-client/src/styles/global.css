@@ -5,5 +5,5 @@
 
 
 .container {
-    @apply min-h-screen h-full p-8 mx-auto
+    @apply h-full p-8 mx-auto
 }

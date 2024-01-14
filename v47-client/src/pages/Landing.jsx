@@ -1,19 +1,19 @@
 import React from "react";
 import Navbar from "../components/navbar/Navbar";
-import { Link, useNavigate } from "react-router-dom";
+import Button from "../components/landing/Button";
 
 export default function Landing() {
-  const navigate = useNavigate();
-
   // change sign up later to if user is logged in delete it ?
   return (
-
     <section
       id="landing-section"
-      className="bg-gradient-to-t from-gray-100 to-gray-200"
+      className="bg-gradient-to-t  from-gray-100 to-gray-200"
     >
-     <Navbar />
-      <div className="container mx-auto flex justify-center items-center">
+      <Navbar />
+      <div
+        style={{ height: "calc(100vh - 80px)" }}
+        className="mt-[80px] mx-auto p-8 flex justify-center items-center"
+      >
         <div className="flex text-center flex-col max-w-[730px]  justify-center items-center space-y-8">
           <div className="space-y-6">
             <h1 className="md:text-5xl text-4xl leading-[44px] md:leading-[60px] text-[#2d8630] font-bold">
@@ -24,35 +24,25 @@ export default function Landing() {
               <span className="text-[#2d8630]">Task Flow</span>
             </p>
             <div>
-              <button
-                className="bg-green-600 mr-4 hover:opacity-70 duration-300 text-white py-2 px-4 rounded-md"
-                onClick={() => navigate("/SignUp")}
-              >
-                Sign Up
-              </button>
-              <button
-                onClick={() => navigate("/ProductPage")}
-                className="bg-green-600 hover:opacity-70 duration-300 text-white py-2 px-4 rounded-md"
-              >
-                Go to Product
-              </button>
+              <Button link="SignUp" innerText="sign up" />
+              <Button link="ProductPage" innerText="Go to Product" />
             </div>
           </div>
-
           <figure className="md:p-4">
             <img
-              src="/landing.svg"
+              src="/assets/landing.svg"
               alt="Landing Icon"
               className="md:h-[500px] md:w-[700px]"
             />
           </figure>
         </div>
       </div>
-      {/* <div
+      {/*
+      maybe add a wave here
+       <div
         className="w-full bg-no-repeat rotate-180  absolute -bottom-[120px] h-[300px]"
         style={{ backgroundImage: "url(/wave.svg)" }}
       ></div> */}
     </section>
-
   );
 }
