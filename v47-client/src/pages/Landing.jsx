@@ -1,4 +1,5 @@
 import React from "react";
+import Navbar from "../components/navbar/Navbar";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Landing() {
@@ -6,10 +7,12 @@ export default function Landing() {
 
   // change sign up later to if user is logged in delete it ?
   return (
+
     <section
       id="landing-section"
       className="bg-gradient-to-t from-gray-100 to-gray-200"
     >
+     <Navbar />
       <div className="container mx-auto flex justify-center items-center">
         <div className="flex text-center flex-col max-w-[730px]  justify-center items-center space-y-8">
           <div className="space-y-6">
@@ -50,5 +53,6 @@ export default function Landing() {
         style={{ backgroundImage: "url(/wave.svg)" }}
       ></div> */}
     </section>
+
   );
 }
