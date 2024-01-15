@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { MdExpandMore } from "react-icons/md";
-import { MdOutlineExpandLess } from "react-icons/md";
+import { TbCategoryPlus } from "react-icons/tb";
+import { TbCategoryMinus } from "react-icons/tb";
 import { MdDeleteOutline } from "react-icons/md";
 import Activity from './Activity';
+import { TbCategory } from "react-icons/tb";
 
 
 export default function Category({category}) {
@@ -21,10 +22,15 @@ export default function Category({category}) {
         <div className='flex justify-start items-center gap-2 md:mt-3 mb-2'>
             <div className='hidden md:block' >
                 <button onClick={() => setIsActivityVisible(prev => !prev)}>
-                    {isActivityVisible ? <MdOutlineExpandLess /> : <MdExpandMore />}
+                    {isActivityVisible ? <TbCategoryMinus /> : <TbCategoryPlus />}
                 </button> 
             </div>
-            <button className=''>{capitalizeEachWord(category.categoryName)}</button>
+            <button onClick={() => setIsActivityVisible(prev => !prev)} className='flex justify-center items-center gap-2'>
+                <div className='md:hidden'>
+                    <TbCategory />
+                </div>
+                {capitalizeEachWord(category.categoryName)}
+            </button>
             <button className='hidden md:block '>
                 <MdDeleteOutline />  
             </button>
