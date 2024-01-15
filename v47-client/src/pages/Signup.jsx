@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -13,11 +13,19 @@ const Signup = () => {
         setError("Passwords don't match");
         return;
       }
-
       const auth = getAuth();
-      await createUserWithEmailAndPassword(auth, email, password);
-      setError(null);
-      console.log('Signup successful!');
+   
+      try{
+        await signInWithEmailAndPassword(auth,email,password)
+        setError('Email is already in use');
+        return;
+      }catch(signInError){
+        if(signInError.code === 'auth/user-not-found'){
+          await createUserWithEmailAndPassword(auth, email, password);
+          setError(null);
+          console.log('Signup successfully!');
+        }
+      }
     } catch (error) {
       setError('Signup failed. Please try again.');
       console.error('Signup failed:', error);

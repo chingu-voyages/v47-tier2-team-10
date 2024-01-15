@@ -7,12 +7,14 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
 
+  //자바스크립트비동기 async await : 
+  //기다렸다가 적절한시간이 지나면 데이터 받아오기 
   const handleLogin = async () => {
     try {
       const auth = getAuth(app);
       await signInWithEmailAndPassword(auth, username, password);
       setError(null);
-      console.log('Login successful!');
+      console.log('Login successfully!');
     } catch (error) {
       setError('Invalid username or password. Please try again.');
       console.error('Login failed:', error);
