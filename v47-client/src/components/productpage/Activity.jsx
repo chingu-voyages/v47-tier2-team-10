@@ -6,7 +6,7 @@ import { MdDeleteForever } from "react-icons/md";
 export default function Activity({activity}) {
 
     return (
-    <div className='md:flex items-center gap-1 ml-10 hidden'>
+    <div className='md:flex items-center gap-1 ml-5 hidden'>
         <button className=' '>
             <GoTasklist /> 
         </button>
