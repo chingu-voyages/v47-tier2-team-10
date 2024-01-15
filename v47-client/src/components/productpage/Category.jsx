@@ -19,19 +19,23 @@ export default function Category({category}) {
 
   return (
     <>
-        <div className='flex justify-start items-center gap-2 md:mt-3 mb-2'>
-            <div className='hidden md:block' >
-                <button onClick={() => setIsActivityVisible(prev => !prev)}>
-                    {isActivityVisible ? <TbCategoryMinus /> : <TbCategoryPlus />}
-                </button> 
-            </div>
-            <button onClick={() => setIsActivityVisible(prev => !prev)} className='flex justify-center items-center gap-2'>
-                <div className='md:hidden'>
-                    <TbCategory />
+        <div className='flex justify-start items-center gap-1 md:mt-3 mb-2'>
+            <div className='flex gap-1  hover:text-green-800 font-medium'>
+                <div className='hidden md:block hover:text-green-800 font-medium text-lg' >
+                    <button onClick={() => setIsActivityVisible(prev => !prev)}>
+                        {isActivityVisible ? <TbCategoryMinus /> : <TbCategoryPlus />}
+                    </button> 
                 </div>
-                {capitalizeEachWord(category.categoryName)}
-            </button>
-            <button className='hidden md:block '>
+                <button onClick={() => setIsActivityVisible(prev => !prev)} className='flex justify-center items-center gap-2 '>
+                    <div className='md:hidden'>
+                        <TbCategory />
+                    </div>
+                    <div className='hover:text-green-800'>
+                    {capitalizeEachWord(category.categoryName)}  
+                    </div>
+                </button>
+                </div>
+            <button className='hidden md:block font-bold text-xl text-red-500 hover:text-red-400'>
                 <MdDeleteOutline />  
             </button>
         </div>
