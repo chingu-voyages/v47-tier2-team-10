@@ -7,11 +7,11 @@ export default function Activity({activity}) {
 
     return (
     <div className='md:flex items-center gap-1 ml-5 hidden'>
-        <button className=' '>
+        <button className='text-lg font-bold'>
             <GoTasklist /> 
         </button>
         <p>{activity.activityName}</p>
-        <button className=' '>
+        <button className='text-lg font-bold text-red-500 '>
             <MdDeleteForever />
         </button>
     </div>
