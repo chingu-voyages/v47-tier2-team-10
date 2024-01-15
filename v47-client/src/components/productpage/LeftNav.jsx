@@ -16,7 +16,7 @@ export default function LeftNav({isLeftNavOpen, setIsLeftNavOpen, productData}) 
         <div className='md:w-full md:flex md:flex-col  text-black md:px-5'>
           <button 
             onClick={() => setIsLeftNavOpen(prev => !prev)}
-            className='hidden text-3xl md:flex ml-auto mt-6'>
+            className='hidden text-3xl md:flex ml-auto mt-6 mb-2'>
             <TbLayoutSidebarLeftCollapse />
           </button>
           <div className='flex flex-col'>
@@ -24,7 +24,7 @@ export default function LeftNav({isLeftNavOpen, setIsLeftNavOpen, productData}) 
           </div>
           <button className='mt-auto mb-20 md:flex justify-center items-center gap-2 hidden'>
             <IoIosAddCircle />
-            <p>New Activity</p>
+            <p>Add new activity</p>
           </button>
         </div>
       </section>
@@ -32,7 +32,7 @@ export default function LeftNav({isLeftNavOpen, setIsLeftNavOpen, productData}) 
       {!isLeftNavOpen && 
       <button 
         onClick={() => setIsLeftNavOpen(prev => !prev)} 
-        className='mb-auto ml-5 mt-6 hidden md:block text-3xl'>
+        className='mb-auto ml-1 mt-6 hidden md:block text-3xl'>
         <TbLayoutSidebarRightCollapse />
       </button>}
     </>
