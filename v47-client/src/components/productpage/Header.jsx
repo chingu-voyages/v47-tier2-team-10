@@ -8,7 +8,7 @@ export default function Header({isLeftNavOpen, setIsLeftNavOpen}) {
     <section className='border  p-6 flex justify-between items-center'>
       <p>Header</p>
 
-      {<button onClick={() => setIsLeftNavOpen(prev => !prev)} className='mb-auto  md:hidden'>
+      {<button onClick={() => setIsLeftNavOpen(prev => !prev)} className='mb-auto  md:hidden text-3xl'>
         {!isLeftNavOpen && <GiHamburgerMenu />}
         {isLeftNavOpen && <IoClose />}
       </button>}
