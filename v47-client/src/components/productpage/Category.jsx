@@ -19,9 +19,9 @@ export default function Category({category}) {
 
   return (
     <>
-        <div className='flex justify-start items-center gap-1 md:mt-3 mb-2'>
-            <div className='flex gap-1  hover:text-green-800 font-medium'>
-                <div className='hidden md:block hover:text-green-800 font-medium text-lg' >
+        <div className='flex justify-between items-center gap-1 md:mt-3 mb-1'>
+            <div className='flex gap-1  hover:text-gray-700 font-medium'>
+                <div className='hidden md:block hover:text-gray-700 font-medium text-lg' >
                     <button onClick={() => setIsActivityVisible(prev => !prev)}>
                         {isActivityVisible ? <TbCategoryMinus /> : <TbCategoryPlus />}
                     </button> 
@@ -30,11 +30,11 @@ export default function Category({category}) {
                     <div className='md:hidden'>
                         <TbCategory />
                     </div>
-                    <div className='hover:text-green-800'>
+                    <div className='hover:text-gray-700'>
                     {capitalizeEachWord(category.categoryName)}  
                     </div>
                 </button>
-                </div>
+            </div>
             <button className='hidden md:block font-bold text-xl text-red-500 hover:text-red-400'>
                 <MdDeleteOutline />  
             </button>
