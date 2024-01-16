@@ -1,3 +1,4 @@
+
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import Landing from "./pages/Landing"
 import ProductPage from "./pages/ProductPage"
@@ -17,7 +18,6 @@ export default function App() {
           <Route path="/Footer" element={<Footer/>}/>
         </Routes>
       </Router>
-
     </div>
-  )
+  );
 }
