@@ -30,11 +30,18 @@ export default function ProductPage() {
 
   return (
     <section className="flex gap-x-6 h-screen mx-auto p-6 ">
-      <LeftNav isLeftNavOpen={isLeftNavOpen} setIsLeftNavOpen={setIsLeftNavOpen} productData={productData}/>
+      <LeftNav 
+        isLeftNavOpen={isLeftNavOpen} 
+        setIsLeftNavOpen={setIsLeftNavOpen} 
+        productData={productData}
+      />
       <div className="flex space-y-6 flex-1 flex-col">
-        <Header isLeftNavOpen={isLeftNavOpen} setIsLeftNavOpen={setIsLeftNavOpen}/>
+        <Header 
+          isLeftNavOpen={isLeftNavOpen} 
+          setIsLeftNavOpen={setIsLeftNavOpen}
+        />
         <Main />
-      </div>
+      </div>  
     </section>
   );
 }
