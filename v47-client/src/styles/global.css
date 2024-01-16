@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 .container {
     @apply h-full p-8 mx-auto
 }
