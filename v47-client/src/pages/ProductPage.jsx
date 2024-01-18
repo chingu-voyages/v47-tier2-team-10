@@ -3,8 +3,7 @@ import React, { useEffect, useState } from "react";
 import Main from "../components/productpage/Main";
 import LeftNav from "../components/productpage/LeftNav";
 import Header from "../components/productpage/Header";
-import React from 'react'
-import Footer from './Footer'
+import Footer from "../pages/Footer";
 import data from "../data.json";
 import { fetchData } from "../components/constants/api";
 
@@ -38,6 +37,5 @@ export default function ProductPage() {
       </div>
     </section>
     )
-  );
 
 }
