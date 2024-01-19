@@ -5,8 +5,7 @@ import Header from "../components/productpage/Header";
 import Footer from "./Footer";
 import data from "../data.json";
 
-import { fetchData } from "../components/constants/api";
-
+import { fetchData } from "../constants/api";
 
 
 export default function ProductPage() {
