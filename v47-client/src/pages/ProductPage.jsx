@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react";
 import Main from "../components/productpage/Main";
-import LeftNav from "../components/productpage/LeftNav";
+import LeftNav from "../components/productpage/LeftNav/LeftNav"
 import Header from "../components/productpage/Header";
 import Footer from "./Footer";
 import data from "../data.json";
-import { fetchData } from "../constants/api";
+
+import { fetchData } from "../components/constants/api";
+
+
 
 export default function ProductPage() {
+
   const [productData, setProductData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [errorHandling, setErrorHandling] = useState(false);
+  const [isLeftNavOpen, setIsLeftNavOpen] = useState(true)
 
   useEffect(() => {
     const fetchProductData = async () => {
@@ -27,12 +32,19 @@ export default function ProductPage() {
   }, [productData]);
 
   return (
-    <section className="flex gap-x-6 h-screen mx-auto p-6">
-      <LeftNav />
+    <section className="flex gap-x-6 h-screen mx-auto p-6 ">
+      <LeftNav 
+        isLeftNavOpen={isLeftNavOpen} 
+        setIsLeftNavOpen={setIsLeftNavOpen} 
+        productData={productData}
+      />
       <div className="flex space-y-6 flex-1 flex-col">
-        <Header />
+        <Header 
+          isLeftNavOpen={isLeftNavOpen} 
+          setIsLeftNavOpen={setIsLeftNavOpen}
+        />
         <Main />
-      </div>
+      </div>  
     </section>
   );
 }
