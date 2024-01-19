@@ -6,6 +6,7 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState(null);
+  const [isModalOpen, setModalOpen] = useState(false);
 
   const handleSignup = async () => {
     try {
@@ -23,7 +24,8 @@ const Signup = () => {
         if(signInError.code === 'auth/user-not-found'){
           await createUserWithEmailAndPassword(auth, email, password);
           setError(null);
-          console.log('Signup successfully!');
+          setModalOpen(false);
+      console.log('Signup successfully!');
         }
       }
     } catch (error) {
@@ -32,8 +34,20 @@ const Signup = () => {
     }
   };
 
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
+
   return (
-    <div className="max-w-md mx-auto mt-8 p-4 bg-white shadow-md rounded-md">
+
+    <div>
+    <button onClick={openModal} className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600">
+      Signup
+    </button>
+    {isModalOpen &&(
+      <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
+  <div className="absolute bg-black opacity-50 inset-0" onClick={closeModal}></div>
+  <div className="max-w-md mx-auto mt-8 p-4 bg-white shadow-md rounded-md z-50">
+
       <h2 className="text-2xl font-semibold mb-4">Signup</h2>
       <form>
         <div className="mb-4">
@@ -79,8 +93,11 @@ const Signup = () => {
           className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
         >
           Signup
-        </button>
-      </form>
+          </button>
+        </form>
+      </div>
+      </div>
+  )}
     </div>
   );
 };
