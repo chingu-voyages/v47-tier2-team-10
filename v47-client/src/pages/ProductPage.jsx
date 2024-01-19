@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import Main from "../components/productpage/Main";
 import LeftNav from "../components/productpage/LeftNav/LeftNav"
 import Header from "../components/productpage/Header";
+import Footer from "./Footer";
 import data from "../data.json";
+
 import { fetchData } from "../components/constants/api";
+
 
 
 export default function ProductPage() {
