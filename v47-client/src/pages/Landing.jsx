@@ -6,8 +6,7 @@ import Footer from "./Footer";
 export default function Landing() {
   // change sign up later to if user is logged in delete it ?
 
-
-// - user must be signed in for anything to occur (i.e product page load “maybe add )
+  // - user must be signed in for anything to occur (i.e product page load “maybe add )
 
   return (
     <section

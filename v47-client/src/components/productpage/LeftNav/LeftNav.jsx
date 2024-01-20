@@ -5,9 +5,9 @@ import Category from './Category';
 import { IoIosAddCircle } from "react-icons/io";
 
 
-export default function LeftNav({isLeftNavOpen, setIsLeftNavOpen, productData}) {
+export default function LeftNav({isLeftNavOpen, setIsLeftNavOpen, productData, handleFilterData}) {
   
- const categoryEl = productData.map((category, index) => <Category key={index} category={category}/>)
+ const categoryEl = productData.map((category, index) => <Category handleFilterData={handleFilterData} key={index} category={category}/>)
 
   return (
     // <section className='border w-[300px] p-6'>LeftNav</section>
@@ -26,7 +26,9 @@ export default function LeftNav({isLeftNavOpen, setIsLeftNavOpen, productData}) 
             <IoIosAddCircle />
             <p className='hover:text-gray-700'>Add new activity</p>
           </button>
+          
         </div>
+
       </section>
 
       {!isLeftNavOpen && 
