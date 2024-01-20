@@ -8,7 +8,9 @@ import { Add, Delete } from '../../productpage/modals/Add';
 export default function LeftNav({ isLeftNavOpen, setIsLeftNavOpen, productData }) {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
-  const categoryEl = productData.map((category, index) => <Category key={index} category={category}/>);
+export default function LeftNav({isLeftNavOpen, setIsLeftNavOpen, productData, handleFilterData}) {
+  
+ const categoryEl = productData.map((category, index) => <Category handleFilterData={handleFilterData} key={index} category={category}/>)
 
   return (
     <>
@@ -28,7 +30,9 @@ export default function LeftNav({ isLeftNavOpen, setIsLeftNavOpen, productData }
             <IoIosAddCircle />
             <p className='hover:text-gray-700'>Add new activity</p>
           </button>
+          
         </div>
+
       </section>
 
       {!isLeftNavOpen &&
