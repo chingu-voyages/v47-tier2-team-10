@@ -6,8 +6,6 @@ import data from "../data.json";
 import { fetchData } from "../constants/api";
 
 export default function ProductPage({ toggleDarkMode, darkMode }) {
-
-
   const [productData, setProductData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -38,8 +36,10 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
     fetchProductData();
   }, [productData]);
 
+
+
   return (
-    <section className="flex  gap-x-6 h-screen mx-auto p-6 ">
+    <section className="flex gap-x-6 h-screen mx-auto p-6 ">
       <LeftNav
         isLoading={isLoading}
         darkMode={darkMode}

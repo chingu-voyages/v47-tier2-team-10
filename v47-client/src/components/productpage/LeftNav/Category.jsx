@@ -26,9 +26,9 @@ export default function Category({ category, handleFilterData}) {
   return (
     <>
 
-      <div className="flex justify-between items-center gap-1 md:mt-3 mb-1">
+      <div className="flex dark:text-gray-200 justify-between items-center gap-1 md:mt-3 mb-1">
         <div className="flex gap-1  hover:text-gray-700 font-medium">
-          <div className="hidden md:block hover:text-gray-700 font-medium text-lg">
+          <div className="hidden  md:block hover:text-gray-700 font-medium text-lg">
             <button onClick={() => setIsActivityVisible((prev) => !prev)}>
               {isActivityVisible ? <TbCategoryMinus /> : <TbCategoryPlus />}
             </button>
@@ -40,7 +40,7 @@ export default function Category({ category, handleFilterData}) {
             <div className="md:hidden">
               <TbCategory />
             </div>
-            <div className="hover:text-gray-700">
+            <div className="hover:text-gray-700 duration-300">
               {capitalizeEachWord(category.categoryName)}
             </div>
           </button>

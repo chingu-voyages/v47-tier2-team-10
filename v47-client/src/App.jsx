@@ -16,11 +16,19 @@ export default function App() {
     <div>
       <Router>
         <Routes>
-          <Route path="/" element={<Landing darkMode={darkMode} toggleDarkMode={toggleDarkMode} />} />
+          <Route
+            path="/"
+            element={
+              <Landing darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+            }
+          />
           <Route
             path="/ProductPage"
             element={
-              <ProductPage toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
+              <ProductPage
+                toggleDarkMode={toggleDarkMode}
+                darkMode={darkMode}
+              />
             }
           />
           <Route path="/Login" element={<Login />} />

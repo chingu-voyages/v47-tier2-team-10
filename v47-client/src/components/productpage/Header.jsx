@@ -23,7 +23,7 @@ export default function Header({
   */
 
   return (
-    <section className="border  duration-300 dark:bg-[#2B2C37]  bg-gray-200  rounded-md  p-6 flex justify-between items-center">
+    <section className="border  duration-700  dark:bg-[#2B2C37]  bg-gray-200  rounded-md  p-6 flex justify-between items-center">
       <div className="flex items-center gap-x-4">
         <DarkMode
           isProductPageDarkMode={true}
