@@ -5,7 +5,7 @@ import { MdDeleteOutline } from "react-icons/md";
 import Activity from "./Activity";
 import { TbCategory } from "react-icons/tb";
 
-export default function Category({ category, handleFilterData }) {
+export default function Category({ category, handleFilterData}) {
   const [isActivityVisible, setIsActivityVisible] = useState(false);
 
   const activityEl = category.activityTypes.map((activity, index) => (
@@ -25,6 +25,7 @@ export default function Category({ category, handleFilterData }) {
 
   return (
     <>
+
       <div className="flex justify-between items-center gap-1 md:mt-3 mb-1">
         <div className="flex gap-1  hover:text-gray-700 font-medium">
           <div className="hidden md:block hover:text-gray-700 font-medium text-lg">
@@ -48,6 +49,7 @@ export default function Category({ category, handleFilterData }) {
           <MdDeleteOutline />
         </button>
       </div>
+
 
       {isActivityVisible && <div>{activityEl}</div>}
     </>

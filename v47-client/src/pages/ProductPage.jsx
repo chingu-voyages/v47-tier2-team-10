@@ -39,6 +39,7 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
   return (
     <section className="flex  gap-x-6 h-screen mx-auto p-6 ">
       <LeftNav
+        isLoading={isLoading}
         darkMode={darkMode}
         toggleDarkMode={toggleDarkMode}
         handleFilterData={handleFilterData}

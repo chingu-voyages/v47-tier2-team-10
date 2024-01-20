@@ -3,17 +3,14 @@ import HambergerMenu from "./HambergerMenu";
 import LoginBtn from "./LoginBtn";
 import DarkMode from "./DarkMode";
 
-const Nav = () => {
-  const [darkMode, setDarkMode] = useState(false);
+const Nav = ({darkMode, toggleDarkMode}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleHamMenu = useCallback(() => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
   }, []);
 
-  const toggleDarkMode = useCallback(() => {
-    setDarkMode((prevDarkMode) => !prevDarkMode);
-  }, []);
+
 
   const DashboardLink = () => {
     return (

@@ -3,7 +3,7 @@ import Navbar from "../components/navbar/Navbar";
 import Button from "../components/landing/Button";
 import Footer from "./Footer";
 
-export default function Landing() {
+export default function Landing({toggleDarkMode, darkMode}) {
   // change sign up later to if user is logged in delete it ?
 
   // - user must be signed in for anything to occur (i.e product page load “maybe add )
@@ -13,7 +13,7 @@ export default function Landing() {
       id="landing-section"
       className="bg-gradient-to-t  from-gray-100 to-gray-200"
     >
-      <Navbar />
+      <Navbar toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
       <div
         style={{ height: "calc(100vh - 80px)" }}
         className="mt-[80px] mx-auto p-8 flex justify-center items-center"
