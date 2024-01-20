@@ -2,9 +2,11 @@ import React from "react";
 import Navbar from "../components/navbar/Navbar";
 import Button from "../components/landing/Button";
 import Footer from "./Footer";
+// import Signup from "./Signup";
 
 export default function Landing() {
   // change sign up later to if user is logged in delete it ?
+  //I will seperate login/signup btn - sky
   return (
     <section
       id="landing-section"
@@ -24,9 +26,10 @@ export default function Landing() {
               Find your dream schedule with{" "}
               <span className="text-[#2d8630]">Task Flow</span>
             </p>
-            <div>
-              <Button link="SignUp" innerText="sign up" />
-              <Button link="ProductPage" innerText="Go to Product" />
+            <div className="flex items-center justify-center space-x-4">
+              {/* Navigate our users to navbar to signup/login */}
+            {/* <Signup /> */}
+            <Button link="ProductPage" innerText="Go to Product" />
             </div>
           </div>
           <figure className="md:p-4">
