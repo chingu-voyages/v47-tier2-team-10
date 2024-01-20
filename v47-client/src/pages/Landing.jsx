@@ -2,17 +2,18 @@ import React from "react";
 import Navbar from "../components/navbar/Navbar";
 import Button from "../components/landing/Button";
 import Footer from "./Footer";
-// import Signup from "./Signup";
 
-export default function Landing() {
-  // change sign up later to if user is logged in delete it ?
-  //I will seperate login/signup btn - sky
+export default function Landing({toggleDarkMode, darkMode}) {
+  // change sign up later to if a user is logged in delete it?
+  //I will saparate login/signup btn - sky
+  // - Tuser must be signed in for anything to occur (i.e product page load “maybe add )
+
   return (
     <section
       id="landing-section"
       className="bg-gradient-to-t  from-gray-100 to-gray-200"
     >
-      <Navbar />
+      <Navbar toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
       <div
         style={{ height: "calc(100vh - 80px)" }}
         className="mt-[80px] mx-auto p-8 flex justify-center items-center"
@@ -47,7 +48,10 @@ export default function Landing() {
         className="w-full bg-no-repeat rotate-180  absolute -bottom-[120px] h-[300px]"
         style={{ backgroundImage: "url(/wave.svg)" }}
       ></div> */}
-      <Footer/>
+
+
+      <Footer />
+
     </section>
   );
 }
