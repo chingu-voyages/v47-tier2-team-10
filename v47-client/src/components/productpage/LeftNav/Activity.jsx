@@ -19,7 +19,7 @@ export default function Activity({ activity, handleFilterData }) {
           <p onClick={() => handleFilterData(activity.activityName)}>
             {activity.activityName}
           </p>
-          <button className={`${isDeleteIconVisible ? 'hidden md:block' : 'hidden'} text-lg font-bold text-red-500 hover:text-red-400 ml-2`}>
+          <button className={`${isDeleteIconVisible ? 'hidden md:block' : 'hidden'} text-lg font-bold text-red-500 hover:text-red-400 ml-4`}>
             <MdDeleteForever />
           </button>
         </div>
