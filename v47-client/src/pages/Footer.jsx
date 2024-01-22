@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className='site-footer bg-gray-800 p-10 text-base leading-6 text-blue-300 flex flex-col mt-12'>
+    <footer className='site-footer bg-gray-800 p-10 text-base leading-6 text-blue-300 flex flex-col'>
       {/* Top Section */}
       <div className="grid grid-cols-3 gap-4">
         {/* Team Members Section */}
@@ -34,7 +34,7 @@ const Footer = () => {
             {/* Bottom Section (Terms and Policies) */}
           <div className="container-none mt-20 text-center">
             <br/>
-            <p className='text-xl'><a href="https://www.forbes.com/advisor/business/why-your-website-needs-terms-of-use-agreement/" className='text-blue-300'>Terms and conditions</a></p>
+            <p className='text-xl'><a href="https://www.forbes.com/advisor/business/why-your-website-needs-terms-of-use-agreement/" className='text-blue-300'>erms and conditions</a></p>
             {/* Empty for now, add any additional sections if needed */}
           </div>
         </div>
