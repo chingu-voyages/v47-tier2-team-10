@@ -48,7 +48,7 @@ export default function Header({
 
       {/* hamburger */}
       <button
-        className="flex flex-col h-12 w-12 justify-center items-center group"
+        className="flex flex-col h-12 w-12 justify-center items-center group md:hidden"
         onClick={() => setIsLeftNavOpen(prev => !prev)}
       >
         <div
