@@ -11,6 +11,11 @@ export default function Header({
   toggleDarkMode,
   isLoading,
 }) {
+
+  // https://konradstaniszewski.com/blog/tailwind-hamburger
+  const genericHamburgerLine = `h-1 w-6 ${isLeftNavOpen ? 'my-1' : 'my-0.5'} rounded-full bg-black transition ease transform duration-300`;
+
+
   /*
     TODO:
     - change header to color below for some reason duration doesnt get applied to gradients,
@@ -41,13 +46,32 @@ export default function Header({
         )}
       </div>
 
+      {/* hamburger */}
       <button
-        onClick={() => setIsLeftNavOpen((prev) => !prev)}
-        className="mb-auto  md:hidden text-3xl dark:text-gray-200"
+        className="flex flex-col h-12 w-12 justify-center items-center group"
+        onClick={() => setIsLeftNavOpen(prev => !prev)}
       >
-        {!isLeftNavOpen && <GiHamburgerMenu />}
-        {isLeftNavOpen && <IoClose />}
+        <div
+          className={`${genericHamburgerLine} ${
+            isLeftNavOpen
+              ? "rotate-45 translate-y-3 opacity-50 group-hover:opacity-100"
+              : "opacity-50 group-hover:opacity-100"
+          }`}
+        />
+        <div
+          className={`${genericHamburgerLine} ${
+            isLeftNavOpen ? "opacity-0" : "opacity-50 group-hover:opacity-100"
+          }`}
+        />
+        <div
+          className={`${genericHamburgerLine} ${
+            isLeftNavOpen
+              ? "-rotate-45 -translate-y-3 opacity-50 group-hover:opacity-100"
+              : "opacity-50 group-hover:opacity-100"
+          }`}
+        />
       </button>
+
     </section>
   );
 }
