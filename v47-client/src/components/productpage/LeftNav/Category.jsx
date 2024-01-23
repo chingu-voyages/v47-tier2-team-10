@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { MdExpandMore } from "react-icons/md";
-import { MdExpandLess } from "react-icons/md";
 import { MdDeleteOutline } from "react-icons/md";
 import Activity from "./Activity";
 import { GrAddCircle } from "react-icons/gr";
@@ -25,25 +24,24 @@ export default function Category({ category, handleFilterData}) {
 
   return (
     <>
-
       <div className="flex justify-between items-center gap-1 mt-3 md:mt-5">
-        <div className="flex gap-1  md:hover:text-gray-700 font-medium">
-          <div className="hidden md:block hover:text-gray-700 font-medium text-lg">
+        <div className="flex gap-1  font-medium">
+          <div className="hidden md:block  font-medium text-lg ">
             <button onClick={() => setIsActivityVisible((prev) => !prev)}>
-              {isActivityVisible ? <MdExpandLess /> : <MdExpandMore />}
-            </button>
+              <MdExpandMore className={`${isActivityVisible ? 'rotate-180 text-gray-500' : 'md:text-gray-900' } transform transition duration-200 ease-out `} />
+            </button> 
           </div>
           <button
             onClick={() => setIsActivityVisible((prev) => !prev)}
             className="flex justify-center items-center gap-2"
           >
-            <div className="text-gray-400 md:text-gray-900 md:hover:text-gray-700">
+            <div className={`${isActivityVisible ? 'text-gray-500' : 'text-gray-500 md:text-gray-900'} md:hover:text-gray-700 `}>
               {capitalizeEachWord(category.categoryName)}
             </div>
           </button>
         </div>
         <div className='flex gap-1'>
-          <button className='hidden md:block font-bold text-xl text-gray-900 hover:text-gray-700'>
+          <button className='hidden md:block font-bold text-lg text-gray-900 hover:text-gray-700'>
             <GrAddCircle />
           </button>
           <button className="hidden md:block font-bold text-xl text-red-500 hover:text-red-400">
@@ -51,7 +49,6 @@ export default function Category({ category, handleFilterData}) {
           </button>
         </div>
       </div>
-
 
       <div className={`${isActivityVisible ? 'block' : 'block md:hidden'}`}>
         {activityEl}
