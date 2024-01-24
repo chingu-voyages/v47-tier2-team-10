@@ -3,9 +3,9 @@ import {
   TbLayoutSidebarRightCollapse,
   TbLayoutSidebarLeftCollapse,
 } from "react-icons/tb";
-import { IoIosAddCircle } from "react-icons/io";
+import { RiAddFill } from "react-icons/ri";
 import Category from "./Category";
-import { Add } from "../../productpage/modals/Add";
+import AddNewCategory from "../../productpage/modals/AddNewCategory"; // Import AddNewCategory component
 
 export default function LeftNav({
   isLeftNavOpen,
@@ -56,8 +56,8 @@ export default function LeftNav({
             onClick={() => setIsAddModalOpen(true)}
             className="mt-auto mb-7 md:flex dark:text-gray-200 justify-center items-center gap-2 hidden hover:text-gray-700"
           >
-            <IoIosAddCircle />
-            <p className="hover:text-gray-700">Add new activity</p>
+            <RiAddFill />
+            <p className="hover:text-gray-700">Add new category</p>
           </button>
         </div>
       </section>
@@ -71,7 +71,7 @@ export default function LeftNav({
         </button>
       )}
 
-      {isAddModalOpen && <Add onClose={() => setIsAddModalOpen(false)} />}
+      {isAddModalOpen && <AddNewCategory onClose={() => setIsAddModalOpen(false)} />} {/* Use AddNewCategory */}
     </>
   );
 }
