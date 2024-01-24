@@ -9,7 +9,9 @@ import Logout from "./Logout";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import app from "../firebase";
 
+
 export default function ProductPage({ toggleDarkMode, darkMode }) {
+
 
   const [productData, setProductData] = useState([]);
   const [user,setUser]= useState(null)
