@@ -13,16 +13,16 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const auth = getAuth(app);
-      await signInWithEmailAndPassword(auth, username, password);
-      setError(null);
-      setSuccessMessage('');
-      setModalOpen(false);
-      console.log('Login successfully!');
-      navigate("/ProductPage");
+        const auth = getAuth(app);
+        await signInWithEmailAndPassword(auth, username, password);
+        setError(null);
+        setSuccessMessage('');
+        setModalOpen(false);
+        console.log('Login successfully!');
+        navigate("/ProductPage");
     } catch (error) {
-      setError('Invalid username or password. Please try again.');
-      console.error('Login failed:', error);
+        setError('Invalid username or password. Please try again.');
+        console.error('Login failed:', error);
     }
   };
 
