@@ -4,10 +4,9 @@ import LeftNav from "../components/productpage/LeftNav/LeftNav";
 import Header from "../components/productpage/Header";
 import data from "../data.json";
 import { fetchData } from "../constants/api";
-import Login from "./Login";
-import Logout from "./Logout";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import app from "../firebase";
+import { IoLogIn, IoLogOut } from "react-icons/io5";
 
 
 export default function ProductPage({ toggleDarkMode, darkMode }) {
@@ -73,9 +72,9 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
       />
       <div className="flex space-y-6 flex-1 flex-col">
       {user ? (
-          <Logout onLogout={handleLogout} />
+          <IoLogOut onLogout={handleLogout} />
         ) : (
-          <Login onLogin={handleLogin} />
+          <IoLogIn onLogin={handleLogin} />
         )}
         <Header
           isLoading={isLoading}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 
-export const Add = ({onClose}) => {
+ const Add = ({onClose}) => {
   const [taskName, setTaskName] = useState('');
   const [description, setDescription] = useState('');
 
@@ -72,3 +72,5 @@ export const Add = ({onClose}) => {
     </div>
   );
 };
+
+export default Add;
