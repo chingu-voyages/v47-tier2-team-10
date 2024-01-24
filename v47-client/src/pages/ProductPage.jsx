@@ -4,11 +4,17 @@ import LeftNav from "../components/productpage/LeftNav/LeftNav";
 import Header from "../components/productpage/Header";
 import data from "../data.json";
 import { fetchData } from "../constants/api";
+import Login from "./Login";
+import Logout from "./Logout";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import app from "../firebase";
+
 
 export default function ProductPage({ toggleDarkMode, darkMode }) {
 
 
   const [productData, setProductData] = useState([]);
+  const [user,setUser]= useState(null)
   const [filteredData, setFilteredData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [errorHandling, setErrorHandling] = useState(false);
@@ -38,6 +44,22 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
     fetchProductData();
   }, [productData]);
 
+  useEffect(()=>{
+    const auth = getAuth(app);
+    const unsubscriebe = onAuthStateChanged(auth,(user)=>{
+      setUser(user);
+    });
+    return()=>unsubscriebe();
+  },[]);
+
+  const handleLogin=()=>{
+  }
+
+  const handleLogout=()=>{
+    const auth = getAuth(app);
+    signOut(auth);//fire
+  }
+
   return (
     <section className="flex  gap-x-6 h-screen mx-auto p-6 ">
       <LeftNav
@@ -50,6 +72,11 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
         productData={productData}
       />
       <div className="flex space-y-6 flex-1 flex-col">
+      {user ? (
+          <Logout onLogout={handleLogout} />
+        ) : (
+          <Login onLogin={handleLogin} />
+        )}
         <Header
           isLoading={isLoading}
           darkMode={darkMode}
