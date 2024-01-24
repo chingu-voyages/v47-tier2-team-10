@@ -5,7 +5,7 @@ import {
 } from "react-icons/tb";
 import { RiAddFill } from "react-icons/ri";
 import Category from "./Category";
-import { Add } from "../../productpage/modals/Add";
+import AddNewCategory from "../../productpage/modals/AddNewCategory"; // Import AddNewCategory component
 
 export default function LeftNav({
   isLeftNavOpen,
@@ -71,7 +71,7 @@ export default function LeftNav({
         </button>
       )}
 
-      {isAddModalOpen && <Add onClose={() => setIsAddModalOpen(false)} />}
+      {isAddModalOpen && <AddNewCategory onClose={() => setIsAddModalOpen(false)} />} {/* Use AddNewCategory */}
     </>
   );
 }
