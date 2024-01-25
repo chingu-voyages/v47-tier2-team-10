@@ -28,10 +28,10 @@ export default function LeftNav({
   return (
     <>
       <section
-        className={`md:w-64 dark:bg-[#2B2C37]   flex bg-gray-200 p-7 md:p-0 rounded-lg md:rounded-none md:duration-700 font-medium font-gray-900 ${
+        className={`md:w-72 dark:bg-[#2B2C37]   flex bg-gray-200 p-7 md:p-0 rounded-lg md:rounded-none md:duration-700 font-medium font-gray-900 ${
           isLeftNavOpen
             ? "absolute right-16 top-20 md:static"
-            : "md:-ml-72 hidden md:block"
+            : "md:-ml-80 hidden md:block"
         }`}
       >
         <div className="md:w-full md:flex md:flex-col text-black md:px-5">
