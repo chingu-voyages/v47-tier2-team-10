@@ -1,11 +1,11 @@
 // Activity.jsx
 import React, { useState } from "react";
-import { GoTasklist } from "react-icons/go";
 import { MdDeleteOutline } from "react-icons/md";
 import Delete from "../modals/Delete";
+import { MdOutlineEdit } from "react-icons/md";
 
 export default function Activity({ activity, handleFilterData }) {
-  const [isDeleteIconVisible, setIsDeleteIconVisible] = useState(false);
+  const [isActivityIconsVisible, setIsActivityIconsVisible] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   const handleDelete = () => {
@@ -18,27 +18,31 @@ export default function Activity({ activity, handleFilterData }) {
   };
 
   return (
-    <div className="md:flex items-center gap-2 ml-5">
+    <div className="md:flex items-center gap-2 ml-3">
       <div
-        className="flex gap-3 cursor-pointer"
-        onMouseEnter={() => setIsDeleteIconVisible(true)}
-        onMouseLeave={() => setIsDeleteIconVisible(false)}
+        className="flex gap-3  w-full  justify-between"
+        onMouseEnter={() => setIsActivityIconsVisible(true)}
+        onMouseLeave={() => setIsActivityIconsVisible(false)}
       >
-        <div className="flex">
-          <div className="hover:text-gray-700 flex">
-            <button className="text-lg font-bold ">
-              <GoTasklist />
-            </button>
-            <p onClick={() => handleFilterData(activity.activityName)}>
+        <div className="flex w-full">
+          <div className="flex md:ml-3">
+            <p onClick={() => handleFilterData(activity.activityName)} className='hover:text-gray-700 cursor-pointer'>
               {activity.activityName}
             </p>
           </div>
-          <button
-            className={`${isDeleteIconVisible ? 'hidden md:block' : 'hidden'} text-xl font-bold text-red-500 hover:text-red-400 ml-5`}
-            onClick={() => setIsDeleteModalOpen(true)}
-          >
-            <MdDeleteOutline />
-          </button>
+          {isActivityIconsVisible && <div className="gap-1 ml-auto hidden md:flex">
+            <button
+              className="font-bold text-xl text-gray-900 hover:text-gray-700"
+            >
+              <MdOutlineEdit />
+            </button>
+            <button
+              className={`text-xl font-bold text-red-500 hover:text-red-400 `}
+              onClick={() => setIsDeleteModalOpen(true)}
+            >
+              <MdDeleteOutline />
+            </button>
+          </div>}
         </div>
       </div>
 
