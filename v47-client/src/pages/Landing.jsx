@@ -4,9 +4,9 @@ import Button from "../components/landing/Button";
 import Footer from "./Footer";
 
 export default function Landing({toggleDarkMode, darkMode}) {
-  // change sign up later to if a user is logged in delete it?
-  //I will saparate login/signup btn - sky
-  // - Tuser must be signed in for anything to occur (i.e product page load “maybe add )
+  // change sign up later to if user is logged in delete it ?
+
+  // - user must be signed in for anything to occur (i.e product page load “maybe add )
 
   return (
     <section
@@ -27,10 +27,9 @@ export default function Landing({toggleDarkMode, darkMode}) {
               Find your dream schedule with{" "}
               <span className="text-[#2d8630]">Task Flow</span>
             </p>
-            <div className="flex items-center justify-center space-x-4">
-              {/* Navigate our users to navbar to signup/login */}
-            {/* <Signup /> */}
-            <Button link="ProductPage" innerText="Go to Product" />
+            <div>
+              <Button link="SignUp" innerText="sign up" />
+              <Button link="ProductPage" innerText="Go to Product" />
             </div>
           </div>
           <figure className="md:p-4">
@@ -48,10 +47,7 @@ export default function Landing({toggleDarkMode, darkMode}) {
         className="w-full bg-no-repeat rotate-180  absolute -bottom-[120px] h-[300px]"
         style={{ backgroundImage: "url(/wave.svg)" }}
       ></div> */}
-
-
       <Footer />
-
     </section>
   );
 }
