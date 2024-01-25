@@ -4,12 +4,14 @@ import Activity from "./Activity";
 import { GrAddCircle } from "react-icons/gr";
 import Add from "../modals/Add";
 import Delete from "../modals/Delete"; 
+import { MdOutlineEdit } from "react-icons/md";
+
 
 export default function Category({ category, handleFilterData }) {
   const [isActivityVisible, setIsActivityVisible] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false); 
-
+  const [isCategortyIconsVisible, setIsCategoryIconsVisible] = useState(false);
 
 
   const handleDelete = () => {
@@ -39,30 +41,39 @@ export default function Category({ category, handleFilterData }) {
 
   return (
     <>
-      <div className="flex justify-between items-center gap-1 mt-3 md:mt-5">
+      <div 
+        className="flex justify-between items-center gap-1 mt-3 md:mt-5" 
+        onMouseEnter={() => setIsCategoryIconsVisible(true)}
+        onMouseLeave={() => setIsCategoryIconsVisible(false)}
+      >
         <div className="flex gap-1 font-medium">
           <div className="hidden md:block font-medium text-lg">
             <button onClick={() => setIsActivityVisible((prev) => !prev)}>
               <MdExpandMore
-                className={`${isActivityVisible ? 'rotate-180 text-gray-500' : 'md:text-gray-900' } transform transition duration-200 ease-out `}
+                className={`${isActivityVisible ? 'rotate-180 ' : 'md:text-gray-900' } transform transition duration-200 ease-out `}
               />
             </button>
           </div>
           <button
             onClick={() => setIsActivityVisible((prev) => !prev)}
-            className="flex justify-center items-center gap-2"
+            className="flex justify-center items-center gap-2 md:cursor-pointer cursor-default"
           >
             <div
-              className={`${isActivityVisible ? 'text-gray-500' : 'text-gray-500 md:text-gray-900'} md:hover:text-gray-700 `}
+              className={`${isActivityVisible ? 'text-gray-500' : 'text-gray-500 md:text-gray-900'} `}
             >
               {capitalizeEachWord(category.categoryName)}
             </div>
           </button>
         </div>
-        <div className="flex gap-1">
+        {isCategortyIconsVisible && <div className="flex gap-1">
+          <button
+            className="hidden md:block font-bold text-xl text-gray-900 hover:text-gray-700"
+          >
+            <MdOutlineEdit />
+          </button>
           <button
             onClick={() => setIsAddModalOpen(true)}
-            className="hidden md:block font-bold text-lg text-gray-900 hover:text-gray-700"
+            className="hidden md:block font-bold text-xl text-gray-900 hover:text-gray-700"
           >
             <GrAddCircle />
           </button>
@@ -72,7 +83,7 @@ export default function Category({ category, handleFilterData }) {
           >
             <MdDeleteOutline />
           </button>
-        </div>
+        </div>}
       </div>
 
       <div className={`${isActivityVisible ? 'block' : 'block md:hidden'}`}>
