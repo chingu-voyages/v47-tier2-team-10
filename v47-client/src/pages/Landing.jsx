@@ -28,7 +28,6 @@ export default function Landing({toggleDarkMode, darkMode}) {
               <span className="text-[#2d8630]">Task Flow</span>
             </p>
             <div>
-              <Button link="SignUp" innerText="sign up" />
               <Button link="ProductPage" innerText="Go to Product" />
             </div>
           </div>

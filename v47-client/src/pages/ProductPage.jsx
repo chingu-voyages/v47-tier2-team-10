@@ -7,6 +7,8 @@ import app from "../firebase";
 import { IoLogIn, IoLogOut } from "react-icons/io5";
 import Header from "../components/productpage/header/Header";
 import Main from "../components/productpage/main/Main";
+import Login from "./Login";
+import Logout from "./Logout";
 
 export default function ProductPage({ toggleDarkMode, darkMode }) {
   const [productData, setProductData] = useState([]);
@@ -46,6 +48,7 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
     const unsubscriebe = onAuthStateChanged(auth, (user) => {
       setUser(user);
     });
+   
     return () => unsubscriebe();
   }, []);
 
@@ -70,11 +73,17 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
         productData={productData}
       />
       <div className="flex space-y-6 flex-1 flex-col">
-        {user ? (
-          <IoLogOut onLogout={handleLogout} />
-        ) : (
-          <IoLogIn onLogin={handleLogin} />
-        )}
+      <div className="flex items-center justify-between">
+          {user ? (
+              <div>
+                <Logout onLogout={handleLogout} /> 
+              </div>
+            ) : (
+              <div>
+                <Login onLogin={handleLogin} /> 
+              </div>
+            )}
+        </div>
         <Header
           isLoading={isLoading}
           darkMode={darkMode}
