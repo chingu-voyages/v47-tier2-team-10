@@ -1,7 +1,7 @@
 import React from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
-import DarkMode from "../navbar/DarkMode";
+import DarkMode from "../../navbar/DarkMode";
 
 export default function Header({
   isLeftNavOpen,

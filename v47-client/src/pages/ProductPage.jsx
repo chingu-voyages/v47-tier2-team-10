@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Main from "../components/productpage/Main";
 import LeftNav from "../components/productpage/LeftNav/LeftNav";
-import Header from "../components/productpage/Header";
 import data from "../data.json";
 import { fetchData } from "../constants/api";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import app from "../firebase";
 import { IoLogIn, IoLogOut } from "react-icons/io5";
+import Header from "../components/productpage/header/Header";
+import Main from "../components/productpage/main/Main";
 
 export default function ProductPage({ toggleDarkMode, darkMode }) {
   const [productData, setProductData] = useState([]);
@@ -15,6 +15,7 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
   const [isLoading, setIsLoading] = useState(true);
   const [errorHandling, setErrorHandling] = useState(false);
   const [isLeftNavOpen, setIsLeftNavOpen] = useState(true);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   const handleFilterData = (taskName) => {
     const filterData = productData.flatMap((data) => {
@@ -38,7 +39,7 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
       }
     };
     fetchProductData();
-  }, [productData]);
+  }, []);
 
   useEffect(() => {
     const auth = getAuth(app);
@@ -52,12 +53,14 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
 
   const handleLogout = () => {
     const auth = getAuth(app);
-    signOut(auth); //fire
+    signOut(auth); //fire, legendary - cakin
   };
 
   return (
     <section className="flex gap-x-6 h-screen mx-auto p-6 ">
       <LeftNav
+        isAddModalOpen={isAddModalOpen}
+        setIsAddModalOpen={setIsAddModalOpen}
         isLoading={isLoading}
         darkMode={darkMode}
         toggleDarkMode={toggleDarkMode}
@@ -80,7 +83,13 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
           isLeftNavOpen={isLeftNavOpen}
           setIsLeftNavOpen={setIsLeftNavOpen}
         />
-        <Main filteredData={filteredData} />
+        <Main
+          setFilteredData={setFilteredData}
+          setProductData={setProductData}
+          isAddModalOpen={isAddModalOpen}
+          setIsAddModalOpen={setIsAddModalOpen}
+          filteredData={filteredData}
+        />
       </div>
     </section>
   );

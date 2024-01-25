@@ -13,8 +13,9 @@ export default function LeftNav({
   productData,
   handleFilterData,
   isLoading,
+  setIsAddModalOpen,
+  isAddModalOpen
 }) {
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   const categoryEl = productData.map((category, index) => (
     <Category
