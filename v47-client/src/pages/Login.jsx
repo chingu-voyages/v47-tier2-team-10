@@ -1,28 +1,28 @@
 import React, { useState } from "react";
 import { signInWithEmailAndPassword, sendPasswordResetEmail, getAuth } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 import app from "../firebase";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  const [successMessage, setSuccessMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState("");
   const [isModalOpen, setModalOpen] = useState(false);
 
   const handleLogin = async () => {
     try {
-        const auth = getAuth(app);
-        await signInWithEmailAndPassword(auth, username, password);
-        setError(null);
-        setSuccessMessage('');
-        setModalOpen(false);
-        console.log('Login successfully!');
-        navigate("/ProductPage");
+      const auth = getAuth(app);
+      await signInWithEmailAndPassword(auth, username, password);
+      setError(null);
+      setSuccessMessage('');
+      setModalOpen(false);
+      console.log('Login successfully!');
+      navigate("/ProductPage");
     } catch (error) {
-        setError('Invalid username or password. Please try again.');
-        console.error('Login failed:', error);
+      setError('Invalid username or password. Please try again.');
+      console.error('Login failed:', error);
     }
   };
 
@@ -34,7 +34,7 @@ const Login = () => {
       setSuccessMessage('Password reset email sent successfully!');
       // setModalOpen(false);
     } catch (error) {
-      setError('Failed to send password reset email. Please try again.');
+      setError('Failed to send a password reset email. Please try again.');
       setSuccessMessage('');
       console.error('Password reset failed:', error);
     }
@@ -57,7 +57,7 @@ const Login = () => {
           <div className="absolute bg-black opacity-50 inset-0" onClick={closeModal}></div>
           <div className="max-w-md mx-auto p-4 bg-white shadow-md rounded-md relative z-10">
             <h2 className="text-2xl font-semibold mb-4">Login</h2>
-            <form>
+            <form onSubmit={(e) => e.preventDefault()}>
               <div className="mb-4">
                 <label htmlFor="username" className="block text-sm font-medium text-gray-600">
                   Username:
@@ -86,14 +86,18 @@ const Login = () => {
               {successMessage && <p className="text-green-500 mb-4">{successMessage}</p>}
               <div className="flex space-x-2">
                 <button
-                  type="button"
+                  type="submit"
                   onClick={handleLogin}
                   className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600"
                 >
                   Login
                 </button>
-                <button type="button" onClick={handleForgotPassword} className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-red-600">
-                  Forgot password?
+                <button
+                  type="button"
+                  onClick={handleForgotPassword}
+                  className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
+                >
+                  Forgot Password?
                 </button>
               </div>
             </form>
