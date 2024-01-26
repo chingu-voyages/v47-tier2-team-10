@@ -7,16 +7,11 @@ export default function TaskList({ days, taskDescription, taskName }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
 
-  const arr = [];
-
-  arr.push({ id: 0, text: "hello world" });
-
   return (
     <div
       onClick={() => setIsTaskModalOpen(!isTaskModalOpen)}
       className="rounded-lg p-4 cursor-pointer flex flex-1 relative hover:scale-105/ duration-300/ flex-col max-w-[320px] max-h-[96px]  bg-gray-400 "
     >
-      {/* <h1 className="break-words">{days.join(', ')}</h1> */}
       <h1 className="text-sm">{taskName}</h1>{" "}
       <div className="flex flex-1 justify-end items-end">
         <BsThreeDots
@@ -28,9 +23,7 @@ export default function TaskList({ days, taskDescription, taskName }) {
         />
       </div>
       {isMenuOpen && <MenuModal />}
-      {isTaskModalOpen && (
-        <TaskModal days={days} taskDescription={taskDescription} />
-      )}
+      {isTaskModalOpen && <TaskModal days={days} taskDescription={taskDescription} />}
     </div>
   );
 }
