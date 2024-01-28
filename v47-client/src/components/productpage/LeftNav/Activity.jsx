@@ -1,12 +1,13 @@
-// Activity.jsx
 import React, { useState } from "react";
 import { MdDeleteOutline } from "react-icons/md";
 import Delete from "../modals/Delete";
+import EditModal from "../modals/EditModal";
 import { MdOutlineEdit } from "react-icons/md";
 
 export default function Activity({ activity, handleFilterData }) {
   const [isActivityIconsVisible, setIsActivityIconsVisible] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
   const handleDelete = () => {
     // Add logic for deletion
@@ -15,6 +16,10 @@ export default function Activity({ activity, handleFilterData }) {
 
   const handleCancel = () => {
     setIsDeleteModalOpen(false);
+  };
+
+  const handleEdit = () => {
+    setIsEditModalOpen(true);
   };
 
   return (
@@ -32,6 +37,7 @@ export default function Activity({ activity, handleFilterData }) {
           </div>
           {isActivityIconsVisible && <div className="gap-1 ml-auto hidden md:flex">
             <button
+              onClick={handleEdit}
               className="font-bold text-xl text-gray-900 hover:text-gray-700"
             >
               <MdOutlineEdit />
@@ -48,6 +54,23 @@ export default function Activity({ activity, handleFilterData }) {
 
       {isDeleteModalOpen && (
         <Delete onDelete={handleDelete} onCancel={handleCancel} />
+      )}
+
+      {isEditModalOpen && (
+        <EditModal
+          task={{
+            id: activity.id, 
+            name: activity.activityName, 
+          }}
+          onClose={() => setIsEditModalOpen(false)}
+          onUpdateTask={(taskId, updatedTaskName) => {
+            // Logic to update the activity goes here
+            // For example, you might want to call handleUpdateActivity from props
+            // handleUpdateActivity(taskId, updatedTaskName);
+            console.log(`Updating activity with ID ${taskId} to ${updatedTaskName}`);
+            setIsEditModalOpen(false);
+          }}
+        />
       )}
     </div>
   );

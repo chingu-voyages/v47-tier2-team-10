@@ -3,19 +3,18 @@ import { MdExpandMore, MdDeleteOutline } from "react-icons/md";
 import Activity from "./Activity";
 import { GrAddCircle } from "react-icons/gr";
 import Add from "../modals/Add";
-import Delete from "../modals/Delete"; 
+import Delete from "../modals/Delete";
+import EditModal from "../modals/EditModal";
 import { MdOutlineEdit } from "react-icons/md";
-
 
 export default function Category({ category, handleFilterData }) {
   const [isActivityVisible, setIsActivityVisible] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false); 
-  const [isCategortyIconsVisible, setIsCategoryIconsVisible] = useState(false);
-
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isCategoryIconsVisible, setIsCategoryIconsVisible] = useState(false);
 
   const handleDelete = () => {
-    // we can add logic for deletion
     setIsDeleteModalOpen(false);
   };
 
@@ -23,7 +22,10 @@ export default function Category({ category, handleFilterData }) {
     setIsDeleteModalOpen(false);
   };
 
-  
+  const handleEdit = () => {
+    setIsEditModalOpen(true);
+  };
+
   const activityEl = category.activityTypes.map((activity, index) => (
     <Activity
       handleFilterData={handleFilterData}
@@ -41,8 +43,8 @@ export default function Category({ category, handleFilterData }) {
 
   return (
     <>
-      <div 
-        className="flex justify-between items-center gap-1 mt-3 md:mt-5" 
+      <div
+        className="flex justify-between items-center gap-1 mt-3 md:mt-5"
         onMouseEnter={() => setIsCategoryIconsVisible(true)}
         onMouseLeave={() => setIsCategoryIconsVisible(false)}
       >
@@ -50,7 +52,7 @@ export default function Category({ category, handleFilterData }) {
           <div className="hidden md:block font-medium text-lg">
             <button onClick={() => setIsActivityVisible((prev) => !prev)}>
               <MdExpandMore
-                className={`${isActivityVisible ? 'rotate-180 ' : 'md:text-gray-900' } transform transition duration-200 ease-out `}
+                className={`${isActivityVisible ? "rotate-180 " : "md:text-gray-900"} transform transition duration-200 ease-out `}
               />
             </button>
           </div>
@@ -59,43 +61,57 @@ export default function Category({ category, handleFilterData }) {
             className="flex justify-center items-center gap-2 md:cursor-pointer cursor-default"
           >
             <div
-              className={`${isActivityVisible ? 'text-gray-500' : 'text-gray-500 md:text-gray-900'} `}
+              className={`${isActivityVisible ? "text-gray-500" : "text-gray-500 md:text-gray-900"} `}
             >
               {capitalizeEachWord(category.categoryName)}
             </div>
           </button>
         </div>
-        {isCategortyIconsVisible && <div className="flex gap-1">
-          <button
-            className="hidden md:block font-bold text-xl text-gray-900 hover:text-gray-700"
-          >
-            <MdOutlineEdit />
-          </button>
-          <button
-            onClick={() => setIsAddModalOpen(true)}
-            className="hidden md:block font-bold text-xl text-gray-900 hover:text-gray-700"
-          >
-            <GrAddCircle />
-          </button>
-          <button
-            onClick={() => setIsDeleteModalOpen(true)}
-            className="hidden md:block font-bold text-xl text-red-500 hover:text-red-400"
-          >
-            <MdDeleteOutline />
-          </button>
-        </div>}
+        {isCategoryIconsVisible && (
+          <div className="flex gap-1">
+            <button
+              onClick={handleEdit}
+              className="hidden md:block font-bold text-xl text-gray-900 hover:text-gray-700"
+            >
+              <MdOutlineEdit />
+            </button>
+            <button
+              onClick={() => setIsAddModalOpen(true)}
+              className="hidden md:block font-bold text-xl text-gray-900 hover:text-gray-700"
+            >
+              <GrAddCircle />
+            </button>
+            <button
+              onClick={() => setIsDeleteModalOpen(true)}
+              className="hidden md:block font-bold text-xl text-red-500 hover:text-red-400"
+            >
+              <MdDeleteOutline />
+            </button>
+          </div>
+        )}
       </div>
 
-      <div className={`${isActivityVisible ? 'block' : 'block md:hidden'}`}>
+      <div className={`${isActivityVisible ? "block" : "block md:hidden"}`}>
         {activityEl}
       </div>
 
-      {isAddModalOpen && (
-        <Add onClose={() => setIsAddModalOpen(false)} />
-      )}
+      {isAddModalOpen && <Add onClose={() => setIsAddModalOpen(false)} />}
 
       {isDeleteModalOpen && (
         <Delete onDelete={handleDelete} onCancel={handleCancel} />
+      )}
+
+      {isEditModalOpen && (
+        <EditModal
+          task={{
+            id: category.id, 
+            name: category.categoryName, 
+          }}
+          onClose={() => setIsEditModalOpen(false)}
+          onUpdateTask={(taskId, updatedTaskName) => {
+            console.log(`Updating task with ID ${taskId} to ${updatedTaskName}`);
+          }}
+        />
       )}
     </>
   );
