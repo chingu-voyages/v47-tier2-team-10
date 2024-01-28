@@ -72,7 +72,7 @@ export default function LeftNav({
         </button>
       )}
 
-      {isAddModalOpen && <AddNewCategory onClose={() => setIsAddModalOpen(false)} />} {/* Use AddNewCategory */}
+      {isAddModalOpen && <AddNewCategory onClose={() => setIsAddModalOpen(false)} />} 
     </>
   );
 }
