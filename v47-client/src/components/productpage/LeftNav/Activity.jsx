@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MdDeleteOutline } from "react-icons/md";
 import Delete from "../modals/Delete";
 import EditModal from "../modals/edit/EditCategoryModal";
 import { MdOutlineEdit } from "react-icons/md";
+import Aos from "aos";
 
 export default function Activity({ activity, handleFilterData }) {
   const [isActivityIconsVisible, setIsActivityIconsVisible] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+
+  useEffect(() => {
+    Aos.init();
+  }, []);
 
   const handleDelete = () => {
     // Add logic for deletion
@@ -23,7 +28,10 @@ export default function Activity({ activity, handleFilterData }) {
   };
 
   return (
-    <div className="md:flex items-center gap-2 ml-3">
+    <div className="md:flex items-center gap-2 ml-3"
+    data-aos="fade" 
+    data-aos-easing="ease-in-sine" data-aos-duration="600"
+    >
       <div
         className="flex gap-3  w-full  justify-between"
         onMouseEnter={() => setIsActivityIconsVisible(true)}

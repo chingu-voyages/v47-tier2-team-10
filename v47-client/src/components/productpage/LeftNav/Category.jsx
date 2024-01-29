@@ -6,6 +6,7 @@ import Add from "../modals/Add";
 import Delete from "../modals/Delete";
 import EditModal from "../modals/edit/EditCategoryModal";
 import { MdOutlineEdit } from "react-icons/md";
+import Aos from "aos";
 
 export default function Category({
   category,
@@ -18,6 +19,11 @@ export default function Category({
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isCategoryIconsVisible, setIsCategoryIconsVisible] = useState(false);
   const [editCategoryNameInput, setEditCategoryNameInput] = useState("");
+
+  useEffect(() => {
+    Aos.init();
+  }, []);
+
   const handleDelete = () => {
     setIsDeleteModalOpen(false);
   };
@@ -68,6 +74,8 @@ export default function Category({
         className="flex justify-between items-center gap-1 mt-3 md:mt-5"
         onMouseEnter={() => setIsCategoryIconsVisible(true)}
         onMouseLeave={() => setIsCategoryIconsVisible(false)}
+        data-aos="fade" 
+        data-aos-easing="ease-in-sine" data-aos-duration="600"
       >
         <div className="flex gap-1 font-medium">
           <div className="hidden md:block font-medium text-lg">
