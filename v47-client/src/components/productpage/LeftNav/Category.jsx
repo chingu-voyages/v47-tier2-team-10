@@ -76,7 +76,6 @@ export default function Category({
         onMouseLeave={() => setIsCategoryIconsVisible(false)}
         data-aos="fade" 
         data-aos-easing="ease-in-sine" data-aos-duration="600"
-        data-aos-once="false"
       >
         <div className="flex gap-1 font-medium">
           <div className="hidden md:block font-medium text-lg">

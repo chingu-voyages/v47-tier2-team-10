@@ -31,7 +31,6 @@ export default function Activity({ activity, handleFilterData }) {
     <div className="md:flex items-center gap-2 ml-3"
     data-aos="fade" 
     data-aos-easing="ease-in-sine" data-aos-duration="600"
-    data-aos-once="false"
     >
       <div
         className="flex gap-3  w-full  justify-between"
