@@ -14,11 +14,13 @@ export default function LeftNav({
   handleFilterData,
   isLoading,
   setIsAddModalOpen,
-  isAddModalOpen
+  isAddModalOpen,
+  setProductData
 }) {
 
   const categoryEl = productData.map((category, index) => (
     <Category
+    setProductData={setProductData}
       handleFilterData={handleFilterData}
       key={index}
       category={category}
