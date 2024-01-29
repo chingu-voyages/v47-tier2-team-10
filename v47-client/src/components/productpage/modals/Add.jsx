@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import InputFields from "./add/InputFields";
+import InputFields from "./resuable/InputFields";
 
 const Add = ({
   onClose,
@@ -28,7 +28,6 @@ const Add = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50">
       <div className="bg-white p-8 rounded-lg w-96">
-  
         <InputFields
           headerText="Task Name"
           onChangeValue={setTaskNameInput}

@@ -1,19 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdExpandMore, MdDeleteOutline } from "react-icons/md";
 import Activity from "./Activity";
 import { GrAddCircle } from "react-icons/gr";
 import Add from "../modals/Add";
 import Delete from "../modals/Delete";
-import EditModal from "../modals/EditModal";
+import EditModal from "../modals/edit/EditCategoryModal";
 import { MdOutlineEdit } from "react-icons/md";
 
-export default function Category({ category, handleFilterData }) {
+export default function Category({
+  category,
+  handleFilterData,
+  setProductData,
+}) {
   const [isActivityVisible, setIsActivityVisible] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isCategoryIconsVisible, setIsCategoryIconsVisible] = useState(false);
-
+  const [editCategoryNameInput, setEditCategoryNameInput] = useState("");
   const handleDelete = () => {
     setIsDeleteModalOpen(false);
   };
@@ -25,6 +29,23 @@ export default function Category({ category, handleFilterData }) {
   const handleEdit = () => {
     setIsEditModalOpen(true);
   };
+
+  const handleEditModal = (activity) => {
+    setProductData((prevData) => {
+      // data doesnt have id so maybe this is best
+      // way to edit category names
+      const updateCategoryName = prevData.map((data) => {
+        return data.categoryName === activity
+          ? { ...data, categoryName: editCategoryNameInput }
+          : data;
+      });
+      return updateCategoryName;
+    });
+  };
+
+  useEffect(() => {
+    setEditCategoryNameInput(category.categoryName);
+  }, [category]);
 
   const activityEl = category.activityTypes.map((activity, index) => (
     <Activity
@@ -52,7 +73,9 @@ export default function Category({ category, handleFilterData }) {
           <div className="hidden md:block font-medium text-lg">
             <button onClick={() => setIsActivityVisible((prev) => !prev)}>
               <MdExpandMore
-                className={`${isActivityVisible ? "rotate-180 " : "md:text-gray-900"} transform transition duration-200 ease-out `}
+                className={`${
+                  isActivityVisible ? "rotate-180 " : "md:text-gray-900"
+                } transform transition duration-200 ease-out `}
               />
             </button>
           </div>
@@ -61,7 +84,11 @@ export default function Category({ category, handleFilterData }) {
             className="flex justify-center items-center gap-2 md:cursor-pointer cursor-default"
           >
             <div
-              className={`${isActivityVisible ? "text-gray-500" : "text-gray-500 md:text-gray-900"} `}
+              className={`${
+                isActivityVisible
+                  ? "text-gray-500"
+                  : "text-gray-500 md:text-gray-900"
+              } break-words `}
             >
               {capitalizeEachWord(category.categoryName)}
             </div>
@@ -101,16 +128,15 @@ export default function Category({ category, handleFilterData }) {
         <Delete onDelete={handleDelete} onCancel={handleCancel} />
       )}
 
+      {/*  sorry i decided to delete the other stuff, felt like this
+        is more readable, change if if you need - anthony */}
       {isEditModalOpen && (
         <EditModal
-          task={{
-            id: category.id, 
-            name: category.categoryName, 
-          }}
+          editCategoryNameInput={editCategoryNameInput}
+          categoryName={category.categoryName}
           onClose={() => setIsEditModalOpen(false)}
-          onUpdateTask={(taskId, updatedTaskName) => {
-            console.log(`Updating task with ID ${taskId} to ${updatedTaskName}`);
-          }}
+          handleEditModal={handleEditModal}
+          setEditCategoryNameInput={setEditCategoryNameInput}
         />
       )}
     </>

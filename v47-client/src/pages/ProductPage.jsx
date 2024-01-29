@@ -59,6 +59,9 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
     signOut(auth); //fire, legendary - cakin
   };
 
+
+  console.log(productData)
+
   return (
     <section className="flex gap-x-6 h-screen mx-auto p-6 ">
       <LeftNav
@@ -71,6 +74,7 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
         isLeftNavOpen={isLeftNavOpen}
         setIsLeftNavOpen={setIsLeftNavOpen}
         productData={productData}
+        setProductData={setProductData}
       />
       <div className="flex space-y-6 flex-1 flex-col">
       <div className="flex items-center justify-between">
