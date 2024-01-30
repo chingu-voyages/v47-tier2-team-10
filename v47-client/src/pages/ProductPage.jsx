@@ -63,6 +63,8 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
   console.log(productData)
 
   return (
+    <>
+    {isLeftNavOpen && <div className="absolute bg-black opacity-50 inset-0 md:position:static md:bg-white md:opacity-0 md:inset-auto" onClick={() => setIsLeftNavOpen(false)}></div>}
     <section className="flex gap-x-6 h-screen mx-auto p-6 ">
       <LeftNav
         isAddModalOpen={isAddModalOpen}
@@ -105,5 +107,6 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
         />
       </div>
     </section>
+    </>
   );
 }
