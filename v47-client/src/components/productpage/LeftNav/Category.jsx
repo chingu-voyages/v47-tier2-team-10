@@ -12,6 +12,7 @@ export default function Category({
   category,
   handleFilterData,
   setProductData,
+  setIsLeftNavOpen
 }) {
   const [isActivityVisible, setIsActivityVisible] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -56,6 +57,7 @@ export default function Category({
   const activityEl = category.activityTypes.map((activity, index) => (
     <Activity
       handleFilterData={handleFilterData}
+      setIsLeftNavOpen={setIsLeftNavOpen}
       key={index}
       activity={activity}
     />
