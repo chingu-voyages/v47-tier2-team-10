@@ -9,6 +9,7 @@ import Header from "../components/productpage/header/Header";
 import Main from "../components/productpage/main/Main";
 import Login from "./Login";
 import Logout from "./Logout";
+import Button from "../components/landing/Button";
 
 export default function ProductPage({ toggleDarkMode, darkMode }) {
   const [productData, setProductData] = useState([]);
@@ -18,6 +19,7 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
   const [errorHandling, setErrorHandling] = useState(false);
   const [isLeftNavOpen, setIsLeftNavOpen] = useState(true);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [showLoginModal,setShowLoginModal] = useState(false);
 
   const handleFilterData = (taskName) => {
     const filterData = productData.flatMap((data) => {
@@ -52,11 +54,16 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
     return () => unsubscriebe();
   }, []);
 
-  const handleLogin = () => {};
+  const handleLogin = () => {
+    setUser({});
+    //close the login modal after successful login
+    setShowLoginModal(false);
+  };
 
   const handleLogout = () => {
     const auth = getAuth(app);
     signOut(auth); //fire, legendary - cakin
+    setUser(null);
   };
 
   return (
@@ -74,15 +81,20 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
       />
       <div className="flex space-y-6 flex-1 flex-col">
       <div className="flex items-center justify-between">
+        
           {user ? (
               <div>
-                <Logout onLogout={handleLogout} /> 
+                <IoLogOut onClick={handleLogout}>
+                {/* <Logout onLogout={handleLogout} />  */}
+                </IoLogOut>
               </div>
             ) : (
               <div>
-                <Login onLogin={handleLogin} /> 
+                <IoLogIn onClick={()=>setShowLoginModal(true)}/>
+                {showLoginModal && <Login onLogin={handleLogin} onCancel={()=>setShowLoginModal(false)}/>}
               </div>
             )}
+            
         </div>
         <Header
           isLoading={isLoading}

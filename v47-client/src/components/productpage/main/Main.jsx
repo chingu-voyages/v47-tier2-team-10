@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import TaskList from "./TaskList";
 import { IoIosAdd } from "react-icons/io";
 import Add from "../modals/Add";
+import DragAndDropApp from "./DragnDrop";
 export default function Main({
   filteredData,
   isAddModalOpen,
@@ -57,6 +58,9 @@ export default function Main({
             onClose={setIsAddModalOpen}
           />
         )}
+      </div>
+      <div>
+        <DragAndDropApp/>
       </div>
     </section>
   );
