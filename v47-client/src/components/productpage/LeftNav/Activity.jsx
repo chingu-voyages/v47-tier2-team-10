@@ -5,7 +5,7 @@ import EditModal from "../modals/edit/EditCategoryModal";
 import { MdOutlineEdit } from "react-icons/md";
 import Aos from "aos";
 
-export default function Activity({ activity, handleFilterData }) {
+export default function Activity({ activity, handleFilterData, setIsLeftNavOpen }) {
   const [isActivityIconsVisible, setIsActivityIconsVisible] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -27,6 +27,13 @@ export default function Activity({ activity, handleFilterData }) {
     setIsEditModalOpen(true);
   };
 
+  const handleClick = (activity) => {
+    handleFilterData(activity)
+    if (window.innerWidth <= 768) {
+      setIsLeftNavOpen(false)
+    }
+  }
+
   return (
     <div className="md:flex items-center gap-2 ml-3"
     data-aos="fade" 
@@ -40,7 +47,7 @@ export default function Activity({ activity, handleFilterData }) {
         <div className="flex w-full">
           <div className="flex md:ml-3">
             <p
-              onClick={() => handleFilterData(activity.activityName)}
+              onClick={() => handleClick(activity.activityName)}
               className="hover:text-gray-700 cursor-pointer"
             >
               {activity.activityName}
