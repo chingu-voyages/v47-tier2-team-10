@@ -26,6 +26,13 @@ const HambergerMenu = ({ toggleDarkMode, toggleHamMenu, darkMode, isOpen }) => {
         >
           Go To Task Dashboard
         </a>
+        <a
+          href="/PricingPage"
+          className="block   text-xl px-3 py-2 border-b border-grey-800 text-center dark:border-navWhite"
+          onClick={toggleHamMenu}
+        >
+          Pricing
+        </a>
         <button
           type="button"
           className="w-full  font-medium  text-xl px-4 py-2 border-b border-grey-800 dark:border-navWhite"

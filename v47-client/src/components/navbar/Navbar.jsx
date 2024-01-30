@@ -10,16 +10,22 @@ const Nav = ({darkMode, toggleDarkMode}) => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
   }, []);
 
-
-
   const DashboardLink = () => {
     return (
-      <button
+      <>
+        <button
+          type="button"
+          className=" dark:text-navWhite text-lg md:text-lg px-3 py-3 mr-5  hover:bg-gray-100 hover:rounded-xl dark:hover:bg-grey-100 dark:hover:text-navBlack "
+        >
+          Task Dashboard
+        </button>
+        <button
         type="button"
-        className=" dark:text-navWhite text-lg md:text-lg px-3 py-3 mr-20  hover:bg-gray-100 hover:rounded-xl dark:hover:bg-grey-100 dark:hover:text-navBlack "
+        className=" dark:text-navWhite text-lg md:text-lg px-3 py-3 mr-5  hover:bg-gray-100 hover:rounded-xl dark:hover:bg-grey-100 dark:hover:text-navBlack "
       >
-        Task Dashboard
+        <a href="/PricingPage">Pricing</a>
       </button>
+    </>
     );
   };
 
