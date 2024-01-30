@@ -5,6 +5,7 @@ import Footer from "./pages/Footer";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import { useCallback, useState } from "react";
+import PricingPage from "./pages/PricingPage"
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -30,6 +31,10 @@ export default function App() {
                 darkMode={darkMode}
               />
             }
+          />
+          <Route
+            path="/PricingPage"
+            element={<PricingPage/>}
           />
           <Route path="/Login" element={<Login />} />
           <Route path="/Signup" element={<Signup />} />
