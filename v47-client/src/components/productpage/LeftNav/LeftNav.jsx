@@ -20,8 +20,9 @@ export default function LeftNav({
 
   const categoryEl = productData.map((category, index) => (
     <Category
-    setProductData={setProductData}
+      setProductData={setProductData}
       handleFilterData={handleFilterData}
+      setIsLeftNavOpen={setIsLeftNavOpen}
       key={index}
       category={category}
     />
@@ -30,9 +31,9 @@ export default function LeftNav({
   return (
     <>
       <section
-        className={`md:w-72 dark:bg-[#2B2C37]   flex bg-gray-200 p-7 md:p-0 rounded-lg md:rounded-none md:duration-700 font-medium font-gray-900 ${
+        className={`md:w-72 dark:bg-[#2B2C37]   flex bg-gray-200 p-7 md:p-0 rounded-lg md:rounded-none md:duration-700 font-medium font-gray-900 z-10 ${
           isLeftNavOpen
-            ? "absolute right-16 top-20 md:static"
+            ? "absolute right-16 top-40 md:static"
             : "md:-ml-80 hidden md:block"
         }`}
       >
