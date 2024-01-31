@@ -1392,7 +1392,7 @@ export default function PricingPage() {
                 </tr>
 
                 <tr>
-                    <th class="py-5 ps-6 pe-6 text-sm font-normal text-gray-600 text-start whitespace-nowrap dark:text-gray-400" scope="row">Customer success manager</th>
+                    <th class="py-5 ps-6 pe-6 text-sm font-normal text-gray-600 text-start whitespace-nowrap dark:text-gray-400" scope="row">User provisioning</th>
 
                     <td class="py-5 px-6">
                     {/* <!-- Check --> */}
