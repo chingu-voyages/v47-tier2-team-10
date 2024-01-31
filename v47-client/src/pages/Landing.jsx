@@ -3,6 +3,8 @@ import Navbar from "../components/navbar/Navbar";
 import Button from "../components/landing/Button";
 import Footer from "./Footer";
 import Aos from "aos";
+import PricingPage from "./PricingPage";
+import Testimonials from "./Testimonials";
 
 export default function Landing({ toggleDarkMode, darkMode }) {
   // change sign up later to if user is logged in delete it ?
@@ -53,6 +55,7 @@ export default function Landing({ toggleDarkMode, darkMode }) {
         className="w-full bg-no-repeat rotate-180  absolute -bottom-[120px] h-[300px]"
         style={{ backgroundImage: "url(/wave.svg)" }}
       ></div> */}
+     <Testimonials />
       <Footer />
     </section>
   );
