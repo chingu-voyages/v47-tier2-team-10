@@ -39,8 +39,6 @@ export default function Category({
 
   const handleEditModal = (activity) => {
     setProductData((prevData) => {
-      // data doesnt have id so maybe this is best
-      // way to edit category names
       const updateCategoryName = prevData.map((data) => {
         return data.categoryName === activity
           ? { ...data, categoryName: editCategoryNameInput }
@@ -140,11 +138,12 @@ export default function Category({
 
       {/*  sorry i decided to delete the other stuff, felt like this
         is more readable, change if if you need - anthony */}
+
       {isEditModalOpen && (
         <EditModal
           editCategoryNameInput={editCategoryNameInput}
           categoryName={category.categoryName}
-          onClose={() => setIsEditModalOpen(false)}
+          setIsEditModalOpen={setIsEditModalOpen}
           handleEditModal={handleEditModal}
           setEditCategoryNameInput={setEditCategoryNameInput}
         />

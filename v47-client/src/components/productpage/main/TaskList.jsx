@@ -3,20 +3,20 @@ import { BsThreeDots } from "react-icons/bs";
 import MenuModal from "../modals/MenuModal.jsx";
 import TaskModal from "../modals/TaskModal.jsx";
 
-export default function TaskList({ days, taskDescription, taskName }) {
+export default function TaskList({ days, taskDescription, taskName, column }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
 
   return (
     <div
-      onClick={() => setIsTaskModalOpen(!isTaskModalOpen)}
-      className="rounded-lg p-4 cursor-pointer flex flex-1 relative hover:scale-105/ duration-300/ flex-col max-w-[320px] max-h-[96px]  bg-gray-400 "
+      onClick={() => {
+        setIsTaskModalOpen(!isTaskModalOpen);
+      }}
+      className={`rounded-lg p-4 mr-6 mb-6 flex  flex-col  cursor-pointer  relative  max-w-[320px] h-[96px] bg-gray-400`}
     >
       {/* <h1 className="break-words">{days.join(', ')}</h1> */}
-      <h1 className="text-sm">
-        {taskName}
-      </h1>{" "}
-      <div className="flex flex-1 justify-end items-end">
+      <h1 className="text-sm">{taskName}</h1>{" "}
+      <div className="flex flex-1 mt-auto justify-end items-end">
         <BsThreeDots
           onClick={(e) => {
             setIsMenuOpen(!isMenuOpen);

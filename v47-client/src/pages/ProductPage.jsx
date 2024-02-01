@@ -48,7 +48,7 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
     const unsubscriebe = onAuthStateChanged(auth, (user) => {
       setUser(user);
     });
-   
+
     return () => unsubscriebe();
   }, []);
 
@@ -59,8 +59,7 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
     signOut(auth); //fire, legendary - cakin
   };
 
-
-  console.log(productData)
+  console.log(productData);
 
   return (
     <>
@@ -79,16 +78,16 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
         setProductData={setProductData}
       />
       <div className="flex space-y-6 flex-1 flex-col">
-      <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between">
           {user ? (
-              <div>
-                <Logout onLogout={handleLogout} /> 
-              </div>
-            ) : (
-              <div>
-                <Login onLogin={handleLogin} /> 
-              </div>
-            )}
+            <div>
+              <Logout onLogout={handleLogout} />
+            </div>
+          ) : (
+            <div>
+              <Login onLogin={handleLogin} />
+            </div>
+          )}
         </div>
         <Header
           isLoading={isLoading}
