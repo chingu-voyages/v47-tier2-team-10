@@ -15,9 +15,8 @@ export default function LeftNav({
   isLoading,
   setIsAddModalOpen,
   isAddModalOpen,
-  setProductData
+  setProductData,
 }) {
-
   const categoryEl = productData.map((category, index) => (
     <Category
       setProductData={setProductData}
@@ -75,7 +74,9 @@ export default function LeftNav({
         </button>
       )}
 
-      {isAddModalOpen && <AddNewCategory onClose={() => setIsAddModalOpen(false)} />} 
+      {isAddModalOpen && (
+        <AddNewCategory onClose={() => setIsAddModalOpen(false)} />
+      )}
     </>
   );
 }
