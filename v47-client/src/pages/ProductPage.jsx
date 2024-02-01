@@ -8,8 +8,6 @@ import { IoLogIn, IoLogOut } from "react-icons/io5";
 import Header from "../components/productpage/header/Header";
 import Main from "../components/productpage/main/Main";
 import Login from "./Login";
-import Logout from "./Logout";
-import Button from "../components/landing/Button";
 
 export default function ProductPage({ toggleDarkMode, darkMode }) {
   const [productData, setProductData] = useState([]);

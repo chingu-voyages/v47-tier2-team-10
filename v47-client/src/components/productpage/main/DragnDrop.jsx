@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
+
 const DraggableItem = ({ id, content, index, moveItem }) => {
   const [, ref] = useDrag({
     type: 'ITEM',
@@ -69,6 +70,7 @@ const DragAndDropApp = () => {
           <FileDropZone onDrop={handleFileDrop} />
         </div>
       </DndProvider>
+
     </div>
   );
 };
