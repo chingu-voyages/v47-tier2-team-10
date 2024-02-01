@@ -8,6 +8,7 @@ import { IoLogIn, IoLogOut } from "react-icons/io5";
 import Header from "../components/productpage/header/Header";
 import Main from "../components/productpage/main/Main";
 import Login from "./Login";
+import Weather from "./weather/Weather";
 
 export default function ProductPage({ toggleDarkMode, darkMode }) {
   const [productData, setProductData] = useState([]);
@@ -101,7 +102,12 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
           filteredData={filteredData}
           isLeftNavOpen={isLeftNavOpen}
           setIsLeftNavOpen={setIsLeftNavOpen}
-        />
+        >
+             <div>
+          <Weather/>
+        </div>
+        </Header>
+     
         <Main
           setFilteredData={setFilteredData}
           setProductData={setProductData}
