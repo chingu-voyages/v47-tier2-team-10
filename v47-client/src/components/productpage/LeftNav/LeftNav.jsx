@@ -30,7 +30,13 @@ export default function LeftNav({
   return (
     <>
       <section
-        className={`md:w-72 dark:bg-[#2B2C37]   flex bg-gray-200 p-7 md:p-0 rounded-lg md:rounded-none md:duration-700 font-medium font-gray-900 z-10 ${
+        className={`md:w-72 dark:bg-[#2B2C37] flex bg-gray-200 p-7 font-medium md:p-0 rounded-lg md:rounded-none md:duration-700  font-gray-900 z-10 overflow-auto [&::-webkit-scrollbar]:w-2
+        [&::-webkit-scrollbar-track]:rounded-full
+        [&::-webkit-scrollbar-track]:bg-gray-100
+        [&::-webkit-scrollbar-thumb]:rounded-full
+        [&::-webkit-scrollbar-thumb]:bg-gray-300
+        dark:[&::-webkit-scrollbar-track]:bg-slate-700
+        dark:[&::-webkit-scrollbar-thumb]:bg-slate-500 ${
           isLeftNavOpen
             ? "absolute right-16 top-40 md:static"
             : "md:-ml-80 hidden md:block"
@@ -43,7 +49,7 @@ export default function LeftNav({
           >
             <TbLayoutSidebarLeftCollapse />
           </button>
-          <div className="flex flex-col">
+          <div className="flex flex-col mb-4">
             {isLoading
               ? new Array(4)
                   .fill(0)
@@ -57,10 +63,10 @@ export default function LeftNav({
           </div>
           <button
             onClick={() => setIsAddModalOpen(true)}
-            className="mt-auto mb-7 md:flex dark:text-gray-200 justify-center items-center gap-2 hidden hover:text-gray-700"
+            className="mt-auto mb-7 md:flex dark:text-gray-200 justify-center items-center gap-2 hidden rounded-lg p-2 ease-in duration-300 hover:bg-gray-100"
           >
             <RiAddFill />
-            <p className="hover:text-gray-700">Add new category</p>
+            <p className="font-bold text-gray-800 dark:text-white ">Add new category</p>
           </button>
         </div>
       </section>

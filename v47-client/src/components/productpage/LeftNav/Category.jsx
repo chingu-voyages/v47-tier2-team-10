@@ -71,31 +71,31 @@ export default function Category({
   return (
     <>
       <div
-        className="flex justify-between items-center gap-1 mt-3 md:mt-5"
+        className="flex justify-between items-center gap-1   rounded-lg md:hover:bg-gray-100  md:p-2 md:ease-in md:duration-300"
         onMouseEnter={() => setIsCategoryIconsVisible(true)}
         onMouseLeave={() => setIsCategoryIconsVisible(false)}
         data-aos="fade" 
         data-aos-easing="ease-in-sine" data-aos-duration="600"
       >
-        <div className="flex gap-1 font-medium">
-          <div className="hidden md:block font-medium text-lg">
+        <div className="flex gap-1 font-medium ">
+          <div className="hidden md:block font-bold text-gray-800 dark:text-white">
             <button onClick={() => setIsActivityVisible((prev) => !prev)}>
               <MdExpandMore
                 className={`${
-                  isActivityVisible ? "rotate-180 " : "md:text-gray-900"
+                  isActivityVisible ? "rotate-180 font-bold text-gray-800 dark:text-white" : "font-bold text-gray-800 dark:text-white"
                 } transform transition duration-200 ease-out `}
               />
             </button>
           </div>
           <button
             onClick={() => setIsActivityVisible((prev) => !prev)}
-            className="flex justify-center items-center gap-2 md:cursor-pointer cursor-default"
+            className="flex justify-center items-center gap-2 md:cursor-pointer cursor-default "
           >
             <div
               className={`${
                 isActivityVisible
-                  ? "text-gray-500"
-                  : "text-gray-500 md:text-gray-900"
+                  ? "font-bold text-gray-800 dark:text-white"
+                  : "font-bold text-gray-800 dark:text-white"
               } break-words `}
             >
               {capitalizeEachWord(category.categoryName)}
@@ -106,19 +106,19 @@ export default function Category({
           <div className="flex gap-1">
             <button
               onClick={handleEdit}
-              className="hidden md:block font-bold text-xl text-gray-900 hover:text-gray-700"
+              className="hidden md:block font-bold text-lg  text-gray-900 hover:text-gray-700"
             >
               <MdOutlineEdit />
             </button>
             <button
               onClick={() => setIsAddModalOpen(true)}
-              className="hidden md:block font-bold text-xl text-gray-900 hover:text-gray-700"
+              className="hidden md:block font-bold text-lg text-gray-900 hover:text-gray-700"
             >
               <GrAddCircle />
             </button>
             <button
               onClick={() => setIsDeleteModalOpen(true)}
-              className="hidden md:block font-bold text-xl text-red-500 hover:text-red-400"
+              className="hidden md:block font-bold text-lg text-red-500 hover:text-red-400"
             >
               <MdDeleteOutline />
             </button>
@@ -126,7 +126,7 @@ export default function Category({
         )}
       </div>
 
-      <div className={`${isActivityVisible ? "block" : "block md:hidden"}`}>
+      <div className={`${isActivityVisible ? "block mb-1" : "block md:hidden"}`}>
         {activityEl}
       </div>
 
