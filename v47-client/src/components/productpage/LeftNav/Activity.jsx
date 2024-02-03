@@ -3,16 +3,12 @@ import { MdDeleteOutline } from "react-icons/md";
 import Delete from "../modals/Delete";
 import EditModal from "../modals/edit/EditCategoryModal";
 import { MdOutlineEdit } from "react-icons/md";
-import Aos from "aos";
 
 export default function Activity({ activity, handleFilterData, setIsLeftNavOpen }) {
   const [isActivityIconsVisible, setIsActivityIconsVisible] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
-  useEffect(() => {
-    Aos.init();
-  }, []);
 
   const handleDelete = () => {
     // Add logic for deletion
@@ -35,9 +31,7 @@ export default function Activity({ activity, handleFilterData, setIsLeftNavOpen 
   }
 
   return (
-    <div className="md:flex items-center gap-2 ml-3"
-    data-aos="fade" 
-    data-aos-easing="ease-in-sine" data-aos-duration="600"
+    <div className="md:flex items-center gap-2 ml-3 rounded-lg md:hover:bg-gray-100  md:p-1 md:ease-in md:duration-300"
     >
       <div
         className="flex gap-3  w-full  justify-between"
@@ -48,7 +42,7 @@ export default function Activity({ activity, handleFilterData, setIsLeftNavOpen 
           <div className="flex md:ml-3">
             <p
               onClick={() => handleClick(activity.activityName)}
-              className="hover:text-gray-700 cursor-pointer"
+              className="text-gray-600 dark:text-gray-400 cursor-pointer"
             >
               {activity.activityName}
             </p>
@@ -57,12 +51,12 @@ export default function Activity({ activity, handleFilterData, setIsLeftNavOpen 
             <div className="gap-1 ml-auto hidden md:flex">
               <button
                 onClick={handleEdit}
-                className="font-bold text-xl text-gray-900 hover:text-gray-700"
+                className="font-bold text-lg text-gray-900 hover:text-gray-700"
               >
                 <MdOutlineEdit />
               </button>
               <button
-                className={`text-xl font-bold text-red-500 hover:text-red-400 `}
+                className={`text-lg font-bold text-red-500 hover:text-red-400 `}
                 onClick={() => setIsDeleteModalOpen(true)}
               >
                 <MdDeleteOutline />
