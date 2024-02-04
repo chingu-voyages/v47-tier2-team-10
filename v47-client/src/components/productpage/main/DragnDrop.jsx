@@ -1,93 +1,108 @@
-import React, { useState } from 'react';
-import { DndProvider, useDrag, useDrop } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
+import React, { useState, useEffect } from "react";
 
+function App() {
+  const [widgets, setWidgets] = useState([]);
 
-const DraggableItem = ({ id, content, index, moveItem }) => {
-  const [, ref] = useDrag({
-    type: 'ITEM',
-    item: { id, index, content },
-  });
+  useEffect(() => {
+    // This useEffect is used to prevent the onDrop function from running on initial render
+  }, []);
 
-  return (
-    <div ref={ref} style={{ border: '1px solid black', padding: '8px', marginBottom: '4px' }}>
-      {content}
-    </div>
-  );
-};
+  function handleOnDrag(e, widgetType, currentIndex) {
+    e.dataTransfer.setData("text/plain", JSON.stringify({ widgetType, currentIndex }));
+  }
 
-const DropZone = ({ items, moveItem }) => {
-  const [, drop] = useDrop({
-    accept: ['ITEM', 'FILE'],
-    drop: (item) => {
-      if (item.type === 'ITEM') {
-        moveItem(item.index, items.indexOf(item));
-        item.index = items.indexOf(item);
-      } else if (item.type === 'FILE') {
-        // Handle file drop here (you can access the dropped file from item.file)
-        console.log('Dropped file:', item.file);
+  function handleOnDrop(e, dropIndex) {
+    e.preventDefault();
+
+    const draggedData = JSON.parse(e.dataTransfer.getData("text/plain"));
+
+    if (draggedData) {
+      const newWidgets = [...widgets];
+      const draggedWidgetType = draggedData.widgetType;
+      const draggedWidgetIndex = draggedData.currentIndex;
+
+      // Remove the dragged items from their original positions
+      newWidgets.splice(draggedWidgetIndex, 1);
+
+      // Check if the dragged item is already in the list
+      const isDuplicated = newWidgets.includes(draggedWidgetType);
+
+      // Insert the dragged item at the desired drop index if not duplicated
+      if (!isDuplicated) {
+        newWidgets.splice(dropIndex, 0, draggedWidgetType);
+        setWidgets(newWidgets);
       }
-    },
-  });
+    }
+  }
+
+  function handleDragOver(e) {
+    e.preventDefault();
+  }
+
+  function handleRemoveWidget(index) {
+    const newWidgets = widgets.slice();
+    newWidgets.splice(index, 1);
+    setWidgets(newWidgets);
+  }
+
+  function handleOnDragEnd() {
+    setWidgets([...widgets]);
+  }
+
+  function handleAddWidget(widgetType) {
+    const newWidgets = [widgetType, ...widgets];
+    setWidgets(newWidgets);
+  }
 
   return (
-    <div ref={drop} style={{ border: '2px dashed black', padding: '16px' }}>
-      {items.map((item, index) => (
-        <DraggableItem key={item.id} id={item.id} content={item.content} index={index} moveItem={moveItem} />
-      ))}
-    </div>
-  );
-};
-
-const DragAndDropApp = () => {
-  const [items, setItems] = useState([
-    { id: 1, content: 'Item 1' },
-    { id: 2, content: 'Item 2' },
-    { id: 3, content: 'Item 3' },
-  ]);
-
-  const moveItem = (fromIndex, toIndex) => {
-    const newItems = [...items];
-    const [movedItem] = newItems.splice(fromIndex, 1);
-    newItems.splice(toIndex, 0, movedItem);
-    setItems(newItems);
-  };
-
-  const handleFileDrop = (files) => {
-    // Handle dropped files (you can perform further processing here)
-    console.log('Dropped files:', files);
-
-    // Example: Display file names
-    alert(`Dropped files: ${files.map((file) => file.name).join(', ')}`);
-  };
-
-  return (
-    <div>
-      <h2>Drag and Drop </h2>
-      <DndProvider backend={HTML5Backend}>
-        <DropZone items={items} moveItem={moveItem} />
-        <div style={{ marginTop: '20px', border: '2px dashed blue', padding: '16px' }}>
-          <FileDropZone onDrop={handleFileDrop} />
+    <div className="flex-box items-center justify-center bg-gray-100">
+        <div><h1 className="text-center text-gray-700 bold-200">Drag And Drop</h1></div>
+      <div className="flex space-x-4">
+  
+        <div
+          className="bg-blue-400 text-white p-4 rounded cursor-move"
+          draggable
+          onDragStart={(e) => handleOnDrag(e, "Your Task 1", 0)}
+        >
+          Your Task 1
         </div>
-      </DndProvider>
-
+        <div
+          className="bg-blue-400 text-white p-4 rounded cursor-move"
+          draggable
+          onDragStart={(e) => handleOnDrag(e, "Your Task 2", 1)}
+        >
+          Your task 2
+        </div>
+        <div
+          className="bg-blue-400 text-white p-4 rounded cursor-move"
+          draggable
+          onDragStart={(e) => handleOnDrag(e, "Your Task 3", 2)}
+        >
+          Your task 3
+        </div>
+      </div>
+      <div className="page bg-white p-8 border border-gray-300" onDrop={(e) => handleOnDrop(e, widgets.length)} onDragOver={handleDragOver}>
+        <div className="dropped-items">
+          {widgets.map((widget, index) => (
+            <div
+              key={index}
+              className="component bg-gray-200 p-4 rounded mb-4 cursor-move"
+              draggable
+              onDragStart={(e) => handleOnDrag(e, widget, index)}
+              onDrop={(e) => handleOnDrop(e, index)}
+              onDragOver={handleDragOver}
+              onDragEnd={handleOnDragEnd}
+            >
+              {widget}
+              <button className="ml-2 text-red-500" onClick={() => handleRemoveWidget(index)}>
+                Remove
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
-};
+}
 
-const FileDropZone = ({ onDrop }) => {
-  const [, drop] = useDrop({
-    accept: 'FILE',
-    drop: (item) => {
-      onDrop(item.files);
-    },
-  });
-
-  return (
-    <div ref={drop} style={{ textAlign: 'center' }}>
-      <p>Drop files here</p>
-    </div>
-  );
-};
-
-export default DragAndDropApp;
+export default App;
