@@ -9,6 +9,7 @@ import Header from "../components/productpage/header/Header";
 import Main from "../components/productpage/main/Main";
 import Login from "./Login";
 import Logout from "./Logout";
+import Weather from "./weather/Weather";
 
 export default function ProductPage({ toggleDarkMode, darkMode }) {
   const [productData, setProductData] = useState([]);
@@ -18,6 +19,7 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
   const [errorHandling, setErrorHandling] = useState(false);
   const [isLeftNavOpen, setIsLeftNavOpen] = useState(true);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [showLoginModal,setShowLoginModal] = useState(false);
 
   const handleFilterData = (taskName) => {
     const filterData = productData.flatMap((data) => {
@@ -48,23 +50,28 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
     const unsubscriebe = onAuthStateChanged(auth, (user) => {
       setUser(user);
     });
-
+   
     return () => unsubscriebe();
   }, []);
 
-  const handleLogin = () => {};
+  const handleLogin = () => {
+    setUser({});
+    //close the login modal after successful login
+    setShowLoginModal(false);
+  };
 
   const handleLogout = () => {
     const auth = getAuth(app);
     signOut(auth); //fire, legendary - cakin
+    setUser(null);
   };
 
-  console.log(productData);
+console.log(productData);
 
   return (
     <>
     {isLeftNavOpen && <div className="absolute bg-black opacity-50 inset-0 md:position:static md:bg-white md:opacity-0 md:inset-auto z-10 md:z-auto" onClick={() => setIsLeftNavOpen(false)}></div>}
-    <section className="flex gap-x-6 h-screen mx-auto p-6 "> 
+    <section className="flex gap-x-6 h-screen mx-auto p-6 ">
       <LeftNav
         isAddModalOpen={isAddModalOpen}
         setIsAddModalOpen={setIsAddModalOpen}
@@ -78,7 +85,21 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
         setProductData={setProductData}
       />
       <div className="flex space-y-6 flex-1 flex-col">
-        <div className="flex items-center justify-between">
+      {/* <div className="flex items-center justify-between"> */}
+        
+          {/* {user ? (
+              <div>
+                <IoLogOut onClick={handleLogout}>
+                 <Logout onLogout={handleLogout} /> 
+                </IoLogOut>
+              </div>
+            ) : (
+              <div>
+                <IoLogIn onClick={()=>setShowLoginModal(true)}/>
+                {showLoginModal && <Login onLogin={handleLogin} onCancel={()=>setShowLoginModal(false)}/>}
+              </div>
+            )} */}
+            <div className="flex items-center justify-between">
           {user ? (
             <div>
               <Logout onLogout={handleLogout} />
@@ -88,6 +109,7 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
               <Login onLogin={handleLogin} />
             </div>
           )}
+
         </div>
         <Header
           isLoading={isLoading}
@@ -96,7 +118,12 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
           filteredData={filteredData}
           isLeftNavOpen={isLeftNavOpen}
           setIsLeftNavOpen={setIsLeftNavOpen}
-        />
+        >
+             <div>
+          <Weather/>
+        </div>
+        </Header>
+     
         <Main
           setFilteredData={setFilteredData}
           setProductData={setProductData}

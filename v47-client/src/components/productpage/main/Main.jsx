@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import TaskList from "./TaskList";
 import { IoIosAdd } from "react-icons/io";
 import Add from "../modals/Add";
+import DragAndDropApp from "./DragnDrop";
 export default function Main({
   filteredData,
   isAddModalOpen,
@@ -53,7 +54,8 @@ export default function Main({
         <div className="flex flex-wrap flex-1">
           <div className="flex-1   flex flex-col">
             <h2>Not Started</h2>
-            {renderTasksByColumn("Not Started")}
+            {
+    ("Not Started")}
           </div>
           <div className="flex-1 flex flex-col">
             <h2>In Progress</h2>
@@ -81,7 +83,7 @@ export default function Main({
             onClose={setIsAddModalOpen}
           />
         )}
-      </section>
-    </>
+</section>
+</>
   );
 }

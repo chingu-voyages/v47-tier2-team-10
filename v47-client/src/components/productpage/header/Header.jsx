@@ -2,6 +2,7 @@ import React from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
 import DarkMode from "../../navbar/DarkMode";
+import Weather from "../../../pages/weather/Weather";
 
 export default function Header({
   isLeftNavOpen,
@@ -44,6 +45,7 @@ export default function Header({
               : "Nothing Selected"}
           </p>
         )}
+        <Weather className="p-6 flex "/>
       </div>
 
       {/* hamburger */}
