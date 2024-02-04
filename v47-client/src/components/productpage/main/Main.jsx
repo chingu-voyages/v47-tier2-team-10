@@ -16,6 +16,7 @@ export default function Main({
   const addNewTask = () => {
     setFilteredData((prevData) => {
       // need to figure out on what way to add days?
+      // maybe a select
       const newTask = {
         days: [],
         taskDescription: taskDescription,
@@ -32,16 +33,40 @@ export default function Main({
 
       return newData;
     });
+
     setIsAddModalOpen(false);
   };
 
+  const renderTasksByColumn = (column) => {
+    return filteredData.map((data) => {
+      const tasksInColumn = data.Tasks.filter((task) => {
+        return task.column === column;
+      });
+      return tasksInColumn.map((task, id) => {
+        return <TaskList key={id} {...task} />;
+      });
+    });
+  };
+
   return (
-    <section className="border dark:text-gray-200 p-6 flex dark:bg-[#2B2C37] rounded-md duration-700  bg-gray-200  flex-1">
-      <div className="space-y-4 flex flex-1 flex-col ">
-        {filteredData.map((data) =>
-          data.Tasks.map((task, id) => <TaskList key={id} {...task} />)
-        )}
-        <div className="flex flex-1">
+    <>
+      <section className="border dark:text-gray-200 mb-0  p-6 flex flex-col dark:bg-[#2B2C37] rounded-md duration-700  bg-gray-200  flex-1">
+        <div className="flex flex-wrap flex-1">
+          <div className="flex-1   flex flex-col">
+            <h2>Not Started</h2>
+            {
+    ("Not Started")}
+          </div>
+          <div className="flex-1 flex flex-col">
+            <h2>In Progress</h2>
+            {renderTasksByColumn("In Progress")}
+          </div>
+          <div className="flex-1  flex flex-col">
+            <h2>Done</h2>
+            {renderTasksByColumn("Done")}
+          </div>
+        </div>
+        <div className="mt-0 h-full dark:text-gray-200 p-6 flex dark:bg-[#2B2C37] rounded-md duration-700  bg-gray-200  ">
           <div className="mt-auto hover:text-gray-500 cursor-pointer duration-300 flex items-center gap-x-2 ml-auto">
             <IoIosAdd />
             <h1 onClick={() => setIsAddModalOpen(true)}>Add new task</h1>
@@ -58,10 +83,7 @@ export default function Main({
             onClose={setIsAddModalOpen}
           />
         )}
-      </div>
-      <div>
-        <DragAndDropApp/>
-      </div>
-    </section>
+</section>
+</>
   );
 }
