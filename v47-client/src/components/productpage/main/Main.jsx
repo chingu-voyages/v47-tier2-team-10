@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TaskList from "./TaskList";
 import { IoIosAdd } from "react-icons/io";
 import Add from "../modals/Add";
-import DragAndDropApp from "./DragnDrop";
+import DragnDrop from "./DragnDrop";
 export default function Main({
   filteredData,
   isAddModalOpen,
@@ -64,6 +64,9 @@ export default function Main({
           <div className="flex-1  flex flex-col">
             <h2>Done</h2>
             {renderTasksByColumn("Done")}
+          </div>
+          <div>
+            <DragnDrop/>
           </div>
         </div>
         <div className="mt-0 h-full dark:text-gray-200 p-6 flex dark:bg-[#2B2C37] rounded-md duration-700  bg-gray-200  ">

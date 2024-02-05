@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function App() {
+function DragnDrop() {
   const [widgets, setWidgets] = useState([]);
 
   useEffect(() => {
@@ -105,4 +105,4 @@ function App() {
   );
 }
 
-export default App;
+export default DragnDrop;
