@@ -8,6 +8,7 @@ import { IoLogIn, IoLogOut } from "react-icons/io5";
 import Header from "../components/productpage/header/Header";
 import Main from "../components/productpage/main/Main";
 import Login from "./Login";
+import Logout from "./Logout";
 import Weather from "./weather/Weather";
 
 export default function ProductPage({ toggleDarkMode, darkMode }) {
@@ -65,7 +66,11 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
     setUser(null);
   };
 
+console.log(productData);
+
   return (
+    <>
+    {isLeftNavOpen && <div className="absolute bg-black opacity-50 inset-0 md:position:static md:bg-white md:opacity-0 md:inset-auto z-10 md:z-auto" onClick={() => setIsLeftNavOpen(false)}></div>}
     <section className="flex gap-x-6 h-screen mx-auto p-6 ">
       <LeftNav
         isAddModalOpen={isAddModalOpen}
@@ -77,14 +82,15 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
         isLeftNavOpen={isLeftNavOpen}
         setIsLeftNavOpen={setIsLeftNavOpen}
         productData={productData}
+        setProductData={setProductData}
       />
       <div className="flex space-y-6 flex-1 flex-col">
-      <div className="flex items-center justify-between">
+      {/* <div className="flex items-center justify-between"> */}
         
-          {user ? (
+          {/* {user ? (
               <div>
                 <IoLogOut onClick={handleLogout}>
-                {/* <Logout onLogout={handleLogout} />  */}
+                 <Logout onLogout={handleLogout} /> 
                 </IoLogOut>
               </div>
             ) : (
@@ -92,8 +98,18 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
                 <IoLogIn onClick={()=>setShowLoginModal(true)}/>
                 {showLoginModal && <Login onLogin={handleLogin} onCancel={()=>setShowLoginModal(false)}/>}
               </div>
-            )}
-            
+            )} */}
+            <div className="flex items-center justify-between">
+          {user ? (
+            <div>
+              <Logout onLogout={handleLogout} />
+            </div>
+          ) : (
+            <div>
+              <Login onLogin={handleLogin} />
+            </div>
+          )}
+
         </div>
         <Header
           isLoading={isLoading}
@@ -117,5 +133,6 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
         />
       </div>
     </section>
+    </>
   );
 }
