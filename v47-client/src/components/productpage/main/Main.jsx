@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TaskList from "./TaskList";
 import { IoIosAdd } from "react-icons/io";
 import Add from "../modals/Add";
@@ -39,19 +39,32 @@ export default function Main({
 
   const renderTasksByColumn = (column) => {
     return filteredData.map((data) => {
-      const tasksInColumn = data.Tasks.filter((task) => {
-        return task.column === column;
-      });
-      return tasksInColumn.map((task, id) => {
-        return <TaskList key={id} {...task} />;
-      });
+      const tasksInColumn = data.Tasks.filter((task) => task.column === column);
+      return tasksInColumn.map((task, id) => (
+        <TaskList key={id} {...task} />
+      ));
     });
   };
+
+
+
+  useEffect(() => {
+console.log(filteredData)
+  }, [filteredData])
+  
+
+
+
+
+  // to do:
+  // make column task overflow as scroll
+
+
 
   return (
     <>
       <section className="border dark:text-gray-200 mb-0  p-6 flex flex-col dark:bg-[#2B2C37] rounded-md duration-700  bg-gray-200  flex-1">
-        <div className="flex flex-wrap flex-1">
+        <div className="flex flex-wrap flex-1 overflow-y-auto ">
           <div className="flex-1   flex flex-col">
             <h2>Not Started</h2>
             {
