@@ -1,21 +1,22 @@
 import React from 'react'
+import Stat from './Stat'
 
 // credit to https://www.preline.co/examples/features-stats.html and https://www.notion.so/
 
 const statsData = [
     {
         title: 'Community members',
-        number: '1M+',
+        number: 8863,
         text: 'community users'
     },
     {
         title: 'Startup businesses',
-        number: '2,000+',
+        number: 960,
         text: 'partner with us'
     },
     {
         title: 'Happy customers',
-        number: '85%',
+        number: 5304,
         text: 'this year alone'
     },
 ]
@@ -42,12 +43,3 @@ export default function Stats() {
 }
 
 
-function Stat({stat}) {
-    return (
-        <div className='text-center'>
-            <h4 class="text-lg sm:text-xl font-semibold text-gray-800 dark:text-gray-200">{stat.title}</h4>
-            <p class="mt-2 sm:mt-3 text-4xl sm:text-6xl font-bold text-green-600">{stat.number}</p>
-            <p class="mt-1 text-gray-500">{stat.text}</p>
-        </div>
-    )
-}
