@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import InputFields from "./add/InputFields";
+import InputFields from "./resuable/InputFields";
 
 const Add = ({
   onClose,

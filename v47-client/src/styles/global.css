@@ -3,25 +3,18 @@
 @tailwind utilities;
 
 .container {
-    @apply h-full p-8 mx-auto
+  @apply h-full p-8 mx-auto;
 }
 
-
 @keyframes gradientChange {
-    from {
-      background: linear-gradient(to top, #2c3e50, #000000);
-    }
-    to {
-      background: linear-gradient(to top, #000000, #2c3e50);
-    }
+  from {
+    background: linear-gradient(to top, #2c3e50, #000000);
   }
-  .testing {
-    animation: gradientChange 0.3s ease;
+  to {
+    background: linear-gradient(to top, #000000, #2c3e50);
   }
-  
+}
+.testing {
+  animation: gradientChange 0.3s ease;
+}
 
-
-
-  /* body {
-    @apply dark:bg-[#2B2C37]
-  } */

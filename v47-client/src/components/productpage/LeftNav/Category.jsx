@@ -1,21 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdExpandMore, MdDeleteOutline } from "react-icons/md";
 import Activity from "./Activity";
 import { GrAddCircle } from "react-icons/gr";
 import Add from "../modals/Add";
-import Delete from "../modals/Delete"; 
+import Delete from "../modals/Delete";
+import EditModal from "../modals/edit/EditCategoryModal";
 import { MdOutlineEdit } from "react-icons/md";
+import Aos from "aos";
 
-
-export default function Category({ category, handleFilterData }) {
+export default function Category({
+  category,
+  handleFilterData,
+  setProductData,
+  setIsLeftNavOpen
+}) {
   const [isActivityVisible, setIsActivityVisible] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false); 
-  const [isCategortyIconsVisible, setIsCategoryIconsVisible] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isCategoryIconsVisible, setIsCategoryIconsVisible] = useState(false);
+  const [editCategoryNameInput, setEditCategoryNameInput] = useState("");
 
+  useEffect(() => {
+    Aos.init();
+  }, []);
 
   const handleDelete = () => {
-    // we can add logic for deletion
     setIsDeleteModalOpen(false);
   };
 
@@ -23,10 +33,29 @@ export default function Category({ category, handleFilterData }) {
     setIsDeleteModalOpen(false);
   };
 
-  
+  const handleEdit = () => {
+    setIsEditModalOpen(true);
+  };
+
+  const handleEditModal = (activity) => {
+    setProductData((prevData) => {
+      const updateCategoryName = prevData.map((data) => {
+        return data.categoryName === activity
+          ? { ...data, categoryName: editCategoryNameInput }
+          : data;
+      });
+      return updateCategoryName;
+    });
+  };
+
+  useEffect(() => {
+    setEditCategoryNameInput(category.categoryName);
+  }, [category]);
+
   const activityEl = category.activityTypes.map((activity, index) => (
     <Activity
       handleFilterData={handleFilterData}
+      setIsLeftNavOpen={setIsLeftNavOpen}
       key={index}
       activity={activity}
     />
@@ -41,61 +70,83 @@ export default function Category({ category, handleFilterData }) {
 
   return (
     <>
-      <div 
-        className="flex justify-between items-center gap-1 mt-3 md:mt-5" 
+      <div
+        className="flex justify-between items-center gap-1   rounded-lg md:hover:bg-gray-100  md:p-2 md:ease-in md:duration-300"
         onMouseEnter={() => setIsCategoryIconsVisible(true)}
         onMouseLeave={() => setIsCategoryIconsVisible(false)}
+        data-aos="fade" 
+        data-aos-easing="ease-in-sine" data-aos-duration="600"
       >
-        <div className="flex gap-1 font-medium">
-          <div className="hidden md:block font-medium text-lg">
+        <div className="flex gap-1 font-medium ">
+          <div className="hidden md:block font-bold text-gray-800 dark:text-white">
             <button onClick={() => setIsActivityVisible((prev) => !prev)}>
               <MdExpandMore
-                className={`${isActivityVisible ? 'rotate-180 ' : 'md:text-gray-900' } transform transition duration-200 ease-out `}
+                className={`${
+                  isActivityVisible ? "rotate-180 font-bold text-gray-800 dark:text-white" : "font-bold text-gray-800 dark:text-white"
+                } transform transition duration-200 ease-out `}
               />
             </button>
           </div>
           <button
             onClick={() => setIsActivityVisible((prev) => !prev)}
-            className="flex justify-center items-center gap-2 md:cursor-pointer cursor-default"
+            className="flex justify-center items-center gap-2 md:cursor-pointer cursor-default "
           >
             <div
-              className={`${isActivityVisible ? 'text-gray-500' : 'text-gray-500 md:text-gray-900'} `}
+              className={`${
+                isActivityVisible
+                  ? "font-bold text-gray-800 dark:text-white"
+                  : "font-bold text-gray-800 dark:text-white"
+              } break-words `}
             >
               {capitalizeEachWord(category.categoryName)}
             </div>
           </button>
         </div>
-        {isCategortyIconsVisible && <div className="flex gap-1">
-          <button
-            className="hidden md:block font-bold text-xl text-gray-900 hover:text-gray-700"
-          >
-            <MdOutlineEdit />
-          </button>
-          <button
-            onClick={() => setIsAddModalOpen(true)}
-            className="hidden md:block font-bold text-xl text-gray-900 hover:text-gray-700"
-          >
-            <GrAddCircle />
-          </button>
-          <button
-            onClick={() => setIsDeleteModalOpen(true)}
-            className="hidden md:block font-bold text-xl text-red-500 hover:text-red-400"
-          >
-            <MdDeleteOutline />
-          </button>
-        </div>}
+        {isCategoryIconsVisible && (
+          <div className="flex gap-1">
+            <button
+              onClick={handleEdit}
+              className="hidden md:block font-bold text-lg  text-gray-900 hover:text-gray-700"
+            >
+              <MdOutlineEdit />
+            </button>
+            <button
+              onClick={() => setIsAddModalOpen(true)}
+              className="hidden md:block font-bold text-lg text-gray-900 hover:text-gray-700"
+            >
+              <GrAddCircle />
+            </button>
+            <button
+              onClick={() => setIsDeleteModalOpen(true)}
+              className="hidden md:block font-bold text-lg text-red-500 hover:text-red-400"
+            >
+              <MdDeleteOutline />
+            </button>
+          </div>
+        )}
       </div>
 
-      <div className={`${isActivityVisible ? 'block' : 'block md:hidden'}`}>
+      <div className={`${isActivityVisible ? "block mb-1" : "block md:hidden"}`}>
         {activityEl}
       </div>
 
-      {isAddModalOpen && (
-        <Add onClose={() => setIsAddModalOpen(false)} />
-      )}
+      {isAddModalOpen && <Add onClose={() => setIsAddModalOpen(false)} />}
 
       {isDeleteModalOpen && (
         <Delete onDelete={handleDelete} onCancel={handleCancel} />
+      )}
+
+      {/*  sorry i decided to delete the other stuff, felt like this
+        is more readable, change if if you need - anthony */}
+
+      {isEditModalOpen && (
+        <EditModal
+          editCategoryNameInput={editCategoryNameInput}
+          categoryName={category.categoryName}
+          setIsEditModalOpen={setIsEditModalOpen}
+          handleEditModal={handleEditModal}
+          setEditCategoryNameInput={setEditCategoryNameInput}
+        />
       )}
     </>
   );
