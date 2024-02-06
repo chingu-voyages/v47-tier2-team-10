@@ -2,14 +2,14 @@ import FeedbackCard from "../components/landing/FeedbackCard";
 import { feedback } from "../constants/index";
 
 const Testimonials = () => (
-  <section className="py-6 flex justify-center items-center flex-col relative bg-gradient-to-t from-gray-100 to-gray-200 text-[#2d8630]">
+  <section className="py-6 flex justify-center items-center flex-col relative ">
     <div className="w-full flex justify-end items-center flex-col sm:mb-16 mb-6 relative z-[1]">
 
-      <h2 className='text-2xl md:text-4xl md:leading-tight font-poppins font-semibold xs:text-[48px] text-[40px] text-gray-600 xs:leading-[76.8px] leading-[66.8px] w-full text-center'>
+      <h2 className='text-3xl lg:text-4xl text-gray-800 font-bold dark:text-gray-200'>
         What People are saying about us
       </h2>
       <div className="w-full md:mt-0 mt-6 text-center">
-        <p className="max-w-[900px] text-[30px] leading-[30.8px] mx-auto pt-10">
+        <p className="mt-3 text-gray-800 dark:text-gray-200">
         Revolutionize your task management and boost productivity with our platform anywhere on the planet.
         </p>
       </div>
@@ -22,6 +22,14 @@ const Testimonials = () => (
 );
 
 export default Testimonials;
+
+
+// <h2 class="text-3xl lg:text-4xl text-gray-800 font-bold dark:text-gray-200">
+// Our Features
+// </h2>
+// <p class="mt-3 text-gray-800 dark:text-gray-200">
+// The powerful and flexible organisation solution for every individual and business.
+// </p>
 
 
 
