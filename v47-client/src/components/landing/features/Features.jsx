@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Icons from './Icons'
 import Stats from './Stats'
+import Aos from 'aos'
 
 export default function Features() {
+
+  useEffect(() => {
+    Aos.init();
+  }, []);
+
   return (
-    <div className='mt-48'>
+    <div className='mt-48' data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
         {/* <!-- Title --> */}
         <div class="mx-auto max-w-2xl  text-center mt-10">
             <h2 class="text-3xl lg:text-4xl text-gray-800 font-bold dark:text-gray-200">
