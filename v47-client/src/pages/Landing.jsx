@@ -7,6 +7,7 @@ import PricingPage from "./PricingPage";
 import Testimonials from "../components/landing/testimonials/Testimonials";
 import Features from "../components/landing/features/Features";
 import TaskFlow from "../components/landing/taskflow/TaskFlow";
+import TeamInfo from "../components/landing/teamInfo/TeamInfo";
 
 export default function Landing() {
   // change sign up later to if user is logged in delete it ?
@@ -26,6 +27,7 @@ export default function Landing() {
       <TaskFlow />
       <Features />
       <Testimonials />
+      <TeamInfo />
       <Footer />
     </section>
   );
