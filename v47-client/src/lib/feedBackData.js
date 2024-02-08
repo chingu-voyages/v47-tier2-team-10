@@ -1,4 +1,4 @@
-import { people01, people02, people03 } from "../assets";
+import { people01, people02, people03, github, linkedin } from "../assets";
 
 export const feedback = [
   {
@@ -8,6 +8,7 @@ export const feedback = [
     name: "Sarah Thompson",
     title: "Productivity Enthusiast",
     img: people01,
+    
   },
   {
     id: "feedback-2",
@@ -34,8 +35,11 @@ export const TeamData = [
     content:
       "Your platform has revolutionized the way I manage tasks and stay organized. It's not just a tool; it's my personal productivity companion.",
     name: "Sarah Thompson",
-    title: "Productivity Enthusiast",
+    title: "Frontend Developer",
     img: people01,
+    flag: "🇺🇸",
+    iconGithub: github,
+    iconLinkedin: linkedin,
   },
   {
     id: "feedback-2",
@@ -44,6 +48,9 @@ export const TeamData = [
     name: "John Anderson",
     title: "Frontend Developer",
     img: people02,
+    flag: "🇨🇦",
+    iconGithub: github,
+    iconLinkedin: linkedin,
   },
   {
     id: "feedback-3",
@@ -52,6 +59,9 @@ export const TeamData = [
     name: "Emily Rodriguez",
     title: "Frontend Developer",
     img: people03,
+    flag: "🇬🇧",
+    iconGithub: github,
+    iconLinkedin: linkedin,
   },
   {
     id: "feedback-3",
@@ -60,5 +70,8 @@ export const TeamData = [
     name: "Emily Rodriguez",
     title: "Frontend Developer",
     img: people03,
+    flag: "🇬🇧",
+    iconGithub: github,
+    iconLinkedin: linkedin,
   },
 ];
