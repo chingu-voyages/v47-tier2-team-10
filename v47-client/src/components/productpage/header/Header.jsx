@@ -1,21 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
-import DarkMode from "../../navbar/DarkMode";
-import Weather from "../../../pages/weather/Weather";
+import DarkMode from "../../reusable/DarkMode";
+import Weather from "../weather/Weather";
+import { filteredDataContext } from "../../../context/FilteredDataContext";
+import { isLoadingContext } from "../../../context/IsLoadingContext";
 
-export default function Header({
-  isLeftNavOpen,
-  setIsLeftNavOpen,
-  filteredData,
-  darkMode,
-  toggleDarkMode,
-  isLoading,
-}) {
+export default function Header({ isLeftNavOpen, setIsLeftNavOpen }) {
+  const { filteredData } = useContext(filteredDataContext);
+  const { isLoading } = useContext(isLoadingContext);
 
-  // https://konradstaniszewski.com/blog/tailwind-hamburger
-  const genericHamburgerLine = `h-1 w-6 ${isLeftNavOpen ? 'my-1' : 'my-0.5'} rounded-full bg-black transition ease transform duration-300`;
-
+  const genericHamburgerLine = `h-1 w-6 ${
+    isLeftNavOpen ? "my-1" : "my-0.5"
+  } rounded-full bg-black transition ease transform duration-300`;
 
   /*
     TODO:
@@ -31,11 +28,7 @@ export default function Header({
   return (
     <section className="border  duration-700  dark:bg-[#2B2C37]  bg-gray-200  rounded-md  p-6 flex justify-between items-center">
       <div className="flex items-center gap-x-4">
-        <DarkMode
-          isProductPageDarkMode={true}
-          darkMode={darkMode}
-          toggleDarkMode={toggleDarkMode}
-        />
+        <DarkMode isProductPageDarkMode={true} />
         {isLoading ? (
           <div className="bg-gray-400 animate-pulse h-8 text-lg w-32"></div>
         ) : (
@@ -45,13 +38,12 @@ export default function Header({
               : "Nothing Selected"}
           </p>
         )}
-        <Weather className="p-6 flex "/>
+        <Weather className="p-6 flex " />
       </div>
 
-      {/* hamburger */}
       <button
         className="flex flex-col h-12 w-12 justify-center items-center group md:hidden"
-        onClick={() => setIsLeftNavOpen(prev => !prev)}
+        onClick={() => setIsLeftNavOpen((prev) => !prev)}
       >
         <div
           className={`${genericHamburgerLine} ${
@@ -73,7 +65,6 @@ export default function Header({
           }`}
         />
       </button>
-
     </section>
   );
 }

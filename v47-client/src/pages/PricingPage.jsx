@@ -1,42 +1,38 @@
 import React, { useState } from "react";
-import Nav from "../components/navbar/Navbar";
-import Footer from "../pages/Footer";
+import Nav from "../components/landing/navbar/Navbar";
+import Footer from "../components/landing/footer/Footer";
 // import { Elements, useStripe } from "@stripe/react-stripe-js";
 // import { loadStripe } from "@stripe/stripe-js";
 
-
 export default function PricingPage() {
-//   const [email, setEmail] = useState("");
-//   const [cardElement, setCardElement] = useState(null);
+  //   const [email, setEmail] = useState("");
+  //   const [cardElement, setCardElement] = useState(null);
 
-  
-//   const handleSubmit = async (event) => {
-//     event.preventDefault();
-//     const stripePromise = loadStripe(
-//         "sk_test_51Oh4IWAUtAQXtL4pQ6PeWYeZD5vLTWoellIRexfjjV4KCTSXwbe2tt9RplQih97KgOsvDoY9rnhhKjftbaFBhac800Fne11BDi"
-//       );
-//     const stripe = await stripePromise;
+  //   const handleSubmit = async (event) => {
+  //     event.preventDefault();
+  //     const stripePromise = loadStripe(
+  //         "sk_test_51Oh4IWAUtAQXtL4pQ6PeWYeZD5vLTWoellIRexfjjV4KCTSXwbe2tt9RplQih97KgOsvDoY9rnhhKjftbaFBhac800Fne11BDi"
+  //       );
+  //     const stripe = await stripePromise;
 
-//     const { error, paymentMethod } = await stripe.createPaymentMethod({
-//       type: "card",
-//       card: cardElement,
-//       billing_details: {
-//         email: email,
-//       },
-//     });
+  //     const { error, paymentMethod } = await stripe.createPaymentMethod({
+  //       type: "card",
+  //       card: cardElement,
+  //       billing_details: {
+  //         email: email,
+  //       },
+  //     });
 
-//     if (error) {
-//       console.error(error);
-//     } else {
-//       console.log(paymentMethod);
-//       // Handle successful payment
-//     }
-//   };
+  //     if (error) {
+  //       console.error(error);
+  //     } else {
+  //       console.log(paymentMethod);
+  //       // Handle successful payment
+  //     }
+  //   };
   return (
     <>
       <Nav />
-
-
 
       {/* <!-- Pricing --> */}
       <div class="mt-14 max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">

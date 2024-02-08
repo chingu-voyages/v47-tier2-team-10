@@ -1,8 +1,7 @@
 import React from "react";
-import Login from "../../pages/Login";
-import Signup from "../../pages/Signup";
+import Login from "../../modals/Login";
+import Signup from "../../modals/Signup";
 import { IoPersonCircle } from "react-icons/io5";
-
 
 const LoginBtn = () => {
   return (
@@ -10,19 +9,13 @@ const LoginBtn = () => {
       {/* Previous btn design*/}
       {/* I had to seperate Login/signup button for users- Skylar */}
       {/* <button type="button" className="text-white border-2 border-transparent bg-navGreen font-medium rounded-xl sm:text-md p-3 transition duration-300 ease-in-out transform  hover:border-black hover:border-2 hover:bg-navWhite hover:text-black">Login/Signup</button> */}
- 
-      <button
-        type="button"
-        className=" "
-      >
-        <Login/>
+
+      <button type="button" className=" ">
+        <Login />
       </button>
 
-      <button
-        type="button"
-        className=" "
-      >
-        <Signup/>
+      <button type="button" className=" ">
+        <Signup />
       </button>
       {/* if logined this will be shown. need to add conditinal rendering */}
 

@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { MdMenu, MdClose } from "react-icons/md";
+import { darkModeContext } from "../../../context/DarkModeContext";
 
-const HambergerMenu = ({ toggleDarkMode, toggleHamMenu, darkMode, isOpen }) => {
+const HambergerMenu = ({ toggleHamMenu, isOpen }) => {
   const HamIcon = isOpen ? MdClose : MdMenu;
+
+  const { darkMode, setDarkMode } = useContext(darkModeContext);
+
   return (
     <>
       <div className="md:hidden ml-auto">
@@ -41,7 +45,7 @@ const HambergerMenu = ({ toggleDarkMode, toggleHamMenu, darkMode, isOpen }) => {
           Login/SignUp
         </button>
         <span
-          onClick={toggleDarkMode}
+          onClick={() => setDarkMode(!darkMode)}
           className="block  text-xl px-3 py-2 text-center border-b border-grey-800 dark:border-navWhite"
         >
           {darkMode ? "Light Mode" : "Dark Mode"}

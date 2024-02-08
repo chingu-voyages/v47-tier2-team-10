@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   TbLayoutSidebarRightCollapse,
   TbLayoutSidebarLeftCollapse,
@@ -6,21 +6,20 @@ import {
 import { RiAddFill } from "react-icons/ri";
 import Category from "./Category";
 import AddNewCategory from "../../productpage/modals/AddNewCategory"; // Import AddNewCategory component
+import { isLoadingContext } from "../../../context/IsLoadingContext";
+import { productDataContext } from "../../../context/ProductDataContext";
 
 export default function LeftNav({
   isLeftNavOpen,
   setIsLeftNavOpen,
-  productData,
-  handleFilterData,
-  isLoading,
   setIsAddModalOpen,
   isAddModalOpen,
-  setProductData,
 }) {
+  const { isLoading } = useContext(isLoadingContext);
+  const { productData, setProductData } = useContext(productDataContext);
+
   const categoryEl = productData.map((category, index) => (
     <Category
-      setProductData={setProductData}
-      handleFilterData={handleFilterData}
       setIsLeftNavOpen={setIsLeftNavOpen}
       key={index}
       category={category}
@@ -66,7 +65,9 @@ export default function LeftNav({
             className="mt-auto mb-7 md:flex dark:text-gray-200 justify-center items-center gap-2 hidden rounded-lg p-2 ease-in duration-300 hover:bg-gray-100"
           >
             <RiAddFill />
-            <p className="font-bold text-gray-800 dark:text-white ">Add new category</p>
+            <p className="font-bold text-gray-800 dark:text-white ">
+              Add new category
+            </p>
           </button>
         </div>
       </section>

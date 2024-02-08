@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { MdExpandMore, MdDeleteOutline } from "react-icons/md";
 import Activity from "./Activity";
 import { GrAddCircle } from "react-icons/gr";
@@ -7,13 +7,9 @@ import Delete from "../modals/Delete";
 import EditModal from "../modals/edit/EditCategoryModal";
 import { MdOutlineEdit } from "react-icons/md";
 import Aos from "aos";
+import { productDataContext } from "../../../context/ProductDataContext";
 
-export default function Category({
-  category,
-  handleFilterData,
-  setProductData,
-  setIsLeftNavOpen
-}) {
+export default function Category({ category, setIsLeftNavOpen }) {
   const [isActivityVisible, setIsActivityVisible] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -21,32 +17,16 @@ export default function Category({
   const [isCategoryIconsVisible, setIsCategoryIconsVisible] = useState(false);
   const [editCategoryNameInput, setEditCategoryNameInput] = useState("");
 
+  const { setProductData } = useContext(productDataContext);
+
   useEffect(() => {
     Aos.init();
   }, []);
-
-  const handleDelete = () => {
-    setIsDeleteModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsDeleteModalOpen(false);
-  };
 
   const handleEdit = () => {
     setIsEditModalOpen(true);
   };
 
-  const handleEditModal = (activity) => {
-    setProductData((prevData) => {
-      const updateCategoryName = prevData.map((data) => {
-        return data.categoryName === activity
-          ? { ...data, categoryName: editCategoryNameInput }
-          : data;
-      });
-      return updateCategoryName;
-    });
-  };
 
   useEffect(() => {
     setEditCategoryNameInput(category.categoryName);
@@ -54,7 +34,6 @@ export default function Category({
 
   const activityEl = category.activityTypes.map((activity, index) => (
     <Activity
-      handleFilterData={handleFilterData}
       setIsLeftNavOpen={setIsLeftNavOpen}
       key={index}
       activity={activity}
@@ -74,15 +53,18 @@ export default function Category({
         className="flex justify-between items-center gap-1   rounded-lg md:hover:bg-gray-100  md:p-2 md:ease-in md:duration-300"
         onMouseEnter={() => setIsCategoryIconsVisible(true)}
         onMouseLeave={() => setIsCategoryIconsVisible(false)}
-        data-aos="fade" 
-        data-aos-easing="ease-in-sine" data-aos-duration="600"
+        data-aos="fade"
+        data-aos-easing="ease-in-sine"
+        data-aos-duration="600"
       >
         <div className="flex gap-1 font-medium ">
           <div className="hidden md:block font-bold text-gray-800 dark:text-white">
             <button onClick={() => setIsActivityVisible((prev) => !prev)}>
               <MdExpandMore
                 className={`${
-                  isActivityVisible ? "rotate-180 font-bold text-gray-800 dark:text-white" : "font-bold text-gray-800 dark:text-white"
+                  isActivityVisible
+                    ? "rotate-180 font-bold text-gray-800 dark:text-white"
+                    : "font-bold text-gray-800 dark:text-white"
                 } transform transition duration-200 ease-out `}
               />
             </button>
@@ -126,25 +108,25 @@ export default function Category({
         )}
       </div>
 
-      <div className={`${isActivityVisible ? "block mb-1" : "block md:hidden"}`}>
+      <div
+        className={`${isActivityVisible ? "block mb-1" : "block md:hidden"}`}
+      >
         {activityEl}
       </div>
 
       {isAddModalOpen && <Add onClose={() => setIsAddModalOpen(false)} />}
 
       {isDeleteModalOpen && (
-        <Delete onDelete={handleDelete} onCancel={handleCancel} />
+        <Delete
+          onDelete={() => setIsDeleteModalOpen(false)}
+          onCancel={() => setIsDeleteModalOpen(false)}
+        />
       )}
-
-      {/*  sorry i decided to delete the other stuff, felt like this
-        is more readable, change if if you need - anthony */}
-
       {isEditModalOpen && (
         <EditModal
           editCategoryNameInput={editCategoryNameInput}
           categoryName={category.categoryName}
           setIsEditModalOpen={setIsEditModalOpen}
-          handleEditModal={handleEditModal}
           setEditCategoryNameInput={setEditCategoryNameInput}
         />
       )}

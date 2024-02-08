@@ -1,13 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { MdDeleteOutline } from "react-icons/md";
 import Delete from "../modals/Delete";
 import EditModal from "../modals/edit/EditCategoryModal";
 import { MdOutlineEdit } from "react-icons/md";
+import { handleFilterData } from "../../../lib/helpers/handleFilterData";
+import { productDataContext } from "../../../context/ProductDataContext";
+import { filteredDataContext } from "../../../context/FilteredDataContext";
 
-export default function Activity({ activity, handleFilterData, setIsLeftNavOpen }) {
+export default function Activity({ activity,  setIsLeftNavOpen }) {
   const [isActivityIconsVisible, setIsActivityIconsVisible] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+
+  const {productData} = useContext(productDataContext)
+  const {setFilteredData} = useContext(filteredDataContext)
 
 
   const handleDelete = () => {
@@ -24,7 +30,7 @@ export default function Activity({ activity, handleFilterData, setIsLeftNavOpen 
   };
 
   const handleClick = (activity) => {
-    handleFilterData(activity)
+    handleFilterData(activity, productData, setFilteredData)
     if (window.innerWidth <= 768) {
       setIsLeftNavOpen(false)
     }

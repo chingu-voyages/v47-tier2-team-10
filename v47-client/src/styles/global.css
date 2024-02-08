@@ -6,6 +6,13 @@
   @apply h-full p-8 mx-auto;
 }
 
+body {
+  @apply duration-300;
+}
+.dark {
+  @apply duration-300;
+}
+
 @keyframes gradientChange {
   from {
     background: linear-gradient(to top, #2c3e50, #000000);
@@ -17,4 +24,3 @@
 .testing {
   animation: gradientChange 0.3s ease;
 }
-
