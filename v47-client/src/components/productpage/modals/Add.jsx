@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import InputFields from "./resuable/InputFields";
 import { handleAddNewTask } from "../../../lib/helpers/handleAddNewTask";
 import { filteredDataContext } from "../../../context/FilteredDataContext";
+import Portal from "./Portal/Portal"
 
 const Button = ({ handleClickValue, textValue }) => {
   return (
@@ -22,6 +23,7 @@ const Button = ({ handleClickValue, textValue }) => {
 const Add = ({ newTaskData, setNewTaskData, setIsAddModalOpen }) => {
   const { setFilteredData } = useContext(filteredDataContext);
   return (
+    <Portal>
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50">
       <div className="bg-white p-8 rounded-lg w-96">
         <InputFields
@@ -69,6 +71,7 @@ const Add = ({ newTaskData, setNewTaskData, setIsAddModalOpen }) => {
         </div>
       </div>
     </div>
+    </Portal>
   );
 };
 

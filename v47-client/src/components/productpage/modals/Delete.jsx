@@ -1,8 +1,10 @@
 // Delete.jsx
 import React from 'react';
+import Portal from "./Portal/Portal"
 
 export const Delete = ({ onDelete, onCancel }) => {
   return (
+    <Portal>
     <div className="fixed inset-0 flex items-center justify-center bg-opacity-50 bg-gray-800 z-50">
       <div className="bg-white p-8 rounded-lg">
         <p className="text-gray-700 text-lg mb-10 mx-20">Are you sure you want to delete?</p>
@@ -22,6 +24,7 @@ export const Delete = ({ onDelete, onCancel }) => {
         </div>
       </div>
     </div>
+    </Portal>
   );
 };
 

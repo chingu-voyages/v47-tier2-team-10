@@ -1,8 +1,4 @@
 import React, { useContext, useState } from "react";
-import {
-  TbLayoutSidebarRightCollapse,
-  TbLayoutSidebarLeftCollapse,
-} from "react-icons/tb";
 import { RiAddFill } from "react-icons/ri";
 import Category from "./Category";
 import AddNewCategory from "../../productpage/modals/AddNewCategory"; // Import AddNewCategory component
@@ -26,64 +22,56 @@ export default function LeftNav({
     />
   ));
 
+  const handleClick = () => {
+    setIsAddModalOpen(true)
+    setIsLeftNavOpen(false)
+  }
+
   return (
     <>
-      <section
-        className={`md:w-72 dark:bg-[#2B2C37] flex bg-gray-200 p-7 font-medium md:p-0 rounded-lg md:rounded-none md:duration-700  font-gray-900 z-10 overflow-auto [&::-webkit-scrollbar]:w-2
-        [&::-webkit-scrollbar-track]:rounded-full
-        [&::-webkit-scrollbar-track]:bg-gray-100
-        [&::-webkit-scrollbar-thumb]:rounded-full
-        [&::-webkit-scrollbar-thumb]:bg-gray-300
-        dark:[&::-webkit-scrollbar-track]:bg-slate-700
-        dark:[&::-webkit-scrollbar-thumb]:bg-slate-500 ${
-          isLeftNavOpen
-            ? "absolute right-16 top-40 md:static"
-            : "md:-ml-80 hidden md:block"
-        }`}
-      >
-        <div className="md:w-full md:flex md:flex-col text-black md:px-5">
-          <button
-            onClick={() => setIsLeftNavOpen((prev) => !prev)}
-            className="hidden dark:text-gray-200 text-3xl md:flex ml-auto mt-6 mb-2 hover:text-gray-700"
-          >
-            <TbLayoutSidebarLeftCollapse />
-          </button>
-          <div className="flex flex-col mb-4">
+      {/* <!-- Sidebar --> */}
+      <div id="application-sidebar" className={`${isLeftNavOpen ?  "translate-x-0 ": "lg:ml-0 -ml-24"} -translate-x-full transition-all duration-700 transform fixed top-0 start-0 bottom-0 z-[60] w-72 bg-white border-e border-gray-200 pt-7 pb-10 overflow-y-auto lg:block lg:translate-x-0 lg:end-auto lg:bottom-0 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-slate-700 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500 dark:bg-gray-800 dark:border-gray-700`}>
+  
+        <nav className="hs-accordion-group p-6 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
+          <ul className="space-y-1.5">
+            <li>
+              <a className="flex items-center gap-x-3.5 py-2 px-2.5  text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:bg-gray-900 dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="/">
+                <svg className="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                Home
+              </a>
+            </li>
+      
             {isLoading
-              ? new Array(4)
-                  .fill(0)
-                  .map((_, index) => (
-                    <div
-                      key={index}
-                      className="my-2 w-full bg-gray-400 animate-pulse h-10"
-                    ></div>
-                  ))
-              : categoryEl}
-          </div>
-          <button
-            onClick={() => setIsAddModalOpen(true)}
-            className="mt-auto mb-7 md:flex dark:text-gray-200 justify-center items-center gap-2 hidden rounded-lg p-2 ease-in duration-300 hover:bg-gray-100"
-          >
+                ? new Array(4)
+                    .fill(0)
+                    .map((_, index) => (
+                      <div
+                        key={index}
+                        className="my-2 w-full bg-gray-400 animate-pulse h-10"
+                      ></div>
+                    ))
+                : categoryEl}
+
+          </ul>
+        </nav>
+
+        <div className="flex justify-center items-center">
+          <button 
+            type="button" 
+            className="mt-auto mb-7 py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-gray-500 hover:bg-gray-100 hover:text-gray-800 disabled:opacity-50 disabled:pointer-events-none dark:hover:bg-gray-800/30 dark:hover:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" 
+            onClick={handleClick}> 
             <RiAddFill />
-            <p className="font-bold text-gray-800 dark:text-white ">
-              Add new category
-            </p>
+            Add new category
           </button>
         </div>
-      </section>
+    
+      </div>
+      {/* <!-- End Sidebar --> */}
 
-      {!isLeftNavOpen && (
-        <button
-          onClick={() => setIsLeftNavOpen((prev) => !prev)}
-          className="mb-auto ml-1 mt-6 hidden md:block text-3xl hover:text-gray-700"
-        >
-          <TbLayoutSidebarRightCollapse />
-        </button>
-      )}
-
+      {/* modal */}
       {isAddModalOpen && (
-        <AddNewCategory onClose={() => setIsAddModalOpen(false)} />
-      )}
+      <AddNewCategory onClose={() => setIsAddModalOpen(false)} />)}
+      
     </>
   );
 }

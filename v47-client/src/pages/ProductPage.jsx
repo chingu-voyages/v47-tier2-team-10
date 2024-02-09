@@ -32,37 +32,43 @@ export default function ProductPage() {
   }, []);
 
   return (
-    <>
+    <body class="bg-gray-50 dark:bg-slate-900">
+
+      {/* mobile overlay */}
       {isLeftNavOpen && (
         <div
-          className="absolute bg-black opacity-50 inset-0 md:position:static md:bg-white md:opacity-0 md:inset-auto z-10 md:z-auto"
+          className="absolute bg-black opacity-50 inset-0 lg:position:static lg:bg-white lg:opacity-0 lg:inset-auto z-10 lg:z-auto"
           onClick={() => setIsLeftNavOpen(false)}
         ></div>
       )}
-      <section className="flex gap-x-6 h-screen mx-auto p-6 ">
-        <LeftNav
+
+      {/* header */}
+      <Header
+        isLeftNavOpen={isLeftNavOpen}
+        setIsLeftNavOpen={setIsLeftNavOpen}
+      />
+
+      {/* left nav */}
+      <LeftNav
+        isAddModalOpen={isAddModalOpen}
+        setIsAddModalOpen={setIsAddModalOpen}
+        isLeftNavOpen={isLeftNavOpen}
+        setIsLeftNavOpen={setIsLeftNavOpen}
+      />
+               
+      {/* main */}
+      <div class="w-full pt-10 px-4 sm:px-6 md:px-8 md:ml-5 lg:ps-72">
+        <UserSignedIn
+          showLoginModal={showLoginModal}
+          setShowLoginModal={setShowLoginModal}
+        />
+
+        <Main
           isAddModalOpen={isAddModalOpen}
           setIsAddModalOpen={setIsAddModalOpen}
-          isLeftNavOpen={isLeftNavOpen}
-          setIsLeftNavOpen={setIsLeftNavOpen}
         />
-        <div className="flex space-y-6 flex-1 flex-col">
-          <div className="flex items-center justify-between">
-            <UserSignedIn
-              showLoginModal={showLoginModal}
-              setShowLoginModal={setShowLoginModal}
-            />
-          </div>
-          <Header
-            isLeftNavOpen={isLeftNavOpen}
-            setIsLeftNavOpen={setIsLeftNavOpen}
-          />
-          <Main
-            isAddModalOpen={isAddModalOpen}
-            setIsAddModalOpen={setIsAddModalOpen}
-          />
-        </div>
-      </section>
-    </>
+      </div>
+
+    </body>
   );
 }
