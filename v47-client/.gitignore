@@ -4,8 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
-.envs
-# 여기 env를 입력하면 github에 자동으로 추가되지않는다
+.env
 
 # testing
 /coverage

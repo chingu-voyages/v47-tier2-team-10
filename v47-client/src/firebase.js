@@ -3,19 +3,36 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase } from 'firebase/database';
 
+// const firebaseConfig = {
+//   apiKey: process.env.REACT_APP_MYFIRE_DATABASE_,
+//   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+//   databaseURL: process.env.REACT_APP_DATABASE_URL,
+//   projectId: process.env.REACT_APP_PROJECT_ID,
+//   storageBucket:process.env.REACT_APP_STORAGE_BUCKET,
+//   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+//   appId: process.env.REACT_APP_APP_ID,
+//   measurementId: process.env.REACT_APP_MEASUREMENT_ID
+// };
+
+
 const firebaseConfig = {
-  apiKey: "AIzaSyASpMTTkiFYeFb0DlvW4JieANVRYgx4J5o",
-  authDomain: "v47login.firebaseapp.com",
-  databaseURL: "https://v47login-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "v47login",
-  storageBucket: "v47login.appspot.com",
-  messagingSenderId: "332628734394",
-  appId: "1:332628734394:web:3d8cdfe499fd97cc4b6d83",
-  measurementId: "G-3Y4LKMBXX1"
+  // apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  apiKey:"AIzaSyASpMTTkiFYeFb0DlvW4JieANVRYgx4J5o",
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId:"v47login",
+  storageBucket:process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
 export const db = getDatabase(app);
+
+console.log(process.env.REACT_APP_MYFIRE_DATABASE_);
+
 
 export default app;
