@@ -27,6 +27,12 @@ export default function Category({ category, setIsLeftNavOpen }) {
     setIsEditModalOpen(true);
   };
 
+  const handleDelete = () => {
+    setProductData(prev => (
+      prev.filter(item => item.categoryName != category.categoryName)
+    ))
+    setIsDeleteModalOpen(false)
+  }
 
   useEffect(() => {
     setEditCategoryNameInput(category.categoryName);
@@ -37,6 +43,7 @@ export default function Category({ category, setIsLeftNavOpen }) {
       setIsLeftNavOpen={setIsLeftNavOpen}
       key={index}
       activity={activity}
+      categoryName={category.categoryName}
     />
   ));
 
@@ -118,7 +125,7 @@ export default function Category({ category, setIsLeftNavOpen }) {
 
       {isDeleteModalOpen && (
         <Delete
-          onDelete={() => setIsDeleteModalOpen(false)}
+          onDelete={handleDelete}
           onCancel={() => setIsDeleteModalOpen(false)}
         />
       )}
