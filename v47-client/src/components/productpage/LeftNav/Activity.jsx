@@ -83,7 +83,11 @@ export default function Activity({ activity,  setIsLeftNavOpen, categoryName }) 
       </div>
 
       {isDeleteModalOpen && (
-        <Delete onDelete={handleDelete} onCancel={handleCancel} />
+        <Delete 
+        onDelete={handleDelete} 
+        onCancel={handleCancel}
+        name={activity.activityName}
+        />
       )}
       {/* 
 
