@@ -8,6 +8,7 @@ import EditModal from "../modals/edit/EditCategoryModal";
 import { MdOutlineEdit } from "react-icons/md";
 import Aos from "aos";
 import { productDataContext } from "../../../context/ProductDataContext";
+import { capitalizeEachWord } from "../../../lib/helpers/capitalizeEachWord";
 
 export default function Category({ category, setIsLeftNavOpen }) {
   const [isActivityVisible, setIsActivityVisible] = useState(false);
@@ -46,13 +47,6 @@ export default function Category({ category, setIsLeftNavOpen }) {
       categoryName={category.categoryName}
     />
   ));
-
-  const capitalizeEachWord = (sentence) => {
-    const sentenceArr = sentence.toLowerCase().split(" ");
-    return sentenceArr
-      .map((word) => word[0].toUpperCase() + word.substr(1))
-      .join(" ");
-  };
 
   return (
     <>
@@ -127,11 +121,12 @@ export default function Category({ category, setIsLeftNavOpen }) {
         <Delete
           onDelete={handleDelete}
           onCancel={() => setIsDeleteModalOpen(false)}
+          name={capitalizeEachWord(category.categoryName)}
         />
       )}
       {isEditModalOpen && (
         <EditModal
-          editCategoryNameInput={editCategoryNameInput}
+          editCategoryNameInput={capitalizeEachWord(editCategoryNameInput)}
           categoryName={category.categoryName}
           setIsEditModalOpen={setIsEditModalOpen}
           setEditCategoryNameInput={setEditCategoryNameInput}
