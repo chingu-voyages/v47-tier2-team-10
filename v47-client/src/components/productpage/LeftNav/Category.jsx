@@ -24,6 +24,11 @@ export default function Category({ category, setIsLeftNavOpen }) {
     Aos.init();
   }, []);
 
+  const handleDeleteClick = () => {
+    setIsLeftNavOpen(false);
+    setIsDeleteModalOpen(true);
+  };
+
   const handleEdit = () => {
     setIsEditModalOpen(true);
     setIsLeftNavOpen(false);
@@ -34,7 +39,7 @@ export default function Category({ category, setIsLeftNavOpen }) {
     setIsLeftNavOpen(false);
   };
 
-  const handleDelete = () => {
+  const onDelete = () => {
     setProductData(prev => (
       prev.filter(item => item.categoryName != category.categoryName)
     ))
@@ -93,7 +98,7 @@ export default function Category({ category, setIsLeftNavOpen }) {
                   <GrAddCircle />
                 </button>
                 <button
-                  onClick={() => setIsDeleteModalOpen(true)}
+                  onClick={handleDeleteClick}
                   className={`${isCategoryIconsVisible ? 'block' : 'lg:hidden block'} text-md  text-red-500 hover:text-red-400`} 
                 >
                   <MdDeleteOutline />
@@ -115,7 +120,7 @@ export default function Category({ category, setIsLeftNavOpen }) {
 
       {isDeleteModalOpen && (
         <Delete
-          onDelete={handleDelete}
+          onDelete={onDelete}
           onCancel={() => setIsDeleteModalOpen(false)}
           name={capitalizeEachWord(category.categoryName)}
         />
