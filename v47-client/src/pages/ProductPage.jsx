@@ -32,7 +32,7 @@ export default function ProductPage() {
   }, []);
 
   return (
-    <body class="bg-gray-50 dark:bg-slate-900">
+    <body class="bg-gray-50 dark:bg-slate-900 ">
 
       {/* mobile overlay */}
       {isLeftNavOpen && (
