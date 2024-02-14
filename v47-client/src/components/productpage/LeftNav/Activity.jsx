@@ -25,63 +25,55 @@ export default function Activity({ activity,  setIsLeftNavOpen }) {
     setIsDeleteModalOpen(false);
   };
 
-  const handleEdit = () => {
+  const handleEditClick = () => {
     setIsEditModalOpen(true);
+    setIsLeftNavOpen(false);
   };
 
-  const handleClick = (activity) => {
+  const handleDeleteClick = () => {
+    setIsDeleteModalOpen(true);
+    setIsLeftNavOpen(false);
+  };
+
+  const handleActivityNameClick = (activity) => {
     handleFilterData(activity, productData, setFilteredData)
-    if (window.innerWidth <= 768) {
-      setIsLeftNavOpen(false)
+    setIsLeftNavOpen(false)
     }
-  }
+
 
   return (
-    <div className="md:flex items-center gap-2 ml-3 rounded-lg md:hover:bg-gray-100  md:p-1 md:ease-in md:duration-300"
-    >
-      <div
-        className="flex gap-3  w-full  justify-between"
-        onMouseEnter={() => setIsActivityIconsVisible(true)}
-        onMouseLeave={() => setIsActivityIconsVisible(false)}
-      >
-        <div className="flex w-full">
-          <div className="flex md:ml-3">
-            <p
-              onClick={() => handleClick(activity.activityName)}
-              className="text-gray-600 dark:text-gray-400 cursor-pointer"
-            >
+    <>
+      <li 
+          className="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:text-slate-400 dark:hover:text-slate-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" 
+          onMouseEnter={() => setIsActivityIconsVisible(true)}
+          onMouseLeave={() => setIsActivityIconsVisible(false)}>
+            <button onClick={() => handleActivityNameClick(activity.activityName)}>
               {activity.activityName}
-            </p>
-          </div>
-          {isActivityIconsVisible && (
-            <div className="gap-1 ml-auto hidden md:flex">
-              <button
-                onClick={handleEdit}
-                className="font-bold text-lg text-gray-900 hover:text-gray-700"
-              >
-                <MdOutlineEdit />
-              </button>
-              <button
-                className={`text-lg font-bold text-red-500 hover:text-red-400 `}
-                onClick={() => setIsDeleteModalOpen(true)}
-              >
-                <MdDeleteOutline />
-              </button>
+            </button>
+            <div className="ml-auto">
+              <div className="gap-1 ml-auto  flex">
+                <button
+                  onClick={handleEditClick}
+                  className={`${isActivityIconsVisible ? 'block' : 'lg:hidden block'} text-sm text-gray-900 hover:text-gray-700`} 
+                >
+                  <MdOutlineEdit />
+                </button>
+                <button
+                  className={` ${isActivityIconsVisible ? 'block' : 'lg:hidden block'}text-md text-red-500 hover:text-red-400 `}
+                  onClick={handleDeleteClick}
+                >
+                  <MdDeleteOutline />
+                </button>
+              </div>
             </div>
-          )}
-        </div>
-      </div>
+        </li>
+        
+        {/* modals  */}
+        {isDeleteModalOpen && (
+          <Delete onDelete={handleDelete} onCancel={handleCancel} />
+        )}
 
-      {isDeleteModalOpen && (
-        <Delete onDelete={handleDelete} onCancel={handleCancel} />
-      )}
-      {/* 
-
-// 
-      {isEditModalOpen && (
-
-
-
+      {/* {isEditModalOpen && (
         <EditModal
           task={{
             id: activity.id,
@@ -99,6 +91,6 @@ export default function Activity({ activity,  setIsLeftNavOpen }) {
           }}
         />
       )} */}
-    </div>
+    </>
   );
 }

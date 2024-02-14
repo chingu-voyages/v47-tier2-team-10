@@ -25,8 +25,18 @@ export default function Category({ category, setIsLeftNavOpen }) {
 
   const handleEdit = () => {
     setIsEditModalOpen(true);
+    setIsLeftNavOpen(false);
   };
 
+  const handleAdd = () => {
+    setIsAddModalOpen(true);
+    setIsLeftNavOpen(false);
+  };
+
+  const handleDelete = () => {
+    setIsDeleteModalOpen(true);
+    setIsLeftNavOpen(false);
+  };
 
   useEffect(() => {
     setEditCategoryNameInput(category.categoryName);
@@ -49,71 +59,61 @@ export default function Category({ category, setIsLeftNavOpen }) {
 
   return (
     <>
-      <div
-        className="flex justify-between items-center gap-1   rounded-lg md:hover:bg-gray-100  md:p-2 md:ease-in md:duration-300"
+      <li 
         onMouseEnter={() => setIsCategoryIconsVisible(true)}
         onMouseLeave={() => setIsCategoryIconsVisible(false)}
-        data-aos="fade"
-        data-aos-easing="ease-in-sine"
-        data-aos-duration="600"
-      >
-        <div className="flex gap-1 font-medium ">
-          <div className="hidden md:block font-bold text-gray-800 dark:text-white">
-            <button onClick={() => setIsActivityVisible((prev) => !prev)}>
+        data-aos="fade" 
+        data-aos-easing="ease-in-sine" 
+        data-aos-duration="600">
+          <div type="button" className={`hs-accordion-toggle w-full text-start flex items-center gap-x-3.5 py-2 px-2.5 hs-accordion-active:hs-accordion-active:hover:bg-transparent text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 dark:hs-accordion-active:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600`}
+          >
+            <button 
+              className='flex gap-1' 
+              onClick={() => setIsActivityVisible((prev) => !prev)}
+            >
               <MdExpandMore
                 className={`${
-                  isActivityVisible
-                    ? "rotate-180 font-bold text-gray-800 dark:text-white"
-                    : "font-bold text-gray-800 dark:text-white"
+                  isActivityVisible ? "rotate-180 font-bold text-blue-600 dark:text-white" : "font-bold text-gray-800 dark:text-white"
                 } transform transition duration-200 ease-out `}
               />
+              <p className={isActivityVisible ? 'text-blue-600' : ''}>  
+                {capitalizeEachWord(category.categoryName)}
+              </p>
             </button>
-          </div>
-          <button
-            onClick={() => setIsActivityVisible((prev) => !prev)}
-            className="flex justify-center items-center gap-2 md:cursor-pointer cursor-default "
-          >
-            <div
-              className={`${
-                isActivityVisible
-                  ? "font-bold text-gray-800 dark:text-white"
-                  : "font-bold text-gray-800 dark:text-white"
-              } break-words `}
-            >
-              {capitalizeEachWord(category.categoryName)}
+           
+            <div className="ml-auto">
+              <div className="flex gap-1 ml-auto">
+                <button
+                  onClick={handleEdit}
+                  className={`${isCategoryIconsVisible ? 'block' : 'lg:hidden block'} text-md  text-gray-900 hover:text-gray-700`}
+                >
+                  <MdOutlineEdit />
+                </button>
+                <button
+                  onClick={handleAdd}
+                  className={`${isCategoryIconsVisible ? 'block' : 'lg:hidden block'} text-md  text-gray-900 hover:text-gray-700`}
+                >
+                  <GrAddCircle />
+                </button>
+                <button
+                  onClick={handleDelete}
+                  className={`${isCategoryIconsVisible ? 'block' : 'lg:hidden block'} text-md  text-red-500 hover:text-red-400`} 
+                >
+                  <MdDeleteOutline />
+                </button>
+              </div>
             </div>
-          </button>
-        </div>
-        {isCategoryIconsVisible && (
-          <div className="flex gap-1">
-            <button
-              onClick={handleEdit}
-              className="hidden md:block font-bold text-lg  text-gray-900 hover:text-gray-700"
-            >
-              <MdOutlineEdit />
-            </button>
-            <button
-              onClick={() => setIsAddModalOpen(true)}
-              className="hidden md:block font-bold text-lg text-gray-900 hover:text-gray-700"
-            >
-              <GrAddCircle />
-            </button>
-            <button
-              onClick={() => setIsDeleteModalOpen(true)}
-              className="hidden md:block font-bold text-lg text-red-500 hover:text-red-400"
-            >
-              <MdDeleteOutline />
-            </button>
+            
           </div>
-        )}
+      </li>
+          
+      <div id="account-accordion-child" className={`hs-accordion-content w-full overflow-hidden transition-[height] duration-300 ${isActivityVisible ? '' : 'hidden'}`} >
+        <ul className="pt-0 ps-2">
+          {activityEl}  
+        </ul>
       </div>
-
-      <div
-        className={`${isActivityVisible ? "block mb-1" : "block md:hidden"}`}
-      >
-        {activityEl}
-      </div>
-
+       
+      {/* modals  */}
       {isAddModalOpen && <Add onClose={() => setIsAddModalOpen(false)} />}
 
       {isDeleteModalOpen && (
@@ -122,6 +122,7 @@ export default function Category({ category, setIsLeftNavOpen }) {
           onCancel={() => setIsDeleteModalOpen(false)}
         />
       )}
+
       {isEditModalOpen && (
         <EditModal
           editCategoryNameInput={editCategoryNameInput}

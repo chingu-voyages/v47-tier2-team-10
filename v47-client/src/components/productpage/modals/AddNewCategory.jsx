@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Portal from "./Portal/Portal"
 
 function AddNewCategory({ onClose }) {
   const [categoryName, setCategoryName] = useState('');
@@ -22,6 +23,7 @@ function AddNewCategory({ onClose }) {
   };
 
   return (
+    <Portal>
     <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
       <div className="bg-white p-8 rounded-lg w-96">
         <div className="mb-6">
@@ -55,6 +57,7 @@ function AddNewCategory({ onClose }) {
         </div>
       </div>
     </div>
+    </Portal>
   );
 }
 
