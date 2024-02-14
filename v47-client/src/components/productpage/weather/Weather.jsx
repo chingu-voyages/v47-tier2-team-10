@@ -27,6 +27,8 @@ function Weather() {
     navigator.geolocation.getCurrentPosition(OnGeoOK, onGeoError);
   }, []); //
 
+  
+
   return (
     <div>
       <span>{weather}</span>
