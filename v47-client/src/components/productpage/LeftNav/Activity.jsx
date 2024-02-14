@@ -7,27 +7,17 @@ import { handleFilterData } from "../../../lib/helpers/handleFilterData";
 import { productDataContext } from "../../../context/ProductDataContext";
 import { filteredDataContext } from "../../../context/FilteredDataContext";
 
-export default function Activity({ activity,  setIsLeftNavOpen, categoryName }) {
+export default function Activity({ activity,  setIsLeftNavOpen }) {
   const [isActivityIconsVisible, setIsActivityIconsVisible] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
-  const { setProductData, productData} = useContext(productDataContext)
+  const {productData} = useContext(productDataContext)
   const {setFilteredData} = useContext(filteredDataContext)
 
+
   const handleDelete = () => {
-    let updatedProductData = []
-    productData.forEach(item => {
-      if(item.categoryName === categoryName) {
-        let updatedCategory = {}
-        const updatedActivtyTypes = item.activityTypes.filter(item => item.activityName != activity.activityName)
-        updatedCategory = {...item, activityTypes: updatedActivtyTypes}
-        updatedProductData = [...updatedProductData, updatedCategory]
-      } else {
-        updatedProductData = [...updatedProductData, item]
-      }
-    })
-    setProductData(updatedProductData)
+    // Add logic for deletion
     setIsDeleteModalOpen(false);
   };
 
@@ -83,11 +73,7 @@ export default function Activity({ activity,  setIsLeftNavOpen, categoryName }) 
       </div>
 
       {isDeleteModalOpen && (
-        <Delete 
-        onDelete={handleDelete} 
-        onCancel={handleCancel}
-        name={activity.activityName}
-        />
+        <Delete onDelete={handleDelete} onCancel={handleCancel} />
       )}
       {/* 
 
