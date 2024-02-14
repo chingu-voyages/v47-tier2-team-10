@@ -1,12 +1,10 @@
 import { MdDarkMode, MdLightMode } from "react-icons/md";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { darkModeContext } from "../../context/DarkModeContext";
 
-const DarkMode = ({ toggleDarkMode, isProductPageDarkMode }) => {
+const DarkMode = ({ isProductPageDarkMode }) => {
   const { darkMode, setDarkMode } = useContext(darkModeContext);
-
   const ModeIcon = darkMode ? MdDarkMode : MdLightMode;
-
   return (
     <div
       className={` ${

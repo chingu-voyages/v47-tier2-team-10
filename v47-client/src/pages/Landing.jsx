@@ -10,14 +10,9 @@ import TaskFlow from "../components/landing/taskflow/TaskFlow";
 import TeamInfo from "../components/landing/teamInfo/TeamInfo";
 
 export default function Landing() {
-  // change sign up later to if user is logged in delete it ?
-
-  // - user must be signed in for anything to occur (i.e product page load “maybe add )
-
   useEffect(() => {
     Aos.init();
   }, []);
-
   return (
     <section
       id="landing-section"
