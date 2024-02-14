@@ -1,11 +1,11 @@
 // Delete.jsx
 import React from 'react';
 
-export const Delete = ({ onDelete, onCancel, name }) => {
+export const Delete = ({ onDelete, onCancel }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-opacity-50 bg-gray-800 z-50">
       <div className="bg-white p-8 rounded-lg">
-        <p className="text-gray-700 text-lg mb-10 mx-20">{`Are you sure you want to delete '${name}'?`}</p>
+        <p className="text-gray-700 text-lg mb-10 mx-20">Are you sure you want to delete?</p>
         <div className="flex justify-evenly">
           <button
             className="bg-red-500 text-white px-8 py-2 mr-2 rounded"
