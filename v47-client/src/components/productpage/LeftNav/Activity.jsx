@@ -16,7 +16,7 @@ export default function Activity({ activity,  setIsLeftNavOpen, categoryName }) 
   const {setFilteredData} = useContext(filteredDataContext)
 
 
-  const handleDelete = () => {
+  const onDelete = () => {
     // Add logic for deletion
     let updatedProductData = []
     productData.forEach(item => {
@@ -83,7 +83,7 @@ export default function Activity({ activity,  setIsLeftNavOpen, categoryName }) 
         {/* modals  */}
         {isDeleteModalOpen && (
            <Delete 
-           onDelete={handleDelete} 
+           onDelete={onDelete} 
            onCancel={handleCancel}
            name={activity.activityName}
            />
