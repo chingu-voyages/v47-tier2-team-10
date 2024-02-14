@@ -48,6 +48,8 @@ export default function Main({
     });
   };
 
+  console.log(filteredData)
+
   return (
     <>
       <section className="border dark:text-gray-200 mb-0  p-6 flex flex-col dark:bg-[#2B2C37] rounded-md duration-700  bg-gray-200  flex-1">

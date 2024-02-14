@@ -85,8 +85,7 @@ console.log(productData);
         setProductData={setProductData}
       />
       <div className="flex space-y-6 flex-1 flex-col">
-      {/* <div className="flex items-center justify-between"> */}
-        
+      <div className="flex items-center justify-between">
           {/* {user ? (
               <div>
                 <IoLogOut onClick={handleLogout}>
@@ -98,8 +97,8 @@ console.log(productData);
                 <IoLogIn onClick={()=>setShowLoginModal(true)}/>
                 {showLoginModal && <Login onLogin={handleLogin} onCancel={()=>setShowLoginModal(false)}/>}
               </div>
-            )} */}
-            <div className="flex items-center justify-between">
+            )}  */}
+             <div className="flex items-center justify-between">
           {user ? (
             <div>
               <Logout onLogout={handleLogout} />
@@ -109,7 +108,7 @@ console.log(productData);
               <Login onLogin={handleLogin} />
             </div>
           )}
-
+          </div>
         </div>
         <Header
           isLoading={isLoading}
@@ -119,7 +118,7 @@ console.log(productData);
           isLeftNavOpen={isLeftNavOpen}
           setIsLeftNavOpen={setIsLeftNavOpen}
         >
-             <div>
+        <div>
           <Weather/>
         </div>
         </Header>
