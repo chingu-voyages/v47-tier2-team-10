@@ -8,6 +8,7 @@ import EditModal from "../modals/edit/EditCategoryModal";
 import { MdOutlineEdit } from "react-icons/md";
 import Aos from "aos";
 import { productDataContext } from "../../../context/ProductDataContext";
+import { capitalizeEachWord } from "../../../lib/helpers/capitalizeEachWord";
 
 export default function Category({ category, setIsLeftNavOpen }) {
   const [isActivityVisible, setIsActivityVisible] = useState(false);
@@ -27,6 +28,12 @@ export default function Category({ category, setIsLeftNavOpen }) {
     setIsEditModalOpen(true);
   };
 
+  const handleDelete = () => {
+    setProductData(prev => (
+      prev.filter(item => item.categoryName != category.categoryName)
+    ))
+    setIsDeleteModalOpen(false)
+  }
 
   useEffect(() => {
     setEditCategoryNameInput(category.categoryName);
@@ -37,15 +44,9 @@ export default function Category({ category, setIsLeftNavOpen }) {
       setIsLeftNavOpen={setIsLeftNavOpen}
       key={index}
       activity={activity}
+      categoryName={category.categoryName}
     />
   ));
-
-  const capitalizeEachWord = (sentence) => {
-    const sentenceArr = sentence.toLowerCase().split(" ");
-    return sentenceArr
-      .map((word) => word[0].toUpperCase() + word.substr(1))
-      .join(" ");
-  };
 
   return (
     <>
@@ -118,13 +119,14 @@ export default function Category({ category, setIsLeftNavOpen }) {
 
       {isDeleteModalOpen && (
         <Delete
-          onDelete={() => setIsDeleteModalOpen(false)}
+          onDelete={handleDelete}
           onCancel={() => setIsDeleteModalOpen(false)}
+          name={capitalizeEachWord(category.categoryName)}
         />
       )}
       {isEditModalOpen && (
         <EditModal
-          editCategoryNameInput={editCategoryNameInput}
+          editCategoryNameInput={capitalizeEachWord(editCategoryNameInput)}
           categoryName={category.categoryName}
           setIsEditModalOpen={setIsEditModalOpen}
           setEditCategoryNameInput={setEditCategoryNameInput}
