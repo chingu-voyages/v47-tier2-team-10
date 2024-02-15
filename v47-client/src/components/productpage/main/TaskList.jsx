@@ -14,6 +14,10 @@ export default function TaskList({
   taskData,
   editTaskInput,
   setEditTaskInput,
+  setEditTaskNameInput,
+  editTaskNameInput,
+  editTaskColumnInput,
+  setEditTaskColumnInput,
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
@@ -46,6 +50,11 @@ export default function TaskList({
       {isMenuOpen && <MenuModal taskName={taskName} />}
       {isTaskModalOpen && (
         <TaskModal
+        column={column}
+          setEditTaskNameInput={setEditTaskNameInput}
+          editTaskNameInput={editTaskNameInput}
+          editTaskColumnInput={editTaskColumnInput}
+          setEditTaskColumnInput={setEditTaskColumnInput}
           editTaskInput={editTaskInput}
           setEditTaskInput={setEditTaskInput}
           setIsTaskModalOpen={setIsTaskModalOpen}
