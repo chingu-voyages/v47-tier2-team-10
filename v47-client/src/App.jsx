@@ -37,28 +37,29 @@ anthony bug collecting/ui changes completed:
 - change font back to normal (nav).
 - change login/sign up color to difference green (nav)
 - delete task dashboard btn (nav)
-
+- on hover scale 90, on click scale 110 for github link and linkedin, alos needs cursor pointer (teaminfo)
+- darkmode/light mode, change lightmode = moon, darkmode = sun (nav/productpage nav)
+- implement a transform: y for container onto each test (teaminfo)
 
 UI needs to get fixed:
 
-green color: text-[#2d8630]
+
+
+
+
+
+
+
 - change all headings/subheadings to green 
-
-- on hover scale 90, on click scale 110 for github link and linkedin, alos needs cursor pointer (teaminfo)
-
-
-- darkmode/light mode, change lightmode = moon, darkmode = sun (nav/productpage nav)
-- our features color changed to green (features)
-- sub heading changed to text-[16px] (features)
-- feature links make sure they dont go anywhere, add not allowed cursor (features)
-- implement a transform: y for container onto each test (teaminfo)
+green color: text-[#2d8630]
 
 - every sub page within the landing page should have a height of screen and be centered
 - implement a transform: y for container onto each test (test page)
 - change color to green for full names (test page)
 - needs padding y and max width consistent with other pages (teaminfo)
 - each container needs a margin bottom consistent with the gap-x (teaminfo)
-
+- sub heading changed to text-[16px] (features)
+- our features color changed to green (features)
 - footer just leave it to skylar
 - padding-x added to nav (productpage)
 - needs padding x (product page)
