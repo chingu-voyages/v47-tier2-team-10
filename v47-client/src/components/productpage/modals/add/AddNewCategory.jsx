@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
-import Portal from "./Portal/Portal"
-import { productDataContext } from '../../../context/ProductDataContext';
+import Portal from "../Portal/Portal"
+import { productDataContext } from '../../../../context/ProductDataContext';
 
 function AddNewCategory({ setIsNewCategoryModalOpen }) {
 
@@ -27,7 +27,7 @@ function AddNewCategory({ setIsNewCategoryModalOpen }) {
 
   return (
     <Portal>
-    <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
+    <div className="fixed inset-0 flex items-center justify-center bg-opacity-50 bg-gray-800 z-50">
       <div className="bg-white p-8 rounded-lg w-96">
           <div className="mb-3">
             <label htmlFor="categoryName" className="block text-gray-700 text-sm font-semibold mb-4 text-center">

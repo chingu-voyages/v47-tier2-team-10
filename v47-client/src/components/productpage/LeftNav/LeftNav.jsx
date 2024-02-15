@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { RiAddFill } from "react-icons/ri";
 import Category from "./Category";
-import AddNewCategory from "../../productpage/modals/AddNewCategory"; // Import AddNewCategory component
+import AddNewCategory from "../modals/add/AddNewCategory"; // Import AddNewCategory component
 import { isLoadingContext } from "../../../context/IsLoadingContext";
 import { productDataContext } from "../../../context/ProductDataContext";
 

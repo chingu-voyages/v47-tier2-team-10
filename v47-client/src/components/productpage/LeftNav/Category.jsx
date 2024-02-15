@@ -9,14 +9,17 @@ import { MdOutlineEdit } from "react-icons/md";
 import Aos from "aos";
 import { productDataContext } from "../../../context/ProductDataContext";
 import { capitalizeEachWord } from "../../../lib/helpers/capitalizeEachWord";
+import AddNewActivity from "../modals/add/AddNewActivity";
+
 
 export default function Category({ category, setIsLeftNavOpen }) {
   const [isActivityVisible, setIsActivityVisible] = useState(false);
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  // const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isCategoryIconsVisible, setIsCategoryIconsVisible] = useState(false);
   const [editCategoryNameInput, setEditCategoryNameInput] = useState("");
+  const [isAddNewActivityModalOpen, setIsNewActivityModalOpen] = useState(false)
 
   const { setProductData } = useContext(productDataContext);
 
@@ -34,8 +37,8 @@ export default function Category({ category, setIsLeftNavOpen }) {
     setIsLeftNavOpen(false);
   };
 
-  const handleAdd = () => {
-    setIsAddModalOpen(true);
+  const handleAddNewActivityClick = () => {
+    setIsNewActivityModalOpen(true);
     setIsLeftNavOpen(false);
   };
 
@@ -92,7 +95,7 @@ export default function Category({ category, setIsLeftNavOpen }) {
                   <MdOutlineEdit />
                 </button>
                 <button
-                  onClick={handleAdd}
+                  onClick={handleAddNewActivityClick}
                   className={`${isCategoryIconsVisible ? 'block' : 'lg:hidden block'} text-md  text-gray-900 hover:text-gray-700`}
                 >
                   <GrAddCircle />
@@ -116,7 +119,11 @@ export default function Category({ category, setIsLeftNavOpen }) {
       </div>
        
       {/* modals  */}
-      {isAddModalOpen && <Add onClose={() => setIsAddModalOpen(false)} />}
+      {isAddNewActivityModalOpen && 
+        <AddNewActivity 
+        setIsNewActivityModalOpen={setIsNewActivityModalOpen}
+        categoryName={category.categoryName}
+      />}
 
       {isDeleteModalOpen && (
         <Delete
