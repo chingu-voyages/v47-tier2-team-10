@@ -5,34 +5,48 @@ import Add from "../modals/Add";
 import DragnDrop from "./DragnDrop";
 import { filteredDataContext } from "../../../context/FilteredDataContext";
 import { isLoadingContext } from "../../../context/IsLoadingContext";
-export default function Main({ isAddModalOpen, setIsAddModalOpen }) {
+export default function Main({
+  isAddModalOpen,
+  setIsAddModalOpen,
+  setIsTaskModalOpen,
+}) {
   const [newTaskData, setNewTaskData] = useState({
     taskDescription: "",
     taskName: "",
   });
-  const { filteredData } = useContext(filteredDataContext);
+  const [editTaskData, setEditTaskData] = useState("");
+  const [editTaskInput, setEditTaskInput] = useState("");
+  const { filteredData, setFilteredData } = useContext(filteredDataContext);
   const { isLoading } = useContext(isLoadingContext);
 
   const renderTasksByColumn = (column) => {
     return filteredData.map((data) => {
       const tasksInColumn = data.Tasks.filter((task) => task.column === column);
       return tasksInColumn.map((task, id) => {
-        return <TaskList key={id} {...task} />;
+        return (
+          <TaskList
+            setEditTaskInput={setEditTaskInput}
+            editTaskInput={editTaskInput}
+            editTaskData={editTaskData}
+            setEditTaskData={setEditTaskData}
+            key={id}
+            {...task}
+          />
+        );
       });
     });
   };
 
-  console.log(filteredData);
 
   return (
     <>
-      <section className="border dark:text-gray-200 mb-0 overflow-y-auto  p-6 flex flex-col dark:bg-[#2B2C37] rounded-md duration-700  bg-gray-200  flex-1">
+      <section className="border dark:text-gray-200  mb-0 overflow-y-auto  p-6 flex flex-col dark:bg-[#2B2C37] rounded-md duration-700  bg-gray-200   flex-1">
         {isLoading ? (
           <div className="flex flex-wrap flex-1 gap-x-2 justify-center">
             {new Array(9).fill(0).map((_, index) => (
               <div
                 key={index}
-                className="w-[100%] rounded-md md:w-[48%] lg:w-[32%]  h-[96px] bg-gray-400 animate-pulse mb-3"
+                className="w-[100%] rounded-md md:w-[48%] lg:w-[32%]  h-[96px] bg-gray-400  animate-pulse mb-3"
               ></div>
             ))}
           </div>
@@ -59,10 +73,9 @@ export default function Main({ isAddModalOpen, setIsAddModalOpen }) {
               </div>
               {renderTasksByColumn("Done")}
             </div>
-            {/* <div><DragnDrop /></div> */}
           </div>
         ) : (
-          <figure className="h-full mx-auto flex justify-between items-center">
+          <figure className="h-full  mx-auto flex justify-between items-center">
             <img
               className="object-cover max-h-[500px]"
               src="/assets/product_data_img.svg"
@@ -76,7 +89,6 @@ export default function Main({ isAddModalOpen, setIsAddModalOpen }) {
             <h1 onClick={() => setIsAddModalOpen(true)}>Add new task</h1>
           </div>
         </div>
-
         {isAddModalOpen && (
           <Add
             setIsAddModalOpen={setIsAddModalOpen}
