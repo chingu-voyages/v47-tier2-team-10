@@ -8,9 +8,10 @@ import { productDataContext } from "../../../context/ProductDataContext";
 export default function LeftNav({
   isLeftNavOpen,
   setIsLeftNavOpen,
-  setIsAddModalOpen,
-  isAddModalOpen,
 }) {
+
+  const [isAddNewCategoryModalOpen, setIsNewCategoryModalOpen] = useState(false)
+
   const { isLoading } = useContext(isLoadingContext);
   const { productData, setProductData } = useContext(productDataContext);
 
@@ -22,8 +23,8 @@ export default function LeftNav({
     />
   ));
 
-  const handleClick = () => {
-    setIsAddModalOpen(true)
+  const handleAddNewCategoryClick = () => {
+    setIsNewCategoryModalOpen(true)
     setIsLeftNavOpen(false)
   }
 
@@ -59,7 +60,7 @@ export default function LeftNav({
           <button 
             type="button" 
             className="mt-auto mb-7 py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-gray-500 hover:bg-gray-100 hover:text-gray-800 disabled:opacity-50 disabled:pointer-events-none dark:hover:bg-gray-800/30 dark:hover:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" 
-            onClick={handleClick}> 
+            onClick={handleAddNewCategoryClick}> 
             <RiAddFill />
             Add new category
           </button>
@@ -69,8 +70,7 @@ export default function LeftNav({
       {/* <!-- End Sidebar --> */}
 
       {/* modal */}
-      {isAddModalOpen && (
-      <AddNewCategory onClose={() => setIsAddModalOpen(false)} />)}
+      {isAddNewCategoryModalOpen && <AddNewCategory setIsNewCategoryModalOpen={setIsNewCategoryModalOpen}/>}
       
     </>
   );
