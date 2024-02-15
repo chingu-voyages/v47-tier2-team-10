@@ -8,12 +8,114 @@
           {
             "taskName": "Update Recipes Project Backlog",
             "taskDescription": "Update the project backlog tasks",
-            "days": ["monday"]
+            "days": "2024-02-17",
+            "column": "Not Started"
+          },
+          {
+            "taskName": "Update Recipes Project Backlog",
+            "taskDescription": "Update the project backlog tasks",
+            "days": "2024-02-17",
+            "column": "Not Started"
+          },
+          {
+            "taskName": "Update Recipes Project Backlog",
+            "taskDescription": "Update the project backlog tasks",
+            "days": "2024-02-17",
+            "column": "Not Started"
+          },
+          {
+            "taskName": "Update Recipes Project Backlog",
+            "taskDescription": "Update the project backlog tasks",
+            "days": "2024-02-17",
+            "column": "Not Started"
+          },
+          {
+            "taskName": "Update Recipes Project Backlog",
+            "taskDescription": "Update the project backlog tasks",
+            "days": "2024-02-17",
+            "column": "Not Started"
+          },
+          {
+            "taskName": "Update Recipes Project Backlog",
+            "taskDescription": "Update the project backlog tasks",
+            "days": "2024-02-17",
+            "column": "Not Started"
           },
           {
             "taskName": "Update The dailyTasks sheet with the backlog tasks",
             "taskDescription": "add the filtering feature to Done",
-            "days": ["monday"]
+            "days": "2024-02-17",
+            "column": "In Progress"
+          },
+
+          {
+            "taskName": "Study The First Node Js Lecture",
+            "taskDescription": "",
+            "days": "2024-02-17",
+            "column": "Done"
+          },
+
+          {
+            "taskName": "Study The First Node Js Lecture",
+            "taskDescription": "",
+            "days": "2024-02-17",
+            "column": "Done"
+          },
+
+          {
+            "taskName": "Study The First Node Js Lecture",
+            "taskDescription": "",
+            "days": "2024-02-17",
+            "column": "Done"
+          },
+
+          {
+            "taskName": "Study The First Node Js Lecture",
+            "taskDescription": "",
+            "days": "2024-02-17",
+            "column": "Done"
+          },
+          {
+            "taskName": "Study The First Node Js Lecture",
+            "taskDescription": "",
+            "days": "2024-02-17",
+            "column": "Done"
+          },
+          {
+            "taskName": "Update Recipes Project Backlog",
+            "taskDescription": "Update the project backlog tasks",
+            "days": "2024-02-17",
+            "column": "Not Started"
+          },
+          {
+            "taskName": "Update Recipes Project Backlog",
+            "taskDescription": "Update the project backlog tasks",
+            "days": "2024-02-17",
+            "column": "Not Started"
+          },
+          {
+            "taskName": "Update The dailyTasks sheet with the backlog tasks",
+            "taskDescription": "add the filtering feature to Done",
+            "days": "2024-02-17",
+            "column": "In Progress"
+          },
+          {
+            "taskName": "Update The dailyTasks sheet with the backlog tasks",
+            "taskDescription": "add the filtering feature to Done",
+            "days": "2024-02-17",
+            "column": "In Progress"
+          },
+          {
+            "taskName": "Update Recipes Project Backlog",
+            "taskDescription": "Update the project backlog tasks",
+            "days": "2024-02-17",
+            "column": "Not Started"
+          },
+          {
+            "taskName": "Update The dailyTasks sheet with the backlog tasks",
+            "taskDescription": "add the filtering feature to Done",
+            "days": "2024-02-17",
+            "column": "In Progress"
           }
         ]
       },
@@ -23,20 +125,14 @@
           {
             "taskName": "Publish The recent Blog Post Draft to hashnode",
             "taskDescription": "Publish the latest blog post",
-            "days": ["friday"]
+            "days": "2024-02-17",
+            "column": "Done"
           },
           {
             "taskName": "Write a New headline in a Blog Post Draft",
             "taskDescription": "Write a catchy headline for a new blog post",
-            "days": [
-              "saturday",
-              "sunday",
-              "monday",
-              "tuesday",
-              "wednesday",
-              "thursday",
-              "friday"
-            ]
+            "days": "2024-02-17",
+            "column": "Not Started"
           }
         ]
       }
@@ -51,12 +147,15 @@
           {
             "taskName": "Plan The Node Js Course Progress By Month",
             "taskDescription": "Set Up A Plan For The Next Month Of Node Js Learning",
-            "days": ["1"]
+            "days": "2024-02-17",
+            "column": "In Progress"
           },
+
           {
             "taskName": "Study The First Node Js Lecture",
             "taskDescription": "",
-            "days": ["2"]
+            "days": "2024-02-17",
+            "column": "Done"
           }
         ]
       },
@@ -66,12 +165,14 @@
           {
             "taskName": "Plan The MongoDB Course Progress By Month",
             "taskDescription": "Set Up A Plan For The Next Month Of Node Js Learning",
-            "days": ["30"]
+            "days": "2024-02-17",
+            "column": "Not Started"
           },
           {
             "taskName": "Study The First MongoDB Lecture",
             "taskDescription": "",
-            "days": ["15"]
+            "days": "2024-02-17",
+            "column": "Not Started"
           }
         ]
       }
@@ -86,12 +187,14 @@
           {
             "taskName": "Add The New Features list",
             "taskDescription": "",
-            "days": ["monday"]
+            "days": "2024-02-17",
+            "column": "In Progress"
           },
           {
             "taskName": "Add The New PRs To InReview",
             "taskDescription": "",
-            "days": ["7"]
+            "days": "2024-02-17",
+            "column": "In Progress"
           }
         ]
       },
@@ -101,12 +204,14 @@
           {
             "taskName": "Work On The Sidebar",
             "taskDescription": "Add The Sections Links",
-            "days": ["thursday"]
+            "days": "2024-02-17",
+            "column": "Not Started"
           },
           {
             "taskName": "Refactor The Filtering Feature Code",
             "taskDescription": "",
-            "days": ["friday"]
+            "days": "2024-02-17",
+            "column": "Done"
           }
         ]
       }
@@ -121,12 +226,14 @@
           {
             "taskName": "Conduct The Project Planning Meeting",
             "taskDescription": "Conduct The Project Planning Meeting To Discuss Our Ideas",
-            "days": ["monday"]
+            "days": "2024-02-17",
+            "column": "Done"
           },
           {
             "taskName": "Create The UI/UX Design For The DailyTasks Project",
             "taskDescription": "Create The UI/UX Design For The DailyTasks Project Based On The Team Discussion",
-            "days": ["monday", "tuesday", "wednesday"]
+            "days": "2024-02-17",
+            "column": "Not Started"
           }
         ]
       },
@@ -136,12 +243,14 @@
           {
             "taskName": "Create When2Meet Link",
             "taskDescription": "Create When2Meet Link To Introduce Yourselves",
-            "days": ["thursday"]
+            "days": "2024-02-17",
+            "column": "In Progress"
           },
           {
             "taskName": "Attend The Introduction Meeting With Someone",
             "taskDescription": "",
-            "days": ["thursday"]
+            "days": "2024-02-17",
+            "column": "Done"
           }
         ]
       }
