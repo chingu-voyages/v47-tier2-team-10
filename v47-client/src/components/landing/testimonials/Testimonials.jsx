@@ -4,7 +4,7 @@ import { feedback } from "../../../lib/feedBackData";
 const Testimonials = () => (
   <section className="py-6 flex justify-center items-center flex-col relative ">
     <div className="w-full flex justify-end items-center flex-col sm:mb-16 mb-6 relative z-[1]">
-      <h2 className="text-3xl lg:text-4xl text-gray-800 font-bold dark:text-gray-200">
+      <h2 className="text-3xl lg:text-4xl text-gray-800 font-bold dark:text-gray-200 text-[#2d8630]">
         What People are saying about us
       </h2>
       <div className="w-full md:mt-0 mt-6 text-center">
