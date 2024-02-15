@@ -62,14 +62,16 @@ thing to add:
 - users can only go to product page if they are signed in (redirect to modal)
 
 
-
-
 send to ava:
 
 - full name
 - photo
 - linkedin
 - github link
+
+
+anthony bug collecting/ui changes completed:
+
 
 
 */
