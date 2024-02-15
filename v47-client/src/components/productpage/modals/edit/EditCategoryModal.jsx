@@ -23,7 +23,7 @@ function EditModal({
     <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50">
       <div className="bg-white p-8 rounded-lg w-96">
         <InputFields
-          headerText={"Edit Task"}
+          headerText={"Edit Category"}
           value={editCategoryNameInput}
           onChangeValue={setEditCategoryNameInput}
         />
