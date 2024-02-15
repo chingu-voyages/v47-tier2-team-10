@@ -43,7 +43,7 @@ export default function TaskList({
           className="hover:scale-110 hover:text-gray-600 duration-300 cursor-pointer active:scale-75 "
         />
       </div>
-      {isMenuOpen && <MenuModal />}
+      {isMenuOpen && <MenuModal taskName={taskName} />}
       {isTaskModalOpen && (
         <TaskModal
           editTaskInput={editTaskInput}
