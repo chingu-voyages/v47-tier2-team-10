@@ -43,13 +43,6 @@ anthony bug collecting/ui changes completed:
 
 UI needs to get fixed:
 
-
-
-
-
-
-
-
 - change all headings/subheadings to green 
 green color: text-[#2d8630]
 
