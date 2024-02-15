@@ -14,11 +14,26 @@ import IsLoadingContext from "./context/IsLoadingContext";
 
 Anthony
 - change firebase over and add stripe into the data base
+- make dark mode work on everything
+
+- make product page responsive ('tabs')
+
+
+anthony bug collecting/ui/bugs/tasks changes completed:
+- daily tasker text change to green (nav).
+- change font back to normal (nav).
+- change login/sign up color to difference green (nav)
+- delete task dashboard btn (nav)
+- on hover scale 90, on click scale 110 for github link and linkedin, alos needs cursor pointer (teaminfo)
+- darkmode/light mode, change lightmode = moon, darkmode = sun (nav/productpage nav)
+- implement a transform: y for container onto each test (teaminfo)
+- full name
+- photo
+- linkedin
+- github link
 - project task click event
 - make show its possible to edit the project task click event
-- fix width and height of login and sign up 
-- make dark mode work on everything
-- make product page responsive ('tabs')
+
 
 
 
@@ -32,14 +47,7 @@ bug:
 - left panel burger menu has error when opened, (needs background as fixed)
 
 
-anthony bug collecting/ui changes completed:
-- daily tasker text change to green (nav).
-- change font back to normal (nav).
-- change login/sign up color to difference green (nav)
-- delete task dashboard btn (nav)
-- on hover scale 90, on click scale 110 for github link and linkedin, alos needs cursor pointer (teaminfo)
-- darkmode/light mode, change lightmode = moon, darkmode = sun (nav/productpage nav)
-- implement a transform: y for container onto each test (teaminfo)
+
 
 UI needs to get fixed:
 
@@ -69,11 +77,6 @@ send to ava:
 - photo
 - linkedin
 - github link
-
-
-
-
-
 */
 
 export default function App() {
