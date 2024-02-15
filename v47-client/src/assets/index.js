@@ -6,6 +6,11 @@ import people03 from "./people03.png";
 import linkedin from "./linkedin.png";
 import github from "./github.png";
 
+import avazImg from "./avaz.jpg";
+import cakinImg from "./cakin.webp";
+import skylarImg from "./skylar.jpeg";
+import jessImg from "./avatar.avif"
+
 export {
   quotes,
   people01,
@@ -13,4 +18,8 @@ export {
   people03,
   linkedin,
   github,
+  avazImg,
+  cakinImg,
+  skylarImg,
+  jessImg
 };

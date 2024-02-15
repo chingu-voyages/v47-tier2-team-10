@@ -11,10 +11,7 @@ const TeamInfo = () => {
         </h2>
         <div className="w-[60%] md:mt-0 mt-6 text-center">
           <p className="mt-3 text-gray-800 dark:text-gray-200">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-            ipsa in? Odit, tenetur magnam. Nisi architecto ratione tenetur odit
-            blanditiis. Aliquid expedita fugit voluptatum iure a. Eos,
-            necessitatibus! Esse, magni?
+          We are a dedicated team of individuals brought together by our shared passion for coding and collaboration. Committed to excellence and continuous learning, we've embarked on this <span className="font-semibold	 italic">Chingu Voyage</span>  with a unified goal: to create something remarkable.
           </p>
         </div>
       </div>
