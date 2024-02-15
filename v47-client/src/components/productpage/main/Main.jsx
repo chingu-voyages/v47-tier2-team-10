@@ -13,18 +13,28 @@ export default function Main({
   const [newTaskData, setNewTaskData] = useState({
     taskDescription: "",
     taskName: "",
+    days: "",
+    column: "",
   });
   const [editTaskData, setEditTaskData] = useState("");
   const [editTaskInput, setEditTaskInput] = useState("");
+  const [editTaskColumnInput, setEditTaskColumnInput] = useState("");
+  const [editTaskNameInput, setEditTaskNameInput] = useState("");
   const { filteredData, setFilteredData } = useContext(filteredDataContext);
   const { isLoading } = useContext(isLoadingContext);
 
   const renderTasksByColumn = (column) => {
     return filteredData.map((data) => {
-      const tasksInColumn = data.Tasks.filter((task) => task.column === column);
+      const tasksInColumn = data.Tasks.filter(
+        (task) => task.column.toLowerCase() === column.toLowerCase()
+      );
       return tasksInColumn.map((task, id) => {
         return (
           <TaskList
+            setEditTaskNameInput={setEditTaskNameInput}
+            editTaskNameInput={editTaskNameInput}
+            editTaskColumnInput={editTaskColumnInput}
+            setEditTaskColumnInput={setEditTaskColumnInput}
             setEditTaskInput={setEditTaskInput}
             editTaskInput={editTaskInput}
             editTaskData={editTaskData}
@@ -36,7 +46,6 @@ export default function Main({
       });
     });
   };
-
 
   return (
     <>

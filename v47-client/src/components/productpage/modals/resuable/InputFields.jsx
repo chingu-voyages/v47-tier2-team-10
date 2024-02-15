@@ -5,6 +5,7 @@ export default function InputFields({
   value,
   onChangeValue,
   isTextArea,
+  placeholder
 }) {
   return (
     <div className="mb-6">
@@ -22,9 +23,10 @@ export default function InputFields({
       ) : (
         <input
           type="text"
+          placeholder={placeholder}
           className="w-full border  border-gray-300 px-3 py-2 rounded"
           value={value}
-          onChange={(e) => onChangeValue(e.target.value)}
+          onChange={(e) => onChangeValue(e.target.value.toLowerCase())}
           required
         />
       )}

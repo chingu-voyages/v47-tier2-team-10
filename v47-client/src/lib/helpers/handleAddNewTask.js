@@ -2,15 +2,19 @@ export const handleAddNewTask = (
   setFilteredData,
   setIsAddModalOpen,
   taskDescription,
-  taskNameInput
+  taskNameInput,
+  daysInput,
+  columnInput
 ) => {
   setFilteredData((prevData) => {
     const newTask = {
-      days: [],
+      days: daysInput,
       taskDescription: taskDescription,
       taskName: taskNameInput,
-      column: "Not Started"
+      column: columnInput,
     };
+
+    console.log(daysInput);
 
     const newData = prevData.map((item) => {
       return {
@@ -22,4 +26,3 @@ export const handleAddNewTask = (
   });
   setIsAddModalOpen(false);
 };
-
