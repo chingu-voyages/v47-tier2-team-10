@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { MdDeleteOutline } from "react-icons/md";
 import Delete from "../modals/Delete";
-import EditModal from "../modals/edit/EditCategoryModal";
+import EditModal from "../modals/edit/EditActivityModal";
 import { MdOutlineEdit } from "react-icons/md";
 import { handleFilterData } from "../../../lib/helpers/handleFilterData";
 import { productDataContext } from "../../../context/ProductDataContext";
@@ -11,6 +11,7 @@ export default function Activity({ activity,  setIsLeftNavOpen, categoryName }) 
   const [isActivityIconsVisible, setIsActivityIconsVisible] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [editActivityNameInput, setEditActivityNameInput] = useState(activity.activityName);
 
   const { setProductData,productData } = useContext(productDataContext)
   const {setFilteredData} = useContext(filteredDataContext)
@@ -88,6 +89,16 @@ export default function Activity({ activity,  setIsLeftNavOpen, categoryName }) 
            name={activity.activityName}
            />
         )}
+
+      {isEditModalOpen && (
+        <EditModal
+        editActivityNameInput={editActivityNameInput}
+          categoryName={categoryName}
+          activityName={activity.activityName}
+          setIsEditModalOpen={setIsEditModalOpen}
+          setEditActivityNameInput={setEditActivityNameInput}
+        />
+      )}
 
       {/* {isEditModalOpen && (
         <EditModal

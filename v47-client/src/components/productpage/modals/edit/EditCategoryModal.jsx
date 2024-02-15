@@ -11,12 +11,12 @@ function EditModal({
   categoryName,
   editCategoryNameInput,
 }) {
-  const [taskName, setTaskName] = useState("");
+
   const { setProductData } = useContext(productDataContext);
 
-  useEffect(() => {
-    setTaskName(categoryName);
-  }, [categoryName]);
+  // useEffect(() => {
+  //   setTaskName(categoryName);
+  // }, [categoryName]);
 
   return (
     <Portal>
