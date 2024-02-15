@@ -32,26 +32,33 @@ bug:
 - left panel burger menu has error when opened, (needs background as fixed)
 
 
-UI needs to get fixed:
-
-green color: text-[#2d8630]
-
-- change all headings/subheadings to green 
+anthony bug collecting/ui changes completed:
 - daily tasker text change to green (nav).
 - change font back to normal (nav).
 - change login/sign up color to difference green (nav)
 - delete task dashboard btn (nav)
+
+
+UI needs to get fixed:
+
+green color: text-[#2d8630]
+- change all headings/subheadings to green 
+
+- on hover scale 90, on click scale 110 for github link and linkedin, alos needs cursor pointer (teaminfo)
+
+
 - darkmode/light mode, change lightmode = moon, darkmode = sun (nav/productpage nav)
 - our features color changed to green (features)
 - sub heading changed to text-[16px] (features)
 - feature links make sure they dont go anywhere, add not allowed cursor (features)
+- implement a transform: y for container onto each test (teaminfo)
+
 - every sub page within the landing page should have a height of screen and be centered
 - implement a transform: y for container onto each test (test page)
 - change color to green for full names (test page)
 - needs padding y and max width consistent with other pages (teaminfo)
 - each container needs a margin bottom consistent with the gap-x (teaminfo)
-- on hover scale 90, on click scale 110 for github link and linkedin, alos needs cursor pointer (teaminfo)
-- implement a transform: y for container onto each test (teaminfo)
+
 - footer just leave it to skylar
 - padding-x added to nav (productpage)
 - needs padding x (product page)
@@ -70,7 +77,6 @@ send to ava:
 - github link
 
 
-anthony bug collecting/ui changes completed:
 
 
 

@@ -54,7 +54,7 @@ const Login = () => {
     <div className="justify-center">
       <button
         onClick={openModal}
-        className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600"
+        className="bg-green-500  text-white px-4 py-2 duration-300 rounded-md hover:bg-[#2d8630]"
       >
         Login
       </button>
