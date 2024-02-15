@@ -54,7 +54,7 @@ const Login = () => {
     <div className="justify-center">
       <button
         onClick={openModal}
-        className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600"
+        className="bg-green-500  text-white px-4 py-2 duration-300 rounded-md hover:bg-[#2d8630]"
       >
         Login
       </button>
@@ -62,16 +62,16 @@ const Login = () => {
       {isModalOpen && (
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
           <div
-            className="absolute bg-black opacity-50 inset-0"
+            className="absolute bg-black opacity-50  inset-0"
             onClick={closeModal}
           ></div>
-          <div className="max-w-md mx-auto p-4 bg-white shadow-md rounded-md relative z-10">
+          <div className="max-w-md mx-auto p-4 bg-white w-[500px] flex flex-col  py-12 shadow-md rounded-md relative z-10">
             <h2 className="text-2xl font-semibold mb-4">Login</h2>
             <form onSubmit={(e) => e.preventDefault()}>
-              <div className="mb-4">
+              <div className="mb-4 flex flex-col">
                 <label
                   htmlFor="username"
-                  className="block text-sm font-medium text-gray-600"
+                  className="block mr-auto text-sm font-medium text-gray-600"
                 >
                   Username:
                 </label>
@@ -83,10 +83,10 @@ const Login = () => {
                   onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
-              <div className="mb-4">
+              <div className="mb-4 flex flex-col">
                 <label
                   htmlFor="password"
-                  className="block text-sm font-medium text-gray-600"
+                  className="block text-sm mr-auto font-medium text-gray-600"
                 >
                   Password:
                 </label>
@@ -102,18 +102,18 @@ const Login = () => {
               {successMessage && (
                 <p className="text-green-500 mb-4">{successMessage}</p>
               )}
-              <div className="flex space-x-2">
+              <div className="flex space-x-2 flex-1">
                 <button
                   type="submit"
                   onClick={handleLogin}
-                  className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600"
+                  className="bg-green-500 w-full text-white px-4 py-2 rounded-md hover:bg-green-600"
                 >
                   Login
                 </button>
                 <button
                   type="button"
                   onClick={handleForgotPassword}
-                  className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
+                  className="bg-blue-500 w-full text-white px-4 py-2 rounded-md hover:bg-red-600"
                 >
                   Forgot Password?
                 </button>

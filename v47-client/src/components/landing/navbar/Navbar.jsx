@@ -14,7 +14,7 @@ const Nav = () => {
 
   return (
     <nav
-      className={`font-mono duration-300 text-navBlack bg-navWhite dark:bg-navBlack dark:text-navWhite  fixed w-full z-20 top-0 start-0 `}
+      className={` duration-300 text-navBlack bg-navWhite dark:bg-navBlack dark:text-navWhite  fixed w-full z-20 top-0 start-0 `}
     >
       <div className="mx-auto max-w-screen-2xl p-4 flex flex-wrap items-center justify-between ">
         <div className="flex items-center flex-shrink-0 mr-6">

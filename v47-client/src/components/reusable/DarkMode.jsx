@@ -4,7 +4,7 @@ import { darkModeContext } from "../../context/DarkModeContext";
 
 const DarkMode = ({ isProductPageDarkMode }) => {
   const { darkMode, setDarkMode } = useContext(darkModeContext);
-  const ModeIcon = darkMode ? MdDarkMode : MdLightMode;
+  const ModeIcon = darkMode ? MdLightMode : MdDarkMode;
   return (
     <div
       className={` ${
