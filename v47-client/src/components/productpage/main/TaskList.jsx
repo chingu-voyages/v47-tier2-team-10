@@ -35,10 +35,10 @@ export default function TaskList({
       onClick={() => {
         setIsTaskModalOpen(!isTaskModalOpen);
       }}
-      className={`rounded-lg p-4 mr-6 mb-6 flex  flex-col  cursor-pointer  relative  max-w-[320px] h-[96px] bg-gray-400`}
+      className={`rounded-lg duration-300  p-4 mr-6 mb-6 flex  flex-col  cursor-pointer  relative  max-w-[320px] h-[96px] bg-gray-400`}
     >
       <h1 className="text-sm">{taskName}</h1>{" "}
-      <div className="flex flex-1 mt-auto justify-end items-end">
+      <div className="flex flex-1 duration-300  mt-auto justify-end items-end">
         <BsThreeDots
           onClick={(e) => {
             setIsMenuOpen(!isMenuOpen);
@@ -50,7 +50,7 @@ export default function TaskList({
       {isMenuOpen && <MenuModal />}
       {isTaskModalOpen && (
         <TaskModal
-        column={column}
+          column={column}
           setEditTaskNameInput={setEditTaskNameInput}
           editTaskNameInput={editTaskNameInput}
           editTaskColumnInput={editTaskColumnInput}

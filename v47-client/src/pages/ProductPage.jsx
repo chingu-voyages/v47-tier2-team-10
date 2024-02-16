@@ -30,7 +30,7 @@ export default function ProductPage() {
   }, []);
 
   return (
-    <div className="bg-gray-50 dark:bg-slate-900 ">
+    <div className="bg-gray-50 dark:bg-slate-900 duration-300 ">
       {isLeftNavOpen && (
         <div
           className="absolute bg-black opacity-50 inset-0 lg:position:static lg:bg-white lg:opacity-0 lg:inset-auto z-10 lg:z-auto"
@@ -50,7 +50,7 @@ export default function ProductPage() {
 
       <div
         style={{ minHeight: "calc(100vh - 77px)" }}
-        className="w-full   px-4 sm:px-6 md:px-8 md:ml-5  py-10 lg:ps-72"
+        className="w-full duration-300  px-4 sm:px-6 md:px-8 md:ml-5  py-10 lg:ps-72"
       >
         {/*
         - move this to the nav

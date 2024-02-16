@@ -11,7 +11,7 @@ const MemberInfo = ({
   githubLink,
   linkedinLink,
 }) => (
-  <div className="flex justify-between flex-col px-5 mb-4 py-8 max-w-full md:max-w-[300px] md:mr-10 sm:mr-5 mr-0 my-1 duration-300 hover:-translate-y-3 bg-gray-100 shadow-md hover:bg-gray-50 rounded-lg p-5 transition-all dark:hover:bg-white/[.075] dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+  <div className="flex justify-between flex-col px-5 mb-4 py-8 max-w-full md:max-w-[300px] md:mr-10 sm:mr-5 mr-0 my-1 duration-300 hover:-translate-y-3 bg-gray-100 dark:bg-black shadow-md hover:bg-gray-50 rounded-lg p-5 transition-all dark:hover:bg-white/[.075] dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
     <div className="flex justify-center object-contain">
       {/* keep the object-cover please, it fixes the px's values */}
       <img

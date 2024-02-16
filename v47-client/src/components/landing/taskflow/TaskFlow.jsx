@@ -3,7 +3,7 @@ import Button from "../../reusable/Button";
 
 export default function TaskFlow() {
   return (
-    <div className="mt-[80px] mx-auto p-8/ min-h-screen  flex justify-center items-center">
+    <div className="mt-[80px] duration-300 mx-auto p-8/ min-h-screen  flex justify-center items-center">
       <div className="flex text-center m-6 flex-col max-w-[730px]  justify-center items-center space-y-8">
         <div className="space-y-6">
           <h1
@@ -16,7 +16,7 @@ export default function TaskFlow() {
           <p
             data-aos="fade-up"
             data-aos-duration="2000"
-            className="font-bold text-[22px] md:text-2xl"
+            className="font-bold text-[22px] dark:text-white md:text-2xl"
           >
             Find your dream schedule with{" "}
             <span className="text-[#2d8630]">Task Flow</span>

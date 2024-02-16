@@ -9,14 +9,14 @@ import Features from "../components/landing/features/Features";
 import TaskFlow from "../components/landing/taskflow/TaskFlow";
 import TeamInfo from "../components/landing/teamInfo/TeamInfo";
 
-export default function Landing() {
+export default function JLanding() {
   useEffect(() => {
     Aos.init();
   }, []);
   return (
     <section
       id="landing-section"
-      className="bg-gradient-to-t  from-gray-100 to-gray-200"
+      className="bg-gradient-to-t duration-300 dark:bg-gradient-to-t  dark:from-[#121212] dark:to-[#121212]  from-gray-100 to-gray-200"
     >
       <Navbar />
       <TaskFlow />

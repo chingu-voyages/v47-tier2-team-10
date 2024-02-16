@@ -49,7 +49,7 @@ export default function Main({
 
   return (
     <>
-      <section className="border dark:text-gray-200  mb-0 overflow-y-auto  p-6 flex flex-col dark:bg-[#2B2C37] rounded-md duration-700  bg-gray-200   flex-1">
+      <section className="dark:text-gray-200  mb-0 overflow-y-auto  p-6 flex flex-col dark:bg-[#2B2C37] rounded-md duration-300  bg-gray-200   flex-1">
         {isLoading ? (
           <div className="flex flex-wrap flex-1 gap-x-2 justify-center">
             {new Array(9).fill(0).map((_, index) => (
@@ -60,7 +60,7 @@ export default function Main({
             ))}
           </div>
         ) : filteredData.length > 0 ? (
-          <div className="flex flex-wrap flex-1  flex-col mx-auto md:mx-0 md:flex-row">
+          <div className="flex flex-wrap flex-1   flex-col mx-auto md:mx-0 md:flex-row">
             <div className="flex-1 flex flex-col">
               <div className="flex items-center gap-x-2 mb-4 ">
                 <div className="bg-[#49c4e5] w-3 rounded-full h-3"></div>
@@ -92,7 +92,7 @@ export default function Main({
             />
           </figure>
         )}
-        <div className="mt-0 h-full dark:text-gray-200 p-6 flex dark:bg-[#2B2C37] rounded-md duration-700  bg-gray-200  ">
+        <div className="mt-0 h-full dark:text-gray-200 p-6 flex dark:bg-[#2B2C37] rounded-md duration-300  bg-gray-200  ">
           <div className="mt-auto hover:text-gray-500 cursor-pointer duration-300 flex items-center gap-x-2 ml-auto">
             <IoIosAdd />
             <h1 onClick={() => setIsAddModalOpen(true)}>Add new task</h1>

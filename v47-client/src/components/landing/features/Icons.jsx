@@ -17,7 +17,7 @@ export default function Icons() {
             <div>
                 <div>
                 <h3 class="block font-bold text-gray-800 dark:text-white">Visualise, filter & sort</h3>
-                <p class="text-gray-600 dark:text-gray-400">Show activities and tasks that are in progress and completed.</p>
+                <p class="text-gray-600 dark:text-gray-800">Show activities and tasks that are in progress and completed.</p>
                 </div>
 
                 <p class="mt-3 inline-flex items-center gap-x-1 text-sm font-semibold text-gray-800 dark:text-gray-200">
