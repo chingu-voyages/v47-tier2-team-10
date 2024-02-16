@@ -34,20 +34,6 @@ export default function Activity({ activity,  setIsLeftNavOpen, categoryName }) 
     setIsDeleteModalOpen(false);
   };
 
-  const handleCancel = () => {
-    setIsDeleteModalOpen(false);
-  };
-
-  const handleEditClick = () => {
-    setIsEditModalOpen(true);
-    setIsLeftNavOpen(false);
-  };
-
-  const handleDeleteClick = () => {
-    setIsDeleteModalOpen(true);
-    setIsLeftNavOpen(false);
-  };
-
   const handleActivityNameClick = (activity) => {
     handleFilterData(activity, productData, setFilteredData)
     setIsLeftNavOpen(false)
@@ -66,14 +52,14 @@ export default function Activity({ activity,  setIsLeftNavOpen, categoryName }) 
             <div className="ml-auto">
               <div className="gap-1 ml-auto  flex">
                 <button
-                  onClick={handleEditClick}
+                  onClick={() => setIsEditModalOpen(true)}
                   className={`${isActivityIconsVisible ? 'block' : 'lg:hidden block'} text-sm text-gray-900 hover:text-gray-700`} 
                 >
                   <MdOutlineEdit />
                 </button>
                 <button
                   className={` ${isActivityIconsVisible ? 'block' : 'lg:hidden block'}text-md text-red-500 hover:text-red-400 `}
-                  onClick={handleDeleteClick}
+                  onClick={() => setIsDeleteModalOpen(true)}
                 >
                   <MdDeleteOutline />
                 </button>
@@ -85,7 +71,7 @@ export default function Activity({ activity,  setIsLeftNavOpen, categoryName }) 
         {isDeleteModalOpen && (
            <Delete 
            onDelete={onDelete} 
-           onCancel={handleCancel}
+           onCancel={() => setIsDeleteModalOpen(false)}
            name={activity.activityName}
            />
         )}
