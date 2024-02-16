@@ -14,8 +14,6 @@ export const handleAddNewTask = (
       column: columnInput,
     };
 
-    console.log(daysInput);
-
     const newData = prevData.map((item) => {
       return {
         ...item,

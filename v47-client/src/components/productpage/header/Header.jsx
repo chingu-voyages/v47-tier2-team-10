@@ -20,7 +20,7 @@ export default function Header({ isLeftNavOpen, setIsLeftNavOpen }) {
   */
 
   return (
-    <header className="sticky duration-300  top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-1 w-full bg-white border-b text-sm py-2.5 sm:py-4 lg:ps-64 dark:bg-gray-800 dark:border-gray-700">
+    <header className="sticky duration-300  top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-1 w-full bg-white z-20 border-b text-sm py-2.5 sm:py-4 lg:ps-64 dark:bg-gray-800 dark:border-gray-700">
       <nav className="flex duration-300  basis-full items-center w-full mx-auto px-4 sm:px-6 md:px-8">
         {/* hamburger */}
         <div className="me-5 lg:me-0">

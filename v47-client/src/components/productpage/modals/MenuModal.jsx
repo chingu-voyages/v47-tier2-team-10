@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { filteredDataContext } from "../../../context/FilteredDataContext";
 
-export default function MenuModal({taskName}) {
+export default function MenuModal({ taskName }) {
   const { filteredData, setFilteredData } = useContext(filteredDataContext);
 
   const handleFilterData = (taskName) => {
@@ -13,15 +13,14 @@ export default function MenuModal({taskName}) {
         }),
       };
     });
-    setFilteredData(updateData)
-    console.log(updateData);
+    setFilteredData(updateData);
   };
   return (
     <div
       onClick={(e) => e.stopPropagation()}
       className="absolute shadow-sm right-0  z-50 -bottom-[40px] rounded-lg p-3  bg-white text-black"
     >
-      <span onClick={() => handleFilterData(taskName)}>Delete</span>
+      <span onClick={() => handleFilterData(taskName)}>Delete1</span>
     </div>
   );
 }

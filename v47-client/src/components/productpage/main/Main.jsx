@@ -60,22 +60,22 @@ export default function Main({
             ))}
           </div>
         ) : filteredData.length > 0 ? (
-          <div className="flex flex-wrap flex-1   flex-col mx-auto md:mx-0 md:flex-row">
-            <div className="flex-1 flex flex-col">
-              <div className="flex items-center gap-x-2 mb-4 ">
+          <div className="flex flex-wrap flex-1  gap-x-4  flex-col mx-auto  md:flex-row">
+            <div className="flex-1 flex flex-col w-[320px]">
+              <div className="flex items-center gap-x-2 mb-4  ">
                 <div className="bg-[#49c4e5] w-3 rounded-full h-3"></div>
-                <h2 className="text-[#828fa3] uppercase">Not Started</h2>
+                <h2 className="text-[#828fa3] uppercase ">Not Started</h2>
               </div>
               {renderTasksByColumn("Not Started")}
             </div>
-            <div className="flex-1 flex flex-col">
-              <div className="flex items-center gap-x-2 mb-4 ">
+            <div className="flex-1 flex flex-col  w-[320px]">
+              <div className="flex items-center gap-x-2  mb-4 ">
                 <div className="bg-[#8471f2] w-3 rounded-full h-3"></div>
                 <h2 className="text-[#828fa3] uppercase">In Progress</h2>
               </div>
               {renderTasksByColumn("In Progress")}
             </div>
-            <div className="flex-1  flex flex-col">
+            <div className="flex-1  flex flex-col  w-[320px]">
               <div className="flex items-center gap-x-2 mb-4 ">
                 <div className="bg-[#67E2AE] w-3 rounded-full h-3"></div>
                 <h2 className="text-[#828fa3] uppercase">Done</h2>

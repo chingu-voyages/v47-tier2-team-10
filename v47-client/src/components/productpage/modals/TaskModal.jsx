@@ -69,12 +69,12 @@ export default function TaskModal({
         </div>
         <form
           onSubmit={(e) => e.preventDefault()}
-          className="border-b p-4 gap-x-4  pt-0 flex justify-between items-center"
+          className="border-b p-4 gap-x-4  whitespace-normal word-wrap break-word pt-0 flex justify-between items-center"
         >
           {isEditTaskNameOpen ? (
             <>
               <textarea
-                className="font-semibold pt-3 px-2 resize-none bg-gray-100 truncate text-sm focus:outline-none flex-1 flex"
+                className="font-semibold pt-3 px-2 resize-none whitespace-normal word-wrap break-word  bg-gray-100 truncate text-sm focus:outline-none flex-1 flex"
                 value={editTaskNameInput}
                 onChange={(e) => setEditTaskNameInput(e.target.value)}
               ></textarea>
@@ -92,7 +92,7 @@ export default function TaskModal({
               </h1>
               <button
                 onClick={() => setIsEditTaskNameOpen(!isEditTaskNameOpen)}
-                className="ml-auto bg-gray-100  px-4 py-1 duration-300 hover:opacity-60  rounded-md"
+                className="ml-auto bg-gray-100   px-4 py-1 duration-300 hover:opacity-60  rounded-md"
               >
                 Edit
               </button>
@@ -103,7 +103,7 @@ export default function TaskModal({
           <div className="flex items-center justify-between">
             <input
               type="date"
-              className="bg-gray-100 ronunded-md"
+              className="bg-gray-100 whitespace-normal word-wrap break-word  ronunded-md"
               value={editTaskData}
               onClick={() => setEditCalendar(!editCalendar)}
               onChange={(e) => setEditTaskData(e.target.value)}
@@ -121,7 +121,7 @@ export default function TaskModal({
             {editTaskName ? (
               <>
                 <textarea
-                  className="font-semibold p-2 resize-none bg-gray-100  min-h-[100px] truncate text-sm focus:outline-none flex-1 flex"
+                  className="font-semibold whitespace-normal word-wrap break-word  p-2 resize-none bg-gray-100  min-h-[100px] truncate text-sm focus:outline-none flex-1 flex"
                   value={editTaskInput}
                   onChange={(e) => setEditTaskInput(e.target.value)}
                 ></textarea>
@@ -152,11 +152,9 @@ export default function TaskModal({
             {isEditColumnOpen ? (
               <>
                 <textarea
-                  className="font-semibold p-2 resize-none bg-gray-100  min-h-[100px] truncate text-sm focus:outline-none flex-1 flex"
+                  className="font-semibold p-2 whitespace-normal word-wrap break-word  resize-none bg-gray-100  min-h-[100px] truncate text-sm focus:outline-none flex-1 flex"
                   value={editTaskColumnInput}
-                  onChange={(e) =>
-                    setEditTaskColumnInput(e.target.value)
-                  }
+                  onChange={(e) => setEditTaskColumnInput(e.target.value)}
                   placeholder={`Format as either: 'Not Started', 'In Progress', 'Done'`}
                 ></textarea>
                 <button
@@ -170,7 +168,7 @@ export default function TaskModal({
               <>
                 <textarea
                   disabled
-                  className="w-full p-2 min-h-[100px] bg-gray-100 focus:outline-none resize-none"
+                  className="w-full p-2 min-h-[100px] whitespace-normal word-wrap break-word  bg-gray-100 focus:outline-none resize-none"
                   value={capitalizeEachWord(column)}
                 ></textarea>
                 <button
