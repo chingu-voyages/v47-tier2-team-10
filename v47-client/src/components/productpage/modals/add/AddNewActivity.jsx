@@ -1,14 +1,14 @@
 import React, { useState, useContext } from 'react';
 import Portal from "../Portal/Portal"
 import { productDataContext } from '../../../../context/ProductDataContext';
-
+ 
 function AddNewActivity({ setIsNewActivityModalOpen, categoryName }) {
 
   const [activityName, setActivityName] = useState('');
-  const [validation, setValidation] = useState('')
+  const [validation, setValidation] = useState('');
 
   const {setProductData, productData} = useContext(productDataContext)
-
+ 
   const handleSubmit = () => {
     if(!activityName)  return setValidation(true)
 
@@ -39,8 +39,8 @@ function AddNewActivity({ setIsNewActivityModalOpen, categoryName }) {
     <Portal>
     <div className="fixed inset-0 flex items-center justify-center bg-opacity-50 bg-gray-800 z-50">
       <div className="bg-white p-8 rounded-lg w-96">
-          <div className="mb-3">
-            <label htmlFor="activityName" className="block text-gray-700 text-sm font-semibold mb-4 text-center">
+          <div className="mb-6">
+            <label htmlFor="activityName" className="block text-gray-700 text-sm font-semibold mb-2">
               Add New Activity
             </label>
             <input
@@ -50,7 +50,7 @@ function AddNewActivity({ setIsNewActivityModalOpen, categoryName }) {
               value={activityName}
               onChange={(e) => setActivityName(e.target.value)}
             />
-            <p className={`text-red-500 text-sm ${validation ? 'visible' : 'invisible'}`}>Please fill in new activity</p>
+            <p className={`text-red-500 text-sm ${validation ? 'flex' : 'hidden'}`}>Please fill in new activity</p>
           </div>
           <div className="flex justify-between">
             <button

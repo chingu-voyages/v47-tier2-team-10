@@ -21,10 +21,6 @@ export default function LeftNav({ isLeftNavOpen, setIsLeftNavOpen }) {
     />
   ));
 
-  const handleAddNewCategoryClick = () => {
-    setIsNewCategoryModalOpen(true);
-    setIsLeftNavOpen(false);
-  };
 
   return (
     <>
@@ -79,7 +75,7 @@ export default function LeftNav({ isLeftNavOpen, setIsLeftNavOpen }) {
           <button
             type="button"
             className="mt-auto mb-7 py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-gray-500 hover:bg-gray-100 hover:text-gray-800 disabled:opacity-50 disabled:pointer-events-none dark:hover:bg-gray-800/30 dark:hover:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-            onClick={handleAddNewCategoryClick}
+            onClick={() => setIsNewCategoryModalOpen(true)}
           >
             <RiAddFill />
             Add new category
