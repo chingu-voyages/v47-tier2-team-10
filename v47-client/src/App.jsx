@@ -1,21 +1,17 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing";
 import ProductPage from "./pages/ProductPage";
-import { useCallback, useState } from "react";
 import PricingPage from "./pages/PricingPage";
 import ProductDataContext from "./context/ProductDataContext";
 import FilteredDataContext from "./context/FilteredDataContext";
 import DarkModeContext from "./context/DarkModeContext";
 import IsLoadingContext from "./context/IsLoadingContext";
 
-//
 
 /*
 
 Anthony
 - change firebase over and add stripe into the data base
-- make product page responsive ('tabs')
-
 
 
 anthony bug collecting/ui/bugs/tasks changes completed:
@@ -35,19 +31,18 @@ anthony bug collecting/ui/bugs/tasks changes completed:
 - fixed width on login and signup
 - add a way to add days, choose column aswell in the add new task modal
 - make dark mode work on everything
-
+- make product page responsive ('tabs')
+- nav needs a z index higher than project task
+- z-index of left panel is higher than modals, needs to be lowered when modal is open
+- product page main height is cut off (needs min of height always)
+- add new category, add new task; has left panel bug color.
 
 bug:
-- add new category, add new task; has left panel bug color.
 - product page overflow error whole page?
 - product page nav elements are not positioned correctly?
-- product page main height is cut off (needs min of height always)
-- modals overfow are not set to hiddne when opened (all modals)
-- z-index of left panel is higher than modals, needs to be lowered when modal is open
+- modals overfow are not set to hidden when opened (all modals)
 - left panel burger menu has error when opened, (needs background as fixed)
-- nav needs a z index higher than project task
-
-
+- make form in add task/edit task work with enter key
 
 
 UI needs to get fixed:
@@ -100,14 +95,4 @@ export default function App() {
       </FilteredDataContext>
     </ProductDataContext>
   );
-}
-
-{
-  /* idk what you're trying to do but why is this here lol?
-               i just commented it out feel free to uncomment it out but 
-              pls explain why im so confused - anthony
-               <Route path="/Login" element={<Login />} />
-                <Route path="/Signup" element={<Signup />} />
-                 <Route path="/Footer" element={<Footer />} />
-           */
 }
