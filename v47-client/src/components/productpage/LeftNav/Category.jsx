@@ -27,21 +27,6 @@ export default function Category({ category, setIsLeftNavOpen }) {
     Aos.init();
   }, []);
 
-  const handleDeleteClick = () => {
-    setIsLeftNavOpen(false);
-    setIsDeleteModalOpen(true);
-  };
-
-  const handleEdit = () => {
-    setIsEditModalOpen(true);
-    setIsLeftNavOpen(false);
-  };
-
-  const handleAddNewActivityClick = () => {
-    setIsNewActivityModalOpen(true);
-    setIsLeftNavOpen(false);
-  };
-
   const onDelete = () => {
     setProductData(prev => (
       prev.filter(item => item.categoryName != category.categoryName)
@@ -89,19 +74,19 @@ export default function Category({ category, setIsLeftNavOpen }) {
             <div className="ml-auto">
               <div className="flex gap-1 ml-auto">
                 <button
-                  onClick={handleEdit}
+                  onClick={() => setIsEditModalOpen(true)}
                   className={`${isCategoryIconsVisible ? 'block' : 'lg:hidden block'} text-md  text-gray-900 hover:text-gray-700`}
                 >
                   <MdOutlineEdit />
                 </button>
                 <button
-                  onClick={handleAddNewActivityClick}
+                  onClick={() => setIsNewActivityModalOpen(true)}
                   className={`${isCategoryIconsVisible ? 'block' : 'lg:hidden block'} text-md  text-gray-900 hover:text-gray-700`}
                 >
                   <GrAddCircle />
                 </button>
                 <button
-                  onClick={handleDeleteClick}
+                  onClick={() => setIsDeleteModalOpen(true)}
                   className={`${isCategoryIconsVisible ? 'block' : 'lg:hidden block'} text-md  text-red-500 hover:text-red-400`} 
                 >
                   <MdDeleteOutline />

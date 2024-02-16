@@ -8,7 +8,7 @@ function AddNewCategory({ setIsNewCategoryModalOpen }) {
   const [validation, setValidation] = useState('')
 
   const {setProductData, productData} = useContext(productDataContext)
-
+ 
   const handleSubmit = () => {
     if(!categoryName) {
       setValidation(true)
@@ -29,8 +29,8 @@ function AddNewCategory({ setIsNewCategoryModalOpen }) {
     <Portal>
     <div className="fixed inset-0 flex items-center justify-center bg-opacity-50 bg-gray-800 z-50">
       <div className="bg-white p-8 rounded-lg w-96">
-          <div className="mb-3">
-            <label htmlFor="categoryName" className="block text-gray-700 text-sm font-semibold mb-4 text-center">
+          <div className="mb-6">
+            <label htmlFor="categoryName" className="block text-gray-700 text-sm font-semibold mb-2">
               Add New Category
             </label>
             <input
@@ -40,7 +40,7 @@ function AddNewCategory({ setIsNewCategoryModalOpen }) {
               value={categoryName}
               onChange={(e) => setCategoryName(e.target.value)}
             />
-            <p className={`text-red-500 text-sm ${validation ? 'visible' : 'invisible'}`}>Please fill in new category</p>
+            <p className={`text-red-500 text-sm ${validation ? 'flex' : 'hidden'}`}>Please fill in new category</p>
           </div>
           <div className="flex justify-between">
             <button

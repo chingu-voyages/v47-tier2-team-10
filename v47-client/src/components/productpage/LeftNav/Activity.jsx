@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { MdDeleteOutline } from "react-icons/md";
 import Delete from "../modals/Delete";
-import EditModal from "../modals/edit/EditCategoryModal";
+import EditModal from "../modals/edit/EditActivityModal";
 import { MdOutlineEdit } from "react-icons/md";
 import { handleFilterData } from "../../../lib/helpers/handleFilterData";
 import { productDataContext } from "../../../context/ProductDataContext";
@@ -11,6 +11,7 @@ export default function Activity({ activity,  setIsLeftNavOpen, categoryName }) 
   const [isActivityIconsVisible, setIsActivityIconsVisible] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [editActivityNameInput, setEditActivityNameInput] = useState(activity.activityName);
 
   const { setProductData,productData } = useContext(productDataContext)
   const {setFilteredData} = useContext(filteredDataContext)
@@ -33,20 +34,6 @@ export default function Activity({ activity,  setIsLeftNavOpen, categoryName }) 
     setIsDeleteModalOpen(false);
   };
 
-  const handleCancel = () => {
-    setIsDeleteModalOpen(false);
-  };
-
-  const handleEditClick = () => {
-    setIsEditModalOpen(true);
-    setIsLeftNavOpen(false);
-  };
-
-  const handleDeleteClick = () => {
-    setIsDeleteModalOpen(true);
-    setIsLeftNavOpen(false);
-  };
-
   const handleActivityNameClick = (activity) => {
     handleFilterData(activity, productData, setFilteredData)
     setIsLeftNavOpen(false)
@@ -65,14 +52,14 @@ export default function Activity({ activity,  setIsLeftNavOpen, categoryName }) 
             <div className="ml-auto">
               <div className="gap-1 ml-auto  flex">
                 <button
-                  onClick={handleEditClick}
+                  onClick={() => setIsEditModalOpen(true)}
                   className={`${isActivityIconsVisible ? 'block' : 'lg:hidden block'} text-sm text-gray-900 hover:text-gray-700`} 
                 >
                   <MdOutlineEdit />
                 </button>
                 <button
                   className={` ${isActivityIconsVisible ? 'block' : 'lg:hidden block'}text-md text-red-500 hover:text-red-400 `}
-                  onClick={handleDeleteClick}
+                  onClick={() => setIsDeleteModalOpen(true)}
                 >
                   <MdDeleteOutline />
                 </button>
@@ -84,10 +71,20 @@ export default function Activity({ activity,  setIsLeftNavOpen, categoryName }) 
         {isDeleteModalOpen && (
            <Delete 
            onDelete={onDelete} 
-           onCancel={handleCancel}
+           onCancel={() => setIsDeleteModalOpen(false)}
            name={activity.activityName}
            />
         )}
+
+      {isEditModalOpen && (
+        <EditModal
+        editActivityNameInput={editActivityNameInput}
+          categoryName={categoryName}
+          activityName={activity.activityName}
+          setIsEditModalOpen={setIsEditModalOpen}
+          setEditActivityNameInput={setEditActivityNameInput}
+        />
+      )}
 
       {/* {isEditModalOpen && (
         <EditModal
