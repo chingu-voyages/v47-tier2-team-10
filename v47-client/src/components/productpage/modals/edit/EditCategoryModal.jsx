@@ -20,7 +20,7 @@ function EditModal({
 
   return (
     <Portal>
-    <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50">
+    <div className="fixed inset-0 flex items-center justify-center bg-opacity-50 bg-gray-800 z-50">
       <div className="bg-white p-8 rounded-lg w-96">
         <InputFields
           headerText={"Edit Category"}
@@ -37,13 +37,16 @@ function EditModal({
             );
             setIsEditModalOpen(false);
           }}
-          onClose={() => setIsEditModalOpen(false)}
+          onClose={() => {
+            setIsEditModalOpen(false)
+            setEditCategoryNameInput(categoryName)
+          }}
           textValue={"Cancel"}
         />
       </div>
     </div>
     </Portal>
   );
-}
+} 
 
 export default EditModal;
