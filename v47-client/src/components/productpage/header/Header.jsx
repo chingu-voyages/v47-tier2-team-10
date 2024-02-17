@@ -36,9 +36,9 @@ export default function Header({ isLeftNavOpen, setIsLeftNavOpen }) {
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
               <line x1="3" x2="21" y1="6" y2="6" />
               <line x1="3" x2="21" y1="12" y2="12" />
@@ -51,8 +51,8 @@ export default function Header({ isLeftNavOpen, setIsLeftNavOpen }) {
         <div className="w-full flex items-center justify-end ms-auto sm:justify-between sm:gap-x-3 sm:order-3">
           <div className="py-2 px-4  block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
             {isLoading ? (
-              <div className="bg-gray-400 animate-pulse h-8 text-lg w-32 "></div>
-            ) : (
+              <div className="bg-gray-400 animate-pulse h-8 text-lg w-32 lg:ml-3"></div>
+            ) : ( 
               <p
                 className={`text-xl font-semibold dark:text-white transform duration-700 lg:pl-3`}
               >
