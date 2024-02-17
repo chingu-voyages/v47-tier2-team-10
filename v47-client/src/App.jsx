@@ -48,7 +48,7 @@ jess bugs/ui completed:
 
 
 bug:
-- product page overflow error whole page?
+- product page overflow error whole page? - changed height of pic when page first loads so there is no overflow, is this what this bug means? jess
 - product page nav elements are not positioned correctly?
 - make form in add task/edit task work with enter key
 
