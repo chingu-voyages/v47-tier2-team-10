@@ -43,10 +43,12 @@ jess bugs/ui completed:
 - sub heading changed to text-[16px] (features) 
 - change color when active (left panel category's) -PR#77
 - left panel burger menu has error when opened, (needs background as fixed) -PR#77
-- modals overfow are not set to hidden when opened (all modals)
+- modals overfow are not set to hidden when opened (all modals) -PR#78
+- change color to green for full names (test page)
+
 
 bug:
-- product page overflow error whole page?
+- product page overflow error whole page? - changed height of pic when page first loads so there is no overflow, is this what this bug means? jess
 - product page nav elements are not positioned correctly?
 - make form in add task/edit task work with enter key
 
@@ -56,7 +58,6 @@ UI needs to get fixed:
 green color: text-[#2d8630]
 - every sub page within the landing page should have a height of screen and be centered
 - implement a transform: y for container onto each test (test page)
-- change color to green for full names (test page)
 - needs padding y and max width consistent with other pages (teaminfo)
 - each container needs a margin bottom consistent with the gap-x (teaminfo)
 - footer just leave it to skylar
