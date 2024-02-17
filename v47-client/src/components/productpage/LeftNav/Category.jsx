@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { MdExpandMore, MdDeleteOutline } from "react-icons/md";
 import Activity from "./Activity";
 import { GrAddCircle } from "react-icons/gr";
-import Add from "../modals/Add";
 import Delete from "../modals/Delete";
 import EditModal from "../modals/edit/EditCategoryModal";
 import { MdOutlineEdit } from "react-icons/md";
@@ -29,7 +28,7 @@ export default function Category({ category, setIsLeftNavOpen }) {
 
   const onDelete = () => {
     setProductData(prev => (
-      prev.filter(item => item.categoryName != category.categoryName)
+      prev.filter(item => item.categoryName !== category.categoryName)
     ))
     setIsDeleteModalOpen(false)
   }

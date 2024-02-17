@@ -95,6 +95,7 @@ export default function Main({
         <div className="mt-0 h-full dark:text-gray-200 p-6 flex dark:bg-[#2B2C37] rounded-md duration-300  bg-gray-200  ">
           <div className="mt-auto hover:text-gray-500 cursor-pointer duration-300 flex items-center gap-x-2 ml-auto">
             <IoIosAdd />
+            {/* <DragnDrop/> */}
             <h1 onClick={() => setIsAddModalOpen(true)}>Add new task</h1>
           </div>
         </div>
