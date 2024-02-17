@@ -21,7 +21,7 @@ export default function Header({ isLeftNavOpen, setIsLeftNavOpen }) {
 
   return (
     <header className="sticky duration-300  top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-1 w-full bg-white z-20 border-b text-sm py-2.5 sm:py-4 lg:ps-64 dark:bg-gray-800 dark:border-gray-700">
-      <nav className="flex duration-300  basis-full items-center w-full mx-auto px-4 sm:px-6 md:px-8">
+      <nav className="flex duration-300  basis-full items-center w-full mx-auto px-5 ">
         {/* hamburger */}
         <div className="me-5 lg:me-0">
           <button
@@ -51,10 +51,10 @@ export default function Header({ isLeftNavOpen, setIsLeftNavOpen }) {
         <div className="w-full flex items-center justify-end ms-auto sm:justify-between sm:gap-x-3 sm:order-3">
           <div className="py-2 px-4  block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
             {isLoading ? (
-              <div className="bg-gray-400 animate-pulse h-8 text-lg w-32"></div>
+              <div className="bg-gray-400 animate-pulse h-8 text-lg w-32 "></div>
             ) : (
               <p
-                className={`text-xl font-semibold dark:text-white transform duration-700`}
+                className={`text-xl font-semibold dark:text-white transform duration-700 lg:pl-3`}
               >
                 {filteredData[0]?.activityName
                   ? filteredData[0].activityName

@@ -39,16 +39,15 @@ anthony bug collecting/ui/bugs/tasks changes completed:
 
 
 jess bugs/ui completed:
-- our features color changed to green (features)
-- sub heading changed to text-[16px] (features)
-- change color when active (left panel category's)
-- left panel burger menu has error when opened, (needs background as fixed)
-
+- our features color changed to green (features) -PR#77
+- sub heading changed to text-[16px] (features) 
+- change color when active (left panel category's) -PR#77
+- left panel burger menu has error when opened, (needs background as fixed) -PR#77
+- modals overfow are not set to hidden when opened (all modals)
 
 bug:
 - product page overflow error whole page?
 - product page nav elements are not positioned correctly?
-- modals overfow are not set to hidden when opened (all modals)
 - make form in add task/edit task work with enter key
 
 
