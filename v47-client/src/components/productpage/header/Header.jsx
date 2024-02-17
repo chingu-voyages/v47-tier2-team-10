@@ -25,7 +25,7 @@ export default function Header({ isLeftNavOpen, setIsLeftNavOpen }) {
         {/* hamburger */}
         <div className="me-5 lg:me-0">
           <button
-            className="lg:hidden mt-2"
+            className="lg:hidden mt-2 dark:text-gray-400"
             onClick={() => setIsLeftNavOpen((prev) => !prev)}
           >
             <svg
@@ -49,7 +49,7 @@ export default function Header({ isLeftNavOpen, setIsLeftNavOpen }) {
 
         {/* activity */}
         <div className="w-full flex items-center justify-end ms-auto sm:justify-between sm:gap-x-3 sm:order-3">
-          <div className="py-2 px-4  block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
+          <div className="py-2 px-4  block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none   dark:text-gray-400 dark:focus:ring-gray-600">
             {isLoading ? (
               <div className="bg-gray-400 animate-pulse h-8 text-lg w-32 lg:ml-3"></div>
             ) : ( 
