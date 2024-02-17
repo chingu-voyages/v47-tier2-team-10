@@ -54,9 +54,7 @@ export default function Header({ isLeftNavOpen, setIsLeftNavOpen }) {
               <div className="bg-gray-400 animate-pulse h-8 text-lg w-32"></div>
             ) : (
               <p
-                className={`text-xl font-semibold dark:text-white transform duration-700 ${
-                  isLeftNavOpen ? "pl-56 lg:pl-0 " : ""
-                }`}
+                className={`text-xl font-semibold dark:text-white transform duration-700`}
               >
                 {filteredData[0]?.activityName
                   ? filteredData[0].activityName

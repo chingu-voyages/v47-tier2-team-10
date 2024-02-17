@@ -16,7 +16,7 @@ export default function Icons() {
 
             <div>
                 <div>
-                <h3 class="block font-bold text-gray-800 dark:text-white">Visualise, filter & sort</h3>
+                <h3 class="block font-bold text-[#2d8630] text-[16px] dark:text-white">Visualise, filter & sort</h3>
                 <p class="text-gray-600 dark:text-gray-800">Show activities and tasks that are in progress and completed.</p>
                 </div>
 
@@ -34,7 +34,7 @@ export default function Icons() {
 
             <div>
                 <div>
-                <h3 class="block font-bold text-gray-800 dark:text-white">Customise your work</h3>
+                <h3 class="block font-bold text-[#2d8630] text-[16px]  dark:text-white">Customise your work</h3>
                 <p class="text-gray-600 dark:text-gray-400">Create your own tasks and more, so everything stays organised.</p>
                 </div>
 
@@ -52,7 +52,7 @@ export default function Icons() {
 
             <div>
                 <div>
-                <h3 class="block font-bold text-gray-800 dark:text-white">Communicate your ideas</h3>
+                <h3 class="block font-bold text-[#2d8630] text-[16px]  dark:text-white">Communicate your ideas</h3>
                 <p class="text-gray-600 dark:text-gray-400">Drag and drop, dark theme, you are in control to customise.</p>
                 </div>
 

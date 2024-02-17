@@ -37,30 +37,33 @@ anthony bug collecting/ui/bugs/tasks changes completed:
 - product page main height is cut off (needs min of height always)
 - add new category, add new task; has left panel bug color.
 
+
+jess bugs/ui completed:
+- our features color changed to green (features)
+- sub heading changed to text-[16px] (features)
+- change color when active (left panel category's)
+- left panel burger menu has error when opened, (needs background as fixed)
+
+
 bug:
 - product page overflow error whole page?
 - product page nav elements are not positioned correctly?
 - modals overfow are not set to hidden when opened (all modals)
-- left panel burger menu has error when opened, (needs background as fixed)
 - make form in add task/edit task work with enter key
 
 
 UI needs to get fixed:
-
 - change all headings/subheadings to green 
 green color: text-[#2d8630]
-
 - every sub page within the landing page should have a height of screen and be centered
 - implement a transform: y for container onto each test (test page)
 - change color to green for full names (test page)
 - needs padding y and max width consistent with other pages (teaminfo)
 - each container needs a margin bottom consistent with the gap-x (teaminfo)
-- sub heading changed to text-[16px] (features)
-- our features color changed to green (features)
 - footer just leave it to skylar
 - padding-x added to nav (productpage)
 - needs padding x (product page)
-- change color when active (left panel category's)
+
 
 
 thing to add:

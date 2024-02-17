@@ -63,10 +63,10 @@ export default function Category({ category, setIsLeftNavOpen }) {
             >
               <MdExpandMore
                 className={`${
-                  isActivityVisible ? "rotate-180 font-bold text-blue-600 dark:text-white" : "font-bold text-gray-800 dark:text-white"
+                  isActivityVisible ? "rotate-180 font-bold text-[#2d8630] dark:text-white" : "font-bold text-gray-800 dark:text-white"
                 } transform transition duration-200 ease-out `}
               />
-              <p className={isActivityVisible ? 'text-blue-600' : ''}>  
+              <p className={isActivityVisible ? 'text-[#2d8630]' : ''}>  
                 {capitalizeEachWord(category.categoryName)}
               </p>
             </button>
