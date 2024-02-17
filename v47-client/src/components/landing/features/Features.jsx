@@ -17,10 +17,10 @@ export default function Features() {
       data-aos-duration="600"
     >
       <div class="mx-auto max-w-2xl  text-center mt-10">
-        <h2 class="text-3xl lg:text-4xl text-gray-800 font-bold dark:text-gray-200">
+        <h2 class="text-3xl lg:text-4xl text-[#2d8630] font-bold dark:text-gray-200">
           Our Features
         </h2>
-        <p class="mt-3 text-gray-800 dark:text-gray-200">
+        <p class="mt-3 text-gray-800 dark:text-gray-200 text-[16px]">
           The powerful and flexible organisation solution for every individual
           and business.
         </p>
