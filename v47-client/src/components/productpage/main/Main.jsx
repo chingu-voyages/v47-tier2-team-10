@@ -86,7 +86,8 @@ export default function Main({
         ) : (
           <figure className="h-full  mx-auto flex justify-between items-center">
             <img
-              className="object-cover max-h-[500px]"
+              // className="object-cover max-h-[500px]"
+              className="object-cover h-[calc(100vh_-_17rem)]"
               src="/assets/product_data_img.svg"
               alt=""
             />
