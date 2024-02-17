@@ -4,7 +4,7 @@ import {
   sendPasswordResetEmail,
   getAuth,
 } from "firebase/auth";
-import app from "../../firebase";
+import app, { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -17,7 +17,6 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const auth = getAuth(app);
       await signInWithEmailAndPassword(auth, username, password);
       setError(null);
       setSuccessMessage("");
@@ -32,7 +31,6 @@ const Login = () => {
 
   const handleForgotPassword = async () => {
     try {
-      const auth = getAuth(app);
       await sendPasswordResetEmail(auth, username);
       setError(null);
       setSuccessMessage("Password reset email sent successfully!");
