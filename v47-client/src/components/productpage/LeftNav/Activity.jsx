@@ -53,7 +53,7 @@ export default function Activity({ activity,  setIsLeftNavOpen, categoryName }) 
               <div className="gap-1 ml-auto  flex">
                 <button
                   onClick={() => setIsEditModalOpen(true)}
-                  className={`${isActivityIconsVisible ? 'block' : 'lg:hidden block'} text-sm text-gray-900 hover:text-gray-700`} 
+                  className={`${isActivityIconsVisible ? 'block' : 'lg:hidden block'} text-sm text-gray-900 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300`} 
                 >
                   <MdOutlineEdit />
                 </button>
