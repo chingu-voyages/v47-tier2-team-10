@@ -20,7 +20,7 @@ export default function MenuModal({ taskName }) {
       onClick={(e) => e.stopPropagation()}
       className="absolute shadow-sm right-0  z-50 -bottom-[40px] rounded-lg p-3  bg-white text-black"
     >
-      <span onClick={() => handleFilterData(taskName)}>Delete1</span>
+      <span onClick={() => handleFilterData(taskName)}>Delete</span>
     </div>
   );
 }

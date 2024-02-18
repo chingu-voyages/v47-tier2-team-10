@@ -35,9 +35,10 @@ export default function TaskList({
       onClick={() => {
         setIsTaskModalOpen(!isTaskModalOpen);
       }}
-      className={`rounded-lg duration-300  p-4 mr-6 mb-6 flex  flex-col   cursor-pointer  relative w-[320px]  max-w-[320px] min-h-[96px] bg-gray-400`}
+      className={`rounded-lg duration-300 space-y-2 p-4 mr-6 mb-6 flex  flex-col   cursor-pointer  relative w-[320px]  max-w-[320px] min-h-[96px] bg-gray-400`}
     >
-      <h1 className="text-sm  break-words ">{taskName}</h1>{" "}
+      <h1 className="text-sm  break-words">{taskName}</h1>{" "}
+      <h2 className="text-sm  break-words">Date Due: {days}</h2>{" "}
       <div className="flex flex-1 duration-300  mt-auto justify-end items-end">
         <BsThreeDots
           onClick={(e) => {
