@@ -25,7 +25,7 @@ The Minimum Viable Product (MVP) of this application enables users to create tas
 
 #### Example Image
 
-![Example daily task productivity tool](./assets/daily_productivity_sample_ui.png)
+![Example daily task productivity tool](https://github.com/chingu-voyages/voyage-project-tier2-dailytasks/blob/main/assets/daily_productivity_sample_ui.png?raw=true)
 
 This project presented the team with an invaluable chance to engage in web development firsthand and tackle multi-dimensional datasets. It served as a real-world application for refining their skills and exploring the intricacies of manipulating data within a web-based framework.
 
@@ -95,8 +95,6 @@ This project doesn't have a deployment-level build script. To deploy the app on 
 ![Screenshot of the application](./v47-client/public/chinguteam.png)
 
 
-
-See also the list of [contributors](./CONTRIBUTORS.md) who participated in this project.
 
 
 ## About Chingu
