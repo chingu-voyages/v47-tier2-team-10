@@ -6,6 +6,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../../firebase";
 import { authContext } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -14,6 +15,7 @@ const Signup = () => {
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState("");
   const { signupModal, setSignupModal } = useContext(authContext);
+  const navgiate = useNavigate();
 
   const handleSignup = async () => {
     try {
@@ -30,9 +32,8 @@ const Signup = () => {
         setSuccessMessage(
           "Signup successfully! Now, Go back to our main page and log in as our new member<3"
         );
-        setTimeout(() => {
-          closeModal();
-        }, 2000);
+        closeModal();
+        navgiate("/ProductPage");
         // console.log('Signup successfully!');
       } catch (createError) {
         setError("Signup failed. Please try again.");
@@ -52,9 +53,8 @@ const Signup = () => {
       setSuccessMessage(
         "Signup successfully! Now, Go back to our main page and log in as our new member<3"
       );
-      setTimeout(() => {
-        closeModal();
-      }, 2000);
+      closeModal();
+      navgiate("/ProductPage");
     } catch (error) {
       console.log(error);
     }
