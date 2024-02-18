@@ -18,7 +18,7 @@ export default function Category({ category, setIsLeftNavOpen }) {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isCategoryIconsVisible, setIsCategoryIconsVisible] = useState(false);
-  const [editCategoryNameInput, setEditCategoryNameInput] = useState("");
+  const [editCategoryNameInput, setEditCategoryNameInput] = useState(category.categoryName);
   const [isAddNewActivityModalOpen, setIsNewActivityModalOpen] = useState(false)
 
   const { setProductData } = useContext(productDataContext);
@@ -120,7 +120,7 @@ export default function Category({ category, setIsLeftNavOpen }) {
 
       {isEditModalOpen && (
         <EditModal
-          editCategoryNameInput={capitalizeEachWord(editCategoryNameInput)}
+          editCategoryNameInput={editCategoryNameInput}
           categoryName={category.categoryName}
           setIsEditModalOpen={setIsEditModalOpen}
           setEditCategoryNameInput={setEditCategoryNameInput}
