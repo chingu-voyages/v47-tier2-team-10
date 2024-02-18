@@ -10,7 +10,7 @@ const Testimonials = () => {
 
   return (
     <section
-      className="py-6 flex justify-center items-center flex-col relative min-h-screen  "
+      className="py-6 flex justify-center mx-auto max-w-[1300px] items-center flex-col relative min-h-screen  "
       data-aos="fade-zoom-in"
       data-aos-offset="200"
       data-aos-easing="ease-in-sine"
