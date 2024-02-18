@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import {
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
   getAuth,
+  onAuthStateChanged,
+  signOut,
 } from "firebase/auth";
 import app from "../../firebase";
 import { useNavigate } from "react-router-dom";
@@ -14,6 +16,17 @@ const Login = () => {
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState("");
   const [isModalOpen, setModalOpen] = useState(false);
+  const [user,setUser] = useState(null);
+  
+  useEffect(() => {
+    const auth = getAuth(app);
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+
+    return () => unsubscribe();
+  }, []);
+  
 
   const handleLogin = async () => {
     try {
@@ -27,6 +40,16 @@ const Login = () => {
     } catch (error) {
       setError("Invalid username or password. Please try again.");
       console.error("Login failed:", error);
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      const auth = getAuth(app);
+      await signOut(auth);
+      console.log("Logout successful!");
+    } catch (error) {
+      console.error("Logout failed:", error);
     }
   };
 
@@ -52,12 +75,27 @@ const Login = () => {
 
   return (
     <div className="justify-center">
-      <button
+      {/* <button
         onClick={openModal}
         className="bg-green-500  text-white px-4 py-2 duration-300 rounded-md hover:bg-[#2d8630]"
       >
         Login
-      </button>
+      </button> */}
+      {user ? (
+        <button
+          onClick={handleLogout}
+          className="bg-green-500 text-white px-4 py-2 duration-300 rounded-md hover:bg-[#2d8630]"
+        >
+          Logout
+        </button>
+      ) : (
+        <button
+          onClick={openModal}
+          className="bg-green-500 text-white px-4 py-2 duration-300 rounded-md hover:bg-[#2d8630]"
+        >
+          Login
+        </button>
+      )}
 
       {isModalOpen && (
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">

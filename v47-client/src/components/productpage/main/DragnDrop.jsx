@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
+// import FilteredDataContext from "../../../context/FilteredDataContext";
 
 function DragnDrop() {
   const [widgets, setWidgets] = useState([]);
@@ -269,6 +270,9 @@ function DragnDrop() {
     
     
   ];
+
+  // const {filteredData, setFiltered} = useContext(FilteredDataContext)
+  // const { filteredData, setFilteredData } = useContext(FilteredDataContext);
 
   function handleOnDrag(e, widgetType, currentIndex) {
     e.dataTransfer.setData("text/plain", JSON.stringify({ widgetType, currentIndex }));

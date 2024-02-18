@@ -8,6 +8,7 @@ import Testimonials from "../components/landing/testimonials/Testimonials";
 import Features from "../components/landing/features/Features";
 import TaskFlow from "../components/landing/taskflow/TaskFlow";
 import TeamInfo from "../components/landing/teamInfo/TeamInfo";
+import ChatbotComponent from "./ChatbotComponent";
 
 export default function JLanding() {
   useEffect(() => {
@@ -22,6 +23,7 @@ export default function JLanding() {
       <TaskFlow />
       <Features />
       <Testimonials />
+      <ChatbotComponent/>
       <TeamInfo />
       <Footer />
     </section>
