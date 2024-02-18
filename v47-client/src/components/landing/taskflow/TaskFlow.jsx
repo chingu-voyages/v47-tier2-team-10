@@ -19,7 +19,7 @@ export default function TaskFlow() {
             className="font-bold text-[22px] dark:text-white md:text-2xl"
           >
             Find your dream schedule with{" "}
-            <span className="text-[#2d8630]">Task Flow</span>
+            <span className="text-[#2d8630]">Daily Tasker</span>
           </p>
           <div data-aos="fade-up" data-aos-duration="2000">
             <Button link="ProductPage" innerText="Go to Product" />
