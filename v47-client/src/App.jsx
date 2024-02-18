@@ -6,6 +6,7 @@ import ProductDataContext from "./context/ProductDataContext";
 import FilteredDataContext from "./context/FilteredDataContext";
 import DarkModeContext from "./context/DarkModeContext";
 import IsLoadingContext from "./context/IsLoadingContext";
+import ChatbotComponent from "./pages/ChatbotComponent";
 
 
 /*
@@ -89,7 +90,7 @@ export default function App() {
                 <Routes>
                   <Route path="/" element={<Landing />} />
                   <Route path="/ProductPage" element={<ProductPage />} />
-                  <Route path="/PricingPage" element={<PricingPage />} />
+                  {/* <Route path="/ChatbotComponent" element={<ChatbotComponent/>}/> */}
                 </Routes>
               </Router>
             </div>

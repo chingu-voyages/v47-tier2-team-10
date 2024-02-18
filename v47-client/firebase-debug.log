@@ -1,0 +1,147 @@
+[debug] [2024-02-10T10:47:35.124Z] ----------------------------------------------------------------------
+[debug] [2024-02-10T10:47:35.126Z] Command:       /usr/local/bin/firebase /Users/skylar/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase emulators:start
+[debug] [2024-02-10T10:47:35.126Z] CLI Version:   12.7.0
+[debug] [2024-02-10T10:47:35.126Z] Platform:      darwin
+[debug] [2024-02-10T10:47:35.127Z] Node Version:  v16.16.0
+[debug] [2024-02-10T10:47:35.128Z] Time:          Sat Feb 10 2024 19:47:35 GMT+0900 (GMT+09:00)
+[debug] [2024-02-10T10:47:35.128Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-02-10T10:47:35.240Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-02-10T10:47:35.241Z] > authorizing via signed-in user (heartofsound77@gmail.com)
+[info] i  emulators: Starting emulators: functions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions"}}
+[debug] [2024-02-10T10:47:35.710Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-02-10T10:47:35.712Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2024-02-10T10:47:35.725Z] [hub] writing locator at /var/folders/6z/m5t7gh0j0c70rpdtk9v16hgm0000gn/T/hub-v47login.json
+[debug] [2024-02-10T10:47:36.074Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-02-10T10:47:36.077Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-02-10T10:47:36.078Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[warn] ⚠  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: auth, firestore, database, hosting, pubsub, storage {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mauth, firestore, database, hosting, pubsub, storage\u001b[22m"}}
+[debug] [2024-02-10T10:47:36.087Z] defaultcredentials: writing to file /Users/skylar/.config/firebase/heartofsound77_gmail_com_application_default_credentials.json
+[debug] [2024-02-10T10:47:36.093Z] Setting GAC to /Users/skylar/.config/firebase/heartofsound77_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /Users/skylar/.config/firebase/heartofsound77_gmail_com_application_default_credentials.json"}}
+[debug] [2024-02-10T10:47:36.096Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/v47login/adminSdkConfig [none]
+[debug] [2024-02-10T10:47:36.545Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/v47login/adminSdkConfig 200
+[debug] [2024-02-10T10:47:36.547Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/v47login/adminSdkConfig {"projectId":"v47login","databaseURL":"https://v47login-default-rtdb.asia-southeast1.firebasedatabase.app","storageBucket":"v47login.appspot.com"}
+[debug] [2024-02-10T10:47:36.580Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2024-02-10T10:47:36.580Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2024-02-10T10:47:36.581Z] Starting Emulator UI with command {"binary":"node","args":["/Users/skylar/.cache/firebase/emulators/ui-v1.11.7/server/server.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"/Users/skylar/.cache/firebase/emulators/ui-v1.11.7/server/server.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2024-02-10T10:47:36.753Z] Web / API server started at 127.0.0.1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4000\n"}}
+[debug] [2024-02-10T10:47:36.753Z] Web / API server started at ::1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at ::1:4000\n"}}
+[info] i  functions: Watching "/Users/skylar/v47-tier2-team-10/v47-client/functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/Users/skylar/v47-tier2-team-10/v47-client/functions\" for Cloud Functions..."}}
+[debug] [2024-02-10T10:47:36.862Z] Validating nodejs source
+[debug] [2024-02-10T10:47:37.684Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^11.8.0",
+    "firebase-functions": "^4.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2024-02-10T10:47:37.685Z] Building nodejs source
+[debug] [2024-02-10T10:47:37.685Z] Failed to find version of module node: reached end of search path /Users/skylar/v47-tier2-team-10/v47-client/functions/node_modules
+[warn] ⚠  functions: You've requested "node" version "18", but the standalone Firebase CLI comes with bundled Node "16". 
+[info] ✔  functions: To use a different Node.js version, consider removing the standalone Firebase CLI and switching to "firebase-tools" on npm. 
+[debug] [2024-02-10T10:47:37.689Z] Could not find functions.yaml. Must use http discovery
+[debug] [2024-02-10T10:47:37.699Z] Found firebase-functions binary at '/Users/skylar/v47-tier2-team-10/v47-client/node_modules/.bin/firebase-functions'
+[info] Serving at port 8053
+
+[error] ReferenceError: required is not defined
+    at Object.<anonymous> (/Users/skylar/v47-tier2-team-10/v47-client/functions/index.js:16:15)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Module._compile (pkg/prelude/bootstrap.js:1890:32)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at Module.require (pkg/prelude/bootstrap.js:1851:31)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at loadModule (/Users/skylar/v47-tier2-team-10/v47-client/node_modules/firebase-functions/lib/runtime/loader.js:40:16)
+
+[debug] [2024-02-10T10:47:38.741Z] Got response code 400; body Failed to generate manifest from function source: ReferenceError: required is not defined
+[error] ⬢  functions: Failed to load function definition from source: FirebaseError: Functions codebase could not be analyzed successfully. It may have a syntax or runtime error {"metadata":{"emulator":{"name":"functions"},"message":"Failed to load function definition from source: FirebaseError: Functions codebase could not be analyzed successfully. It may have a syntax or runtime error"}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌───────────┬────────────────┬─────────────────────────────────┐
+│ Emulator  │ Host:Port      │ View in Emulator UI             │
+├───────────┼────────────────┼─────────────────────────────────┤
+│ Functions │ 127.0.0.1:5001 │ http://127.0.0.1:4000/functions │
+└───────────┴────────────────┴─────────────────────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2024-02-10T11:03:01.135Z] File /Users/skylar/v47-tier2-team-10/v47-client/functions/index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/skylar/v47-tier2-team-10/v47-client/functions/index.js changed, reloading triggers"}}
+[debug] [2024-02-10T11:03:02.146Z] Validating nodejs source
+[debug] [2024-02-10T11:03:02.805Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^11.8.0",
+    "firebase-functions": "^4.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2024-02-10T11:03:02.805Z] Building nodejs source
+[debug] [2024-02-10T11:03:02.805Z] Failed to find version of module node: reached end of search path /Users/skylar/v47-tier2-team-10/v47-client/functions/node_modules
+[warn] ⚠  functions: You've requested "node" version "18", but the standalone Firebase CLI comes with bundled Node "16". 
+[info] ✔  functions: To use a different Node.js version, consider removing the standalone Firebase CLI and switching to "firebase-tools" on npm. 
+[debug] [2024-02-10T11:03:02.808Z] Could not find functions.yaml. Must use http discovery
+[debug] [2024-02-10T11:03:02.812Z] Found firebase-functions binary at '/Users/skylar/v47-tier2-team-10/v47-client/node_modules/.bin/firebase-functions'
+[info] Serving at port 8370
+
+[error] ReferenceError: required is not defined
+    at Object.<anonymous> (/Users/skylar/v47-tier2-team-10/v47-client/functions/index.js:19:15)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Module._compile (pkg/prelude/bootstrap.js:1890:32)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at Module.require (pkg/prelude/bootstrap.js:1851:31)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at loadModule (/Users/skylar/v47-tier2-team-10/v47-client/node_modules/firebase-functions/lib/runtime/loader.js:40:16)
+
+[debug] [2024-02-10T11:03:03.570Z] Got response code 400; body Failed to generate manifest from function source: ReferenceError: required is not defined
+[error] ⬢  functions: Failed to load function definition from source: FirebaseError: Functions codebase could not be analyzed successfully. It may have a syntax or runtime error {"metadata":{"emulator":{"name":"functions"},"message":"Failed to load function definition from source: FirebaseError: Functions codebase could not be analyzed successfully. It may have a syntax or runtime error"}}
