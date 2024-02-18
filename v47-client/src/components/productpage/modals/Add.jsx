@@ -1,74 +1,108 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from "react";
+import InputFields from "./resuable/InputFields";
+import { handleAddNewTask } from "../../../lib/helpers/handleAddNewTask";
+import { filteredDataContext } from "../../../context/FilteredDataContext";
+import Portal from "./Portal/Portal";
 
-
-export const Add = ({onClose}) => {
-  const [taskName, setTaskName] = useState('');
-  const [description, setDescription] = useState('');
-
-  const handleTaskNameChange = (e) => {
-    setTaskName(e.target.value);
-  };
-
-  const handleDescriptionChange = (e) => {
-    setDescription(e.target.value);
-  };
-
-  const handleAdd = () => {
-
-   alert("Task added")
-   
-  };
-
-  const handleCancel = () => {
-    
-    onClose();
-   
-  };
-
+const Button = ({ handleClickValue, textValue }) => {
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
-      <div className="bg-white p-8 rounded-lg w-96">
-        <div className="mb-6">
-          <label htmlFor="taskName" className="block text-gray-700 text-sm font-semibold mb-2">
-            Task Name
-          </label>
-          <input
-            type="text"
-            id="taskName"
-            className="w-full border border-gray-300 px-3 py-2 rounded"
-            value={taskName}
-            onChange={handleTaskNameChange}
-            required
-          />
-        </div>
-        <div className="mb-6">
-          <label htmlFor="description" className="block text-gray-700 text-sm font-semibold mb-2">
-            Description
-          </label>
-          <textarea
-            id="description"
-            className="w-full border border-gray-300 px-3 py-2 rounded-sm"
-            value={description}
-            onChange={handleDescriptionChange}
-          ></textarea>
-        </div>
-        <div className="flex justify-between">
-          <button
-            className="bg-gray-300 text-gray-700 px-8 py-2  rounded"
-            onClick={handleCancel}
-            required
-          >
-            Cancel
-          </button>
-
-          <button
-            className="bg-green-500 text-white px-10 py-2  rounded"
-            onClick={handleAdd}
-          >
-            Add
-          </button>
-        </div>
-      </div>
-    </div>
+    <button
+      className={`py-2 rounded ${
+        textValue === "Cancel"
+          ? "px-8 text-gray-700 bg-gray-300 "
+          : "bg-green-500  text-white px-10"
+      }`}
+      onClick={() => handleClickValue()}
+      required
+    >
+      {textValue}
+    </button>
   );
 };
+
+const Add = ({ newTaskData, setNewTaskData, setIsAddModalOpen }) => {
+  const { setFilteredData, filteredData } = useContext(filteredDataContext);
+  console.log(filteredData);
+  return (
+    <Portal>
+      <div className="fixed inset-0 z-50 flex items-center px-12 md:px-0  justify-center bg-gray-800 bg-opacity-50">
+        <div className="bg-white p-8 rounded-lg w-[500px]">
+          <InputFields
+            headerText="Task Name"
+            onChangeValue={(value) => {
+              return setNewTaskData((prevData) => {
+                return {
+                  ...prevData,
+                  taskName: value,
+                };
+              });
+            }}
+            value={newTaskData.taskName}
+            isTextArea={false}
+          />
+          <InputFields
+            headerText="Task Description"
+            onChangeValue={(value) => {
+              return setNewTaskData((prevData) => {
+                return {
+                  ...prevData,
+                  taskDescription: value,
+                };
+              });
+            }}
+            value={newTaskData.taskDescription}
+            isTextArea={true}
+          />
+          <InputFields
+            headerText="Days"
+            onChangeValue={(value) => {
+              return setNewTaskData((prevData) => {
+                return {
+                  ...prevData,
+                  days: value,
+                };
+              });
+            }}
+            value={newTaskData.days}
+            placeholder={"format as YYYY-MM-DD"}
+          />
+          <InputFields
+            headerText="Column"
+            onChangeValue={(value) => {
+              return setNewTaskData((prevData) => {
+                return {
+                  ...prevData,
+                  column: value,
+                };
+              });
+            }}
+            value={newTaskData.column}
+            placeholder={`Pick either: 'Not Started', 'In Progress', 'Done' `}
+          />
+          <div className="flex justify-between">
+            <Button
+              handleClickValue={() => setIsAddModalOpen(false)}
+              textValue={"Cancel"}
+            />
+            <Button
+              handleClickValue={() => {
+                handleAddNewTask(
+                  setFilteredData,
+                  setIsAddModalOpen,
+                  newTaskData.taskDescription,
+                  newTaskData.taskName,
+                  newTaskData.days,
+                  newTaskData.column
+                );
+                setNewTaskData({ taskDescription: "", taskName: "" });
+              }}
+              textValue={"Add"}
+            />
+          </div>
+        </div>
+      </div>
+    </Portal>
+  );
+};
+
+export default Add;

@@ -1,33 +1,18 @@
-import React, { useEffect, useState } from "react";
-import Main from "../components/productpage/Main";
+import React, { useContext, useEffect, useState } from "react";
 import LeftNav from "../components/productpage/LeftNav/LeftNav";
-import Header from "../components/productpage/Header";
 import data from "../data.json";
-import { fetchData } from "../constants/api";
-import Login from "./Login";
-import Logout from "./Logout";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-import app from "../firebase";
+import { fetchData } from "../lib/apiServices";
+import Header from "../components/productpage/header/Header";
+import Main from "../components/productpage/main/Main";
+import { productDataContext } from "../context/ProductDataContext";
+import { isLoadingContext } from "../context/IsLoadingContext";
 
-
-export default function ProductPage({ toggleDarkMode, darkMode }) {
-
-
-  const [productData, setProductData] = useState([]);
-  const [user,setUser]= useState(null)
-  const [filteredData, setFilteredData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [errorHandling, setErrorHandling] = useState(false);
+export default function ProductPage() {
   const [isLeftNavOpen, setIsLeftNavOpen] = useState(true);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
-  const handleFilterData = (taskName) => {
-    const filterData = productData.flatMap((data) => {
-      return data.activityTypes.filter((item) => {
-        return item.activityName === taskName;
-      });
-    });
-    setFilteredData(filterData);
-  };
+  const { setProductData } = useContext(productDataContext);
+  const { setIsLoading } = useContext(isLoadingContext);
 
   useEffect(() => {
     const fetchProductData = async () => {
@@ -37,56 +22,47 @@ export default function ProductPage({ toggleDarkMode, darkMode }) {
         setIsLoading(false);
       } catch (error) {
         setIsLoading(false);
-        setErrorHandling(true);
-        console.error("Error Fetching", error);
+        console.error("Error Fetching data", error);
       }
     };
     fetchProductData();
-  }, [productData]);
-
-  useEffect(()=>{
-    const auth = getAuth(app);
-    const unsubscriebe = onAuthStateChanged(auth,(user)=>{
-      setUser(user);
-    });
-    return()=>unsubscriebe();
-  },[]);
-
-  const handleLogin=()=>{
-  }
-
-  const handleLogout=()=>{
-    const auth = getAuth(app);
-    signOut(auth);//fire
-  }
+  }, []);
 
   return (
-    <section className="flex  gap-x-6 h-screen mx-auto p-6 ">
-      <LeftNav
-        isLoading={isLoading}
-        darkMode={darkMode}
-        toggleDarkMode={toggleDarkMode}
-        handleFilterData={handleFilterData}
+    <div className="bg-gray-50 dark:bg-slate-900 duration-300  overflow-clip h-screen">
+      {isLeftNavOpen && (
+        <div
+          className="absolute bg-black opacity-50 inset-0 lg:position:static lg:bg-white lg:opacity-0 lg:inset-auto z-10 lg:z-auto"
+          onClick={() => setIsLeftNavOpen(false)}
+        ></div>
+      )}
+      <Header
         isLeftNavOpen={isLeftNavOpen}
         setIsLeftNavOpen={setIsLeftNavOpen}
-        productData={productData}
       />
-      <div className="flex space-y-6 flex-1 flex-col">
-      {user ? (
-          <Logout onLogout={handleLogout} />
-        ) : (
-          <Login onLogin={handleLogin} />
-        )}
-        <Header
-          isLoading={isLoading}
-          darkMode={darkMode}
-          toggleDarkMode={toggleDarkMode}
-          filteredData={filteredData}
-          isLeftNavOpen={isLeftNavOpen}
-          setIsLeftNavOpen={setIsLeftNavOpen}
+      <LeftNav
+        isAddModalOpen={isAddModalOpen}
+        setIsAddModalOpen={setIsAddModalOpen}
+        isLeftNavOpen={isLeftNavOpen}
+        setIsLeftNavOpen={setIsLeftNavOpen}
+      />
+
+      <div
+        className=" duration-300  py-10 px-5 w-screen lg:ps-72   overflow-scroll h-screen [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-slate-700 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500"
+      >
+        {/*
+        - move this to the nav
+              
+              <UserSignedIn
+              showLoginModal={showLoginModal}
+              setShowLoginModal={setShowLoginModal}
+            />
+         */}
+        <Main
+          isAddModalOpen={isAddModalOpen}
+          setIsAddModalOpen={setIsAddModalOpen}
         />
-        <Main filteredData={filteredData} />
       </div>
-    </section>
+    </div>
   );
 }
