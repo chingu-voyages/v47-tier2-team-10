@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { MdDeleteOutline } from "react-icons/md";
 import Delete from "../modals/Delete";
 import EditModal from "../modals/edit/EditActivityModal";
@@ -13,12 +13,10 @@ export default function Activity({ activity,  setIsLeftNavOpen, categoryName }) 
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editActivityNameInput, setEditActivityNameInput] = useState(activity.activityName);
 
-  const { setProductData,productData } = useContext(productDataContext)
-  const {setFilteredData} = useContext(filteredDataContext)
-
+  const { setProductData,productData } = useContext(productDataContext);
+  const {setFilteredData} = useContext(filteredDataContext);
 
   const onDelete = () => {
-    // Add logic for deletion
     let updatedProductData = []
     productData.forEach(item => {
       if(item.categoryName === categoryName) {
@@ -29,7 +27,7 @@ export default function Activity({ activity,  setIsLeftNavOpen, categoryName }) 
       } else {
         updatedProductData = [...updatedProductData, item]
       }
-    })
+    });
     setProductData(updatedProductData)
     setIsDeleteModalOpen(false);
   };
@@ -37,7 +35,7 @@ export default function Activity({ activity,  setIsLeftNavOpen, categoryName }) 
   const handleActivityNameClick = (activity) => {
     handleFilterData(activity, productData, setFilteredData)
     setIsLeftNavOpen(false)
-    }
+  };
 
 
   return (
@@ -78,7 +76,7 @@ export default function Activity({ activity,  setIsLeftNavOpen, categoryName }) 
 
       {isEditModalOpen && (
         <EditModal
-        editActivityNameInput={editActivityNameInput}
+          editActivityNameInput={editActivityNameInput}
           categoryName={categoryName}
           activityName={activity.activityName}
           setIsEditModalOpen={setIsEditModalOpen}

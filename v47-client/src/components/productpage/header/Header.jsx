@@ -6,7 +6,7 @@ import { isLoadingContext } from "../../../context/IsLoadingContext";
 import WeatherIcon from "../weather/WeatherIcon";
 import Login from "../../modals/Login";
 
-export default function Header({ isLeftNavOpen, setIsLeftNavOpen }) {
+export default function Header({ setIsLeftNavOpen }) {
   const { filteredData } = useContext(filteredDataContext);
   const { isLoading } = useContext(isLoadingContext);
 
@@ -68,14 +68,12 @@ export default function Header({ isLeftNavOpen, setIsLeftNavOpen }) {
           {/* weather and darkmode  */}
           <div className="flex flex-row items-center justify-end gap-2">
             <Login/>
-            <button
-              type="button"
-              className="w-[2] h-[2rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+            <div
+              className="w-[2] h-[2rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 disabled:opacity-50 disabled:pointer-events-none dark:text-white "
             >
               <WeatherIcon/>
               <Weather/>
-            </button>
-
+            </div>
 
             <button
               type="button"

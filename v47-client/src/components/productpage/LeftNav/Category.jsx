@@ -13,7 +13,6 @@ import AddNewActivity from "../modals/add/AddNewActivity";
 
 export default function Category({ category, setIsLeftNavOpen }) {
   const [isActivityVisible, setIsActivityVisible] = useState(false);
-  // const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isCategoryIconsVisible, setIsCategoryIconsVisible] = useState(false);
@@ -92,7 +91,6 @@ export default function Category({ category, setIsLeftNavOpen }) {
                 </button>
               </div>
             </div>
-            
           </div>
       </li>
           

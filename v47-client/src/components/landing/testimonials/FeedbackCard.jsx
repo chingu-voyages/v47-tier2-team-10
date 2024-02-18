@@ -4,7 +4,7 @@ const FeedbackCard = ({ content, name, title, img }) => (
   <div className="flex hover:-translate-y-3 active:scale-95 duration-300 justify-between flex-col px-10 py-12 dark:bg-black  max-w-full md:max-w-[370px] md:mr-10 sm:mr-5 mr-0 my-2  bg-gray-100 shadow-md  hover:bg-gray-50 rounded-lg p-5 transition-all dark:hover:bg-white/[.075] dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      class="flex-shrink-0 w-8 h-8 text-gray-800 mt-0.5 me-6 dark:text-gray-200"
+      className="flex-shrink-0 w-8 h-8 text-gray-800 mt-0.5 me-6 dark:text-gray-200"
       width="24"
       height="24"
       viewBox="0 0 24 24"
