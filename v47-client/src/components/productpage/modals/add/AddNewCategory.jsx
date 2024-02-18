@@ -7,7 +7,7 @@ function AddNewCategory({ setIsNewCategoryModalOpen }) {
   const [categoryName, setCategoryName] = useState('');
   const [validation, setValidation] = useState('')
 
-  const {setProductData, productData} = useContext(productDataContext)
+  const { setProductData } = useContext(productDataContext)
  
   const handleSubmit = () => {
     if(!categoryName) {
