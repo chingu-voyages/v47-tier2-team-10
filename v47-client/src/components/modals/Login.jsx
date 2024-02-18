@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
@@ -8,6 +8,7 @@ import {
 } from "firebase/auth";
 import app, { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
+import { authContext } from "../../context/AuthContext";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -15,9 +16,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState("");
-  const [isModalOpen, setModalOpen] = useState(false);
-  const [user,setUser] = useState(null);
-  
+  const { user, setUser, loginModal, setLoginModal } = useContext(authContext);
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
@@ -25,14 +25,13 @@ const Login = () => {
 
     return () => unsubscribe();
   }, []);
-  
 
   const handleLogin = async () => {
     try {
       await signInWithEmailAndPassword(auth, username, password);
       setError(null);
       setSuccessMessage("");
-      setModalOpen(false);
+      setLoginModal(false);
       console.log("Login successfully!");
       navigate("/ProductPage");
     } catch (error) {
@@ -55,7 +54,7 @@ const Login = () => {
       await sendPasswordResetEmail(auth, username);
       setError(null);
       setSuccessMessage("Password reset email sent successfully!");
-      // setModalOpen(false);
+      // setLoginModal(false);
     } catch (error) {
       setError("Failed to send a password reset email. Please try again.");
       setSuccessMessage("");
@@ -63,9 +62,9 @@ const Login = () => {
     }
   };
 
-  const openModal = () => setModalOpen(true);
+  const openModal = () => setLoginModal(true);
   const closeModal = () => {
-    setModalOpen(false);
+    setLoginModal(false);
     setSuccessMessage("");
   };
 
@@ -93,7 +92,7 @@ const Login = () => {
         </button>
       )}
 
-      {isModalOpen && (
+      {loginModal && (
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
           <div
             className="absolute bg-black opacity-50  inset-0"

@@ -7,7 +7,7 @@ import FilteredDataContext from "./context/FilteredDataContext";
 import DarkModeContext from "./context/DarkModeContext";
 import IsLoadingContext from "./context/IsLoadingContext";
 import ChatbotComponent from "./pages/ChatbotComponent";
-
+import AuthContext from "./context/AuthContext";
 
 /*
 green color: text-[#2d8630]
@@ -36,6 +36,7 @@ anthony bug collecting/ui/bugs/tasks changes completed:
 - add new category, add new task; has left panel bug color.
 - every sub page within the landing page should have a height of screen and be centered
 - implement a transform: y for container onto each test (test page)
+- users can only go to product page if they are signed in (redirect to modal)
 
 
 jess bugs/ui completed:
@@ -51,9 +52,6 @@ bug:
 - product page nav elements are not positioned correctly?
 - make form in add task/edit task work with enter key
 
-
-thing to add:
-- users can only go to product page if they are signed in (redirect to modal)
 */
 
 export default function App() {
@@ -62,15 +60,17 @@ export default function App() {
       <FilteredDataContext>
         <DarkModeContext>
           <IsLoadingContext>
-            <div>
-              <Router>
-                <Routes>
-                  <Route path="/" element={<Landing />} />
-                  <Route path="/ProductPage" element={<ProductPage />} />
-                  {/* <Route path="/ChatbotComponent" element={<ChatbotComponent/>}/> */}
-                </Routes>
-              </Router>
-            </div>
+            <AuthContext>
+              <div>
+                <Router>
+                  <Routes>
+                    <Route path="/" element={<Landing />} />
+                    <Route path="/ProductPage" element={<ProductPage />} />
+                    {/* <Route path="/ChatbotComponent" element={<ChatbotComponent/>}/> */}
+                  </Routes>
+                </Router>
+              </div>
+            </AuthContext>
           </IsLoadingContext>
         </DarkModeContext>
       </FilteredDataContext>

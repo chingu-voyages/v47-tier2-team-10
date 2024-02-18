@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../../firebase";
+import { authContext } from "../../context/AuthContext";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -12,7 +13,7 @@ const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState("");
-  const [isModalOpen, setModalOpen] = useState(false);
+  const { signupModal, setSignupModal } = useContext(authContext);
 
   const handleSignup = async () => {
     try {
@@ -42,8 +43,8 @@ const Signup = () => {
     }
   };
 
-  const openModal = () => setModalOpen(true);
-  const closeModal = () => setModalOpen(false);
+  const openModal = () => setSignupModal(true);
+  const closeModal = () => setSignupModal(false);
 
   const handleGuestSignIn = async () => {
     try {
@@ -67,7 +68,7 @@ const Signup = () => {
       >
         Signup
       </button>
-      {isModalOpen && (
+      {signupModal && (
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
           <div
             className="absolute bg-black opacity-50  inset-0"
