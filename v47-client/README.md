@@ -25,13 +25,14 @@ The Minimum Viable Product (MVP) of this application enables users to create tas
 
 #### Example Image
 
-![Example daily task productivity tool](./assets/daily_productivity_sample_ui.png)
+![Example daily task productivity tool](https://github.com/chingu-voyages/voyage-project-tier2-dailytasks/blob/main/assets/daily_productivity_sample_ui.png?raw=true)
 
 This project presented the team with an invaluable chance to engage in web development firsthand and tackle multi-dimensional datasets. It served as a real-world application for refining their skills and exploring the intricacies of manipulating data within a web-based framework.
 
 ### Screenshot
 
 ![Screenshot of the application](./websiteview1.png)
+
 ![Screenshot of the application](./websiteview2.png)
 
 
@@ -79,7 +80,7 @@ Enter the development environment with one of the following commands:
 
 #### Deployment
 
-This project doesn't have a deployment level build script. To deploy the app on a front-end cloud solution (Netlify, Vercel, AWS, etc.), set the publish directory as `public`.
+This project doesn't have a deployment-level build script. To deploy the app on a front-end cloud solution (Netlify, Vercel, AWS, etc.), set the publish directory as `public`.
 
 #### Authors
 
@@ -88,13 +89,12 @@ This project doesn't have a deployment level build script. To deploy the app on 
 | Anthony Cakin| Developer | [Cakinn1](https://github.com/Cakinn1) | (8 January 2024 - 18 February 2024) |
 | Skylar Park | Developer | [Skylar](https://github.com/MinjuSkylarPark) | (8 January 2024 - 18 February 2024) |
 | Avazbek | Developer | [avaz](https://github.com/devavaz) | (8 January 2024 - 18 February 2024) |
-| Jessa | Developer | [jmedlock](https://github.com/jessabc) | (8 January 2024 - 18 February 2024) |
+| Jessa | Developer | [Jessa](https://github.com/jessabc) | (8 January 2024 - 18 February 2024) |
 
 
 ![Screenshot of the application](./chinguteam.png)
 
 
-See also the list of [contributors](./CONTRIBUTORS.md) who participated in this project.
 
 
 ## About Chingu
