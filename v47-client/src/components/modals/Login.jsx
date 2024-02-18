@@ -6,7 +6,7 @@ import {
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
-import app from "../../firebase";
+import app, { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -19,7 +19,6 @@ const Login = () => {
   const [user,setUser] = useState(null);
   
   useEffect(() => {
-    const auth = getAuth(app);
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
     });
@@ -30,7 +29,6 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const auth = getAuth(app);
       await signInWithEmailAndPassword(auth, username, password);
       setError(null);
       setSuccessMessage("");
@@ -45,7 +43,6 @@ const Login = () => {
 
   const handleLogout = async () => {
     try {
-      const auth = getAuth(app);
       await signOut(auth);
       console.log("Logout successful!");
     } catch (error) {
@@ -55,7 +52,6 @@ const Login = () => {
 
   const handleForgotPassword = async () => {
     try {
-      const auth = getAuth(app);
       await sendPasswordResetEmail(auth, username);
       setError(null);
       setSuccessMessage("Password reset email sent successfully!");
