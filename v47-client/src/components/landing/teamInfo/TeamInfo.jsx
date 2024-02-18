@@ -17,7 +17,7 @@ const TeamInfo = () => {
       data-aos-duration="600"
     >
       <div className="w-full flex justify-end items-center flex-col sm:mb-16 mb-6 relative z-[1]">
-        <h2 className="text-3xl lg:text-4xl text-gray-800  dark:text-gray-200">
+        <h2 className="text-3xl lg:text-4xl text-[#2d8630]  dark:text-gray-200">
           Our <span className="font-bold">Chingu</span> Team
         </h2>
         <div className="w-[60%] md:mt-0 mt-6 text-center">
