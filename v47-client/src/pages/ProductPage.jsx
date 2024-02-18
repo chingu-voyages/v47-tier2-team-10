@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import LeftNav from "../components/productpage/LeftNav/LeftNav";
 import data from "../data.json";
 import { fetchData } from "../lib/apiServices";
-import app from "../firebase";
 import Header from "../components/productpage/header/Header";
 import Main from "../components/productpage/main/Main";
 import { productDataContext } from "../context/ProductDataContext";
