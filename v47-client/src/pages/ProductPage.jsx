@@ -29,7 +29,7 @@ export default function ProductPage() {
   }, []);
 
   return (
-    <div className="bg-gray-50 dark:bg-slate-900 duration-300 ">
+    <div className="bg-gray-50 dark:bg-slate-900 duration-300  overflow-clip h-screen">
       {isLeftNavOpen && (
         <div
           className="absolute bg-black opacity-50 inset-0 lg:position:static lg:bg-white lg:opacity-0 lg:inset-auto z-10 lg:z-auto"
@@ -48,8 +48,7 @@ export default function ProductPage() {
       />
 
       <div
-        style={{ minHeight: "calc(100vh - 77px)" }}
-        className="w-full duration-300  px-4 sm:px-6 md:px-8 md:ml-5  py-10 lg:ps-72"
+        className=" duration-300  py-10 px-5 w-screen lg:ps-72   overflow-scroll h-screen [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-slate-700 dark:[&::-webkit-scrollbar-thumb]:bg-slate-500"
       >
         {/*
         - move this to the nav

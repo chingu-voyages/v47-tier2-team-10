@@ -17,7 +17,7 @@ export default function Category({ category, setIsLeftNavOpen }) {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isCategoryIconsVisible, setIsCategoryIconsVisible] = useState(false);
-  const [editCategoryNameInput, setEditCategoryNameInput] = useState("");
+  const [editCategoryNameInput, setEditCategoryNameInput] = useState(category.categoryName);
   const [isAddNewActivityModalOpen, setIsNewActivityModalOpen] = useState(false)
 
   const { setProductData } = useContext(productDataContext);
@@ -62,10 +62,10 @@ export default function Category({ category, setIsLeftNavOpen }) {
             >
               <MdExpandMore
                 className={`${
-                  isActivityVisible ? "rotate-180 font-bold text-blue-600 dark:text-white" : "font-bold text-gray-800 dark:text-white"
+                  isActivityVisible ? "rotate-180 font-bold text-[#2d8630] dark:text-white " : "font-bold text-gray-800 dark:text-gray-400"
                 } transform transition duration-200 ease-out `}
               />
-              <p className={isActivityVisible ? 'text-blue-600' : ''}>  
+              <p className={isActivityVisible ? 'text-[#2d8630] dark:text-white' : ''}>  
                 {capitalizeEachWord(category.categoryName)}
               </p>
             </button>
@@ -74,13 +74,13 @@ export default function Category({ category, setIsLeftNavOpen }) {
               <div className="flex gap-1 ml-auto">
                 <button
                   onClick={() => setIsEditModalOpen(true)}
-                  className={`${isCategoryIconsVisible ? 'block' : 'lg:hidden block'} text-md  text-gray-900 hover:text-gray-700`}
+                  className={`${isCategoryIconsVisible ? 'block' : 'lg:hidden block'} text-md  text-gray-900 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300`}
                 >
                   <MdOutlineEdit />
                 </button>
                 <button
                   onClick={() => setIsNewActivityModalOpen(true)}
-                  className={`${isCategoryIconsVisible ? 'block' : 'lg:hidden block'} text-md  text-gray-900 hover:text-gray-700`}
+                  className={`${isCategoryIconsVisible ? 'block' : 'lg:hidden block'} text-md  text-gray-900 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300`}
                 >
                   <GrAddCircle />
                 </button>
@@ -119,7 +119,7 @@ export default function Category({ category, setIsLeftNavOpen }) {
 
       {isEditModalOpen && (
         <EditModal
-          editCategoryNameInput={capitalizeEachWord(editCategoryNameInput)}
+          editCategoryNameInput={editCategoryNameInput}
           categoryName={category.categoryName}
           setIsEditModalOpen={setIsEditModalOpen}
           setEditCategoryNameInput={setEditCategoryNameInput}

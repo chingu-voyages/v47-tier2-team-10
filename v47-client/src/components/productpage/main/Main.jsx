@@ -50,7 +50,7 @@ export default function Main({
 
   return (
     <>
-      <section className="dark:text-gray-200  mb-0 overflow-y-auto  p-6 flex flex-col dark:bg-[#2B2C37] rounded-md duration-300  bg-gray-200   flex-1">
+      <section className="dark:text-gray-200  mb-10 lg:ml-4  p-6 flex flex-col dark:bg-[#2B2C37] rounded-md duration-300  bg-gray-200  flex-1">
         {isLoading ? (
           <div className="flex flex-wrap flex-1 gap-x-2 justify-center">
             {new Array(9).fill(0).map((_, index) => (
@@ -87,7 +87,8 @@ export default function Main({
         ) : (
           <figure className="h-full  mx-auto flex justify-between items-center">
             <img
-              className="object-cover max-h-[500px]"
+              // className="object-cover max-h-[500px]"
+              className="object-cover h-[calc(100vh_-_17rem)]"
               src="/assets/product_data_img.svg"
               alt=""
             />

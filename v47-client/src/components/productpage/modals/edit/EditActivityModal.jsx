@@ -43,8 +43,8 @@ function EditModal({
           value={editActivityNameInput}
           onChangeValue={setEditActivityNameInput}
         /> */}
-
           {/* originally InputFields resusable componenet above, was having trouble with the tolowercase.  */}
+          
           <div className="mb-6">
             <label className="block text-gray-700 text-sm font-semibold mb-2">
               Edit Activity
