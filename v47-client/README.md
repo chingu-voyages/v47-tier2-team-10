@@ -31,9 +31,9 @@ This project presented the team with an invaluable chance to engage in web devel
 
 ### Screenshot
 
-![Screenshot of the application](./websiteview1.png)
+[![Screenshot of the application](./websiteview1.png)](https://github.com/chingu-voyages/v47-tier2-team-10/raw/main/v47-client/public/websiteview1.png)
 
-![Screenshot of the application](./websiteview2.png)
+[![Screenshot of the application](./websiteview2.png)](https://github.com/chingu-voyages/v47-tier2-team-10/raw/main/v47-client/public/websiteview2.png)
 
 
 ### [Video Showcase](https://www.veed.io)
@@ -92,7 +92,7 @@ This project doesn't have a deployment-level build script. To deploy the app on 
 | Jessa | Developer | [Jessa](https://github.com/jessabc) | (8 January 2024 - 18 February 2024) |
 
 
-![Screenshot of the application](./chinguteam.png)
+[![Screenshot of the application](./chinguteam.png)](https://github.com/chingu-voyages/v47-tier2-team-10/raw/main/v47-client/public/chinguteam.png)
 
 
 
