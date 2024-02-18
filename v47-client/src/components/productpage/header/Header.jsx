@@ -64,13 +64,12 @@ export default function Header({ isLeftNavOpen, setIsLeftNavOpen }) {
           </div>
 
           {/* weather and darkmode  */}
-          <div className="flex flex-row items-center justify-end gap-2">
-            <button
-              type="button"
-              className="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+          <div className="flex flex-row items-center  gap-4 ">
+            <div
+            className=" py-2 h-[2rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800   dark:text-white "
             >
               <Weather />
-            </button>
+            </div>
             <button
               type="button"
               className="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
