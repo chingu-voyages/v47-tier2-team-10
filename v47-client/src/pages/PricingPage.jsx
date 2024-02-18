@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Nav from "../components/landing/navbar/Navbar";
 import Footer from "../components/landing/footer/Footer";
 // import { Elements, useStripe } from "@stripe/react-stripe-js";
 // import { loadStripe } from "@stripe/stripe-js";
 
 export default function PricingPage() {
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
   //   const [email, setEmail] = useState("");
   //   const [cardElement, setCardElement] = useState(null);
 
@@ -116,7 +119,7 @@ export default function PricingPage() {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                > 
+                >
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
                 <span className="text-gray-800 dark:text-gray-400">1 user</span>
@@ -205,7 +208,9 @@ export default function PricingPage() {
                 >
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
-                <span className="text-gray-800 dark:text-gray-400">2 users</span>
+                <span className="text-gray-800 dark:text-gray-400">
+                  2 users
+                </span>
               </li>
 
               <li className="flex space-x-2">
@@ -287,7 +292,9 @@ export default function PricingPage() {
                 >
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
-                <span className="text-gray-800 dark:text-gray-400">5 users</span>
+                <span className="text-gray-800 dark:text-gray-400">
+                  5 users
+                </span>
               </li>
 
               <li className="flex space-x-2">
@@ -369,7 +376,9 @@ export default function PricingPage() {
                 >
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
-                <span className="text-gray-800 dark:text-gray-400">10 users</span>
+                <span className="text-gray-800 dark:text-gray-400">
+                  10 users
+                </span>
               </li>
 
               <li className="flex space-x-2">
