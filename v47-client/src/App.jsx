@@ -10,10 +10,7 @@ import ChatbotComponent from "./pages/ChatbotComponent";
 
 
 /*
-
-Anthony
-- change firebase over and add stripe into the data base
-
+green color: text-[#2d8630]
 
 anthony bug collecting/ui/bugs/tasks changes completed:
 - daily tasker text change to green (nav).
@@ -37,6 +34,8 @@ anthony bug collecting/ui/bugs/tasks changes completed:
 - z-index of left panel is higher than modals, needs to be lowered when modal is open
 - product page main height is cut off (needs min of height always)
 - add new category, add new task; has left panel bug color.
+- every sub page within the landing page should have a height of screen and be centered
+- implement a transform: y for container onto each test (test page)
 
 
 jess bugs/ui completed:
@@ -49,34 +48,12 @@ jess bugs/ui completed:
 
 
 bug:
-- product page overflow error whole page? - changed height of pic when page first loads so there is no overflow, is this what this bug means? jess
 - product page nav elements are not positioned correctly?
 - make form in add task/edit task work with enter key
 
 
-UI needs to get fixed:
-- change all headings/subheadings to green 
-green color: text-[#2d8630]
-- every sub page within the landing page should have a height of screen and be centered
-- implement a transform: y for container onto each test (test page)
-- needs padding y and max width consistent with other pages (teaminfo)
-- each container needs a margin bottom consistent with the gap-x (teaminfo)
-- footer just leave it to skylar
-- padding-x added to nav (productpage)
-- needs padding x (product page)
-
-
-
 thing to add:
 - users can only go to product page if they are signed in (redirect to modal)
-
-
-send to ava:
-
-- full name
-- photo
-- linkedin
-- github link
 */
 
 export default function App() {

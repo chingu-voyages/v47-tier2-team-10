@@ -42,7 +42,7 @@ const Footer = () => {
                   {footerlink.links.map((link, index) => (
                     <li
                       key={link.name}
-                      className={`font-poppins font-normal text-[16px] leading-[24px] text-dimWhite hover:text-[#2d8630] cursor-pointer ${
+                      className={`font-poppins cursor-not-allowed font-normal text-[16px] leading-[24px] text-dimWhite hover:text-[#2d8630] ${
                         index !== footerlink.links.length - 1 ? "mb-4" : "mb-0"
                       }`}
                     >

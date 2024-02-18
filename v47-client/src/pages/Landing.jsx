@@ -23,7 +23,7 @@ export default function JLanding() {
       <TaskFlow />
       <Features />
       <Testimonials />
-      <ChatbotComponent/>
+      {/* <ChatbotComponent/> */}
       <TeamInfo />
       <Footer />
     </section>

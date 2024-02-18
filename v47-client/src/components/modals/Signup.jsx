@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../../firebase";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -24,7 +29,9 @@ const Signup = () => {
         setSuccessMessage(
           "Signup successfully! Now, Go back to our main page and log in as our new member<3"
         );
-        // setModalOpen(false);
+        setTimeout(() => {
+          closeModal();
+        }, 2000);
         // console.log('Signup successfully!');
       } catch (createError) {
         setError("Signup failed. Please try again.");
@@ -37,6 +44,20 @@ const Signup = () => {
 
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
+
+  const handleGuestSignIn = async () => {
+    try {
+      await signInWithEmailAndPassword(auth, "guest321@gmail.com", "guest123");
+      setSuccessMessage(
+        "Signup successfully! Now, Go back to our main page and log in as our new member<3"
+      );
+      setTimeout(() => {
+        closeModal();
+      }, 2000);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
@@ -55,7 +76,13 @@ const Signup = () => {
           <div className="max-w-md mx-auto mt-8 p-4  w-[500px] flex flex-col  py-12 bg-white shadow-md rounded-md z-50">
             {/* <h1 className='text-2xl font-bold mb-4'>Welcome aboard!</h1> */}
             <h2 className="text-2xl font-bold mb-4">Signup</h2>
-            <form>
+            <form onSubmit={(e) => e.preventDefault()}>
+              <button
+                onClick={() => handleGuestSignIn()}
+                className="bg-green-500 mb-4 w-full text-white px-4 py-2 rounded-md hover:bg-green-600"
+              >
+                Guest Sign Up
+              </button>
               <div className="mb-4  flex flex-col">
                 <label
                   htmlFor="email"
@@ -108,7 +135,7 @@ const Signup = () => {
               <button
                 type="button"
                 onClick={handleSignup}
-                className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600"
+                className="bg-green-500 w-full text-white px-4 py-2 rounded-md hover:bg-green-600"
               >
                 Signup
               </button>
