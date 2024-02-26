@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;     
+const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
 function Weather() {
   const [weather, setWeather] = useState('');
@@ -17,7 +17,7 @@ function Weather() {
         setCity(data.name);
         setWeather({
           description: data.weather[0].main,
-          temp: Math.trunc(data.main.temp - 273.15),
+          temp: Math.trunc(data.main.temp),
           icon: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png` 
         })
       });
@@ -36,7 +36,7 @@ function Weather() {
     <div className='flex justify-centre items-center bg-gray-200 dark:bg-slate-800 p-2 rounded-md h-[2rem] gap-3 font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-teal-300 to-green-600'>    
       <div>
         <div className='flex justify-centre items-end'>
-          {city && <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin" width="14" height="14" viewBox="0 0 24 24" stroke-width="2.5" stroke="#5eead4" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /><path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" /></svg>}
+          {city && <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-map-pin" width="14" height="14" viewBox="0 0 24 24" strokeWidth="2.5" stroke="#5eead4" fill="none" strokeLinecap="round" strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /><path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" /></svg>}
           <p className='text-xs'>{city}</p>
         </div>
       </div>
