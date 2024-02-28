@@ -2,7 +2,8 @@
 import React from "react";
 
 const WeatherIcon = () => {
-  const WEATHER_CLOUD_ICON = "https://openweathermap.org/img/wn/02d@2x.png";
+  const WEATHER_CLOUD_ICON: string =
+    "https://openweathermap.org/img/wn/02d@2x.png";
 
   return (
     <>
