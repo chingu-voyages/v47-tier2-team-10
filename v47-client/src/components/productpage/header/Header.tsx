@@ -8,7 +8,7 @@ import Login from "../../modals/Login";
 
 interface Props {
   setIsLeftNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  isLeftNavOpen: boolean
+  isLeftNavOpen: boolean;
 }
 
 export default function Header(props: Props) {
@@ -75,7 +75,7 @@ export default function Header(props: Props) {
           <div className="flex flex-row items-center justify-end gap-2">
             <Login />
             <div className="w-[2] h-[2rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 disabled:opacity-50 disabled:pointer-events-none dark:text-white ">
-              <WeatherIcon  weatherConditionCode={""} />
+              <WeatherIcon />
               <Weather />
             </div>
 
