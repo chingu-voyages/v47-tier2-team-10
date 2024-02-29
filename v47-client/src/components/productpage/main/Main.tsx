@@ -4,6 +4,7 @@ import { IoIosAdd } from "react-icons/io";
 import Add from "../modals/Add";
 import { filteredDataContext } from "../../../context/FilteredDataContext";
 import { isLoadingContext } from "../../../context/IsLoadingContext";
+import { prodouctDataImg } from "../../../assets";
 
 interface MainProps {
   isAddModalOpen: boolean;
@@ -96,7 +97,7 @@ export default function Main(props: MainProps) {
           <figure className="h-full  mx-auto flex justify-between items-center">
             <img
               className="object-cover h-[calc(100vh_-_17rem)]"
-              src="/assets/product_data_img.svg"
+              src={prodouctDataImg}
               alt=""
             />
           </figure>

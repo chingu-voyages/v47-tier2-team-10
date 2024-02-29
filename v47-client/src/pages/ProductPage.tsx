@@ -1,24 +1,24 @@
 import React, { useContext, useEffect, useState } from "react";
 import LeftNav from "../components/productpage/LeftNav/LeftNav";
-import data from "../data.json";
-import { fetchData } from "../lib/apiServices";
 import Header from "../components/productpage/header/Header";
 import Main from "../components/productpage/main/Main";
 import { productDataContext } from "../context/ProductDataContext";
 import { isLoadingContext } from "../context/IsLoadingContext";
-import { ProductData } from "../lib/typings";
+import data from "../data/data.json";
+import { ProductData } from "../types/typings";
+import { createPromise } from "../services/apiServices";
+import useFetchData from "../hooks/useFetchData";
 
 export default function ProductPage() {
   const [isLeftNavOpen, setIsLeftNavOpen] = useState<boolean>(true);
   const [isAddModalOpen, setIsAddModalOpen] = useState<boolean>(false);
-
   const { setProductData } = useContext(productDataContext);
   const { setIsLoading } = useContext(isLoadingContext);
 
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        const result = await fetchData(data) as ProductData[]
+        const result = (await createPromise(data)) as ProductData[];
         setProductData(result);
         setIsLoading(false);
       } catch (error) {
@@ -28,6 +28,7 @@ export default function ProductPage() {
     };
     fetchProductData();
   }, []);
+
 
   return (
     <div className="bg-gray-50 dark:bg-slate-900 duration-300  overflow-clip h-screen">

@@ -3,10 +3,9 @@ import { MdDeleteOutline } from "react-icons/md";
 import Delete from "../modals/Delete";
 import EditModal from "../modals/edit/EditActivityModal";
 import { MdOutlineEdit } from "react-icons/md";
-import { handleFilterData } from "../../../lib/helpers/handleFilterData";
 import { productDataContext } from "../../../context/ProductDataContext";
 import { filteredDataContext } from "../../../context/FilteredDataContext";
-import { ActivityTypes } from "../../../lib/typings";
+import { ActivityTypes } from "../../../types/typings";
 
 interface Props {
   activity: ActivityTypes;
@@ -16,7 +15,8 @@ interface Props {
 
 export default function Activity(props: Props) {
   const { activity, categoryName, setIsLeftNavOpen } = props;
-  const [isActivityIconsVisible, setIsActivityIconsVisible] = useState<boolean>(false);
+  const [isActivityIconsVisible, setIsActivityIconsVisible] =
+    useState<boolean>(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState<boolean>(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState<boolean>(false);
   const [editActivityNameInput, setEditActivityNameInput] = useState<string>(
@@ -45,7 +45,13 @@ export default function Activity(props: Props) {
   };
 
   const handleActivityNameClick = (activity: string) => {
-    handleFilterData({ taskName: activity, productData, setFilteredData });
+    const filterData = productData.flatMap((data) => {
+      return data.activityTypes.filter((task) => {
+        return task.activityName === activity;
+      });
+    });
+    setFilteredData(filterData);
+
     setIsLeftNavOpen(false);
   };
 
@@ -99,25 +105,6 @@ export default function Activity(props: Props) {
           setEditActivityNameInput={setEditActivityNameInput}
         />
       )}
-
-      {/* {isEditModalOpen && (
-        <EditModal
-          task={{
-            id: activity.id,
-            name: activity.activityName,
-          }}
-          onClose={() => setIsEditModalOpen(false)}
-          onUpdateTask={( updatedTaskName) => {
-            // Logic to update the activity goes here
-            // For example, you might want to call handleUpdateActivity from props
-            // handleUpdateActivity(taskId, updatedTaskName);
-            console.log(
-              `Updating activity with ${updatedTaskName}`
-            );
-            setIsEditModalOpen(false);
-          }}
-        />
-      )} */}
     </>
   );
 }

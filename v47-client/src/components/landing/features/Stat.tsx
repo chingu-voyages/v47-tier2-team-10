@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
-import useScrollTriggeredCountUp from "./useScrollTriggeredCountUp";
-import { StatsDataProps } from "./Stats";
+import useScrollTriggeredCountUp from "../../../hooks/useScrollTriggeredCountUp";
+import { StatsDataProps } from "../../../types/typings";
 
 export default function Stat(props: StatsDataProps) {
   const { number, text, title } = props;

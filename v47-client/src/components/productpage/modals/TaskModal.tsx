@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { filteredDataContext } from "../../../context/FilteredDataContext";
 import { IoIosClose } from "react-icons/io";
-import { capitalizeEachWord } from "../../../lib/helpers/capitalizeEachWord";
+import { capitalizeEachWord } from "../../../utils/helperFunctions";
 
 interface TaskModalProps {
   days: any;

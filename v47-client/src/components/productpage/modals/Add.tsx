@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import InputFields from "./resuable/InputFields";
-import { handleAddNewTask } from "../../../lib/helpers/handleAddNewTask";
 import { filteredDataContext } from "../../../context/FilteredDataContext";
 import Portal from "./Portal/Portal";
 import { NewTaskDataProps } from "../main/Main";
@@ -31,8 +30,33 @@ interface AddProps {
 }
 const Add = (props: AddProps) => {
   const { newTaskData, setIsAddModalOpen, setNewTaskData } = props;
-  const { setFilteredData, filteredData } = useContext(filteredDataContext);
-  console.log(filteredData);
+  const { setFilteredData } = useContext(filteredDataContext);
+
+  const handleAddNewTask = () => {
+    setFilteredData((prevData) => {
+      const newTask = {
+        days: newTaskData.days,
+        taskDescription: newTaskData.taskDescription,
+        taskName: newTaskData.taskName,
+        column: newTaskData.column,
+      };
+
+      const newData = prevData.map((item) => {
+        return {
+          ...item,
+          Tasks: item.Tasks.concat(newTask),
+        };
+      });
+      return newData;
+    });
+    setNewTaskData({
+      taskDescription: "",
+      taskName: "",
+      column: "",
+      days: "",
+    });
+    setIsAddModalOpen(false);
+  };
 
   return (
     <Portal>
@@ -98,26 +122,10 @@ const Add = (props: AddProps) => {
 
             <button
               className={`py-2 rounded ${"bg-green-500  text-white px-10"}`}
-              onClick={() => {
-                handleAddNewTask({
-                  setFilteredData,
-                  setIsAddModalOpen,
-                  taskDescription: newTaskData.taskDescription,
-                  taskNameInput: newTaskData.taskName,
-                  daysInput: newTaskData.days,
-                  columnInput: newTaskData.column,
-                });
-                setNewTaskData({
-                  taskDescription: "",
-                  taskName: "",
-                  column: "",
-                  days: "",
-                });
-              }}
+              onClick={() => handleAddNewTask()}
             >
               add
             </button>
-       
           </div>
         </div>
       </div>

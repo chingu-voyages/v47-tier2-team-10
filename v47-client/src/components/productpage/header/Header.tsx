@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import DarkMode from "../../reusable/DarkMode";
+import DarkMode from "../../Ui/DarkMode";
 import Weather from "../weather/Weather";
 import { filteredDataContext } from "../../../context/FilteredDataContext";
 import { isLoadingContext } from "../../../context/IsLoadingContext";
 import WeatherIcon from "../weather/WeatherIcon";
-import Login from "../../modals/Login";
+import Login from "../../modals/login/Login";
 
 interface Props {
   setIsLeftNavOpen: React.Dispatch<React.SetStateAction<boolean>>;

@@ -1,5 +1,6 @@
 import React, { createContext, useState } from "react";
-import { ProductData } from "../lib/typings";
+import { ProductData } from "../types/typings";
+import useFetchData from "../hooks/useFetchData";
 
 interface ProductDataContextProps {
   setProductData: React.Dispatch<React.SetStateAction<ProductData[]>>;
@@ -15,12 +16,13 @@ export default function ProductDataContext({
 }: {
   children: React.ReactNode;
 }) {
-  const [productData, setProductData] = useState<ProductData[]>([]);
+  const { fetchedData } = useFetchData();
+  const [productData, setProductData] = useState<ProductData[]>(fetchedData);
 
   const contextValue: ProductDataContextProps = {
     productData,
-    setProductData
-  }
+    setProductData,
+  };
   return (
     <productDataContext.Provider value={contextValue}>
       {children}

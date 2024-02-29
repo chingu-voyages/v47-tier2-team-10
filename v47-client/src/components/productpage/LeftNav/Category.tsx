@@ -7,9 +7,9 @@ import EditModal from "../modals/edit/EditCategoryModal";
 import { MdOutlineEdit } from "react-icons/md";
 import Aos from "aos";
 import { productDataContext } from "../../../context/ProductDataContext";
-import { capitalizeEachWord } from "../../../lib/helpers/capitalizeEachWord";
 import AddNewActivity from "../modals/add/AddNewActivity";
-import { ProductData } from "../../../lib/typings";
+import { ProductData } from "../../../types/typings";
+import { capitalizeEachWord } from "../../../utils/helperFunctions";
 
 interface Props {
   category: ProductData;

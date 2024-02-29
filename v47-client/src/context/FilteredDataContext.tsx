@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-import { ActivityTypes } from "../lib/typings";
+import { ActivityTypes } from "../types/typings";
 
 interface FilteredDataContextProps {
   filteredData: ActivityTypes[];

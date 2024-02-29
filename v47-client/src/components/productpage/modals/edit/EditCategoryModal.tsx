@@ -3,7 +3,7 @@ import InputFields from "../resuable/InputFields";
 import Button from "../resuable/Button";
 import { productDataContext } from "../../../../context/ProductDataContext";
 import Portal from "../Portal/Portal";
-import { capitalizeEachWord } from "../../../../lib/helpers/capitalizeEachWord";
+import { capitalizeEachWord } from "../../../../utils/helperFunctions";
 
 interface EditModalProps {
   setIsEditModalOpen: (value: boolean) => void;

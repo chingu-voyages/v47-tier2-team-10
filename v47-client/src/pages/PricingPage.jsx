@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Nav from "../components/landing/navbar/Navbar";
-import Footer from "../components/landing/footer/Footer";
+import Nav from "../components/landing/Navbar";
+import Footer from "../components/landing/Footer";
 // import { Elements, useStripe } from "@stripe/react-stripe-js";
 // import { loadStripe } from "@stripe/stripe-js";
 
