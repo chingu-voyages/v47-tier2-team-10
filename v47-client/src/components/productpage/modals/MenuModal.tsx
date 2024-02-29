@@ -14,7 +14,6 @@ export default function MenuModal({ taskName }: Props) {
   const { filteredData, setFilteredData } = useContext(filteredDataContext);
 
   const handleFilterData = (taskName: any) => {
-
     const updateData = filteredData.map((data) => {
       return {
         ...data,
