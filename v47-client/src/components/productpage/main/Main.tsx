@@ -34,6 +34,18 @@ export default function Main(props: MainProps) {
   const { filteredData } = useContext(filteredDataContext);
   const { isLoading } = useContext(isLoadingContext);
 
+  const [newEditTaskData, setNewEditTaskData] = useState<NewTaskDataProps>({
+    column: "",
+    days: "",
+    taskDescription: "",
+    taskName: "",
+  });
+
+  const taskListProps = {
+    newEditTaskData,
+    setNewEditTaskData,
+  };
+
   const renderTasksByColumn = (column: string) => {
     return filteredData.map((data) => {
       const tasksInColumn = data.Tasks.filter(
@@ -75,11 +87,7 @@ export default function Main(props: MainProps) {
           <MainContentDataNotLoaded />
         )}
         <AddNewTaskButton setIsAddModalOpen={setIsAddModalOpen} />
-        {isAddModalOpen && (
-          <Add
-            addModalProps={addModalProps}
-          />
-        )}
+        {isAddModalOpen && <Add addModalProps={addModalProps} />}
       </section>
     </>
   );
