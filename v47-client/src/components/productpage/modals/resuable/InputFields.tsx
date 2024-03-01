@@ -22,6 +22,7 @@ export default function InputFields({
       </label>
       {isTextArea ? (
         <textarea
+          required
           className="w-full border resize-none border-gray-300 px-3 py-2 rounded-sm"
           value={value}
           onChange={(e) => onChangeValue(e.target.value)}

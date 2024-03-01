@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, ReactNode } from "react";
 import TaskList from "./TaskList";
 import { IoIosAdd } from "react-icons/io";
 import Add from "../modals/Add";
 import { filteredDataContext } from "../../../context/FilteredDataContext";
 import { isLoadingContext } from "../../../context/IsLoadingContext";
 import { prodouctDataImg } from "../../../assets";
+import MainContentColumn from "./MainContentColumn";
 
 interface MainProps {
   isAddModalOpen: boolean;
@@ -57,65 +58,89 @@ export default function Main(props: MainProps) {
     });
   };
 
+  const addModalProps = {
+    setIsAddModalOpen,
+    newTaskData,
+    setNewTaskData,
+  };
+
   return (
     <>
       <section className="dark:text-gray-200  mb-10 lg:ml-4  p-6 flex flex-col dark:bg-[#2B2C37] rounded-md duration-300  bg-gray-200  flex-1">
         {isLoading ? (
-          <div className="flex flex-wrap flex-1 gap-x-2 justify-center">
-            {new Array(9).fill(0).map((_, index) => (
-              <div
-                key={index}
-                className="w-[100%] rounded-md md:w-[48%] lg:w-[32%]  h-[96px] bg-gray-400  animate-pulse mb-3"
-              ></div>
-            ))}
-          </div>
+          <MainContentIsLoading />
         ) : filteredData.length > 0 ? (
-          <div className="flex flex-wrap flex-1  gap-x-4  flex-col mx-auto  md:flex-row">
-            <div className="flex-1 flex flex-col w-[320px]">
-              <div className="flex items-center gap-x-2 mb-4  ">
-                <div className="bg-[#49c4e5] w-3 rounded-full h-3"></div>
-                <h2 className="text-[#828fa3] uppercase ">Not Started</h2>
-              </div>
-              {renderTasksByColumn("Not Started")}
-            </div>
-            <div className="flex-1 flex flex-col  w-[320px]">
-              <div className="flex items-center gap-x-2  mb-4 ">
-                <div className="bg-[#8471f2] w-3 rounded-full h-3"></div>
-                <h2 className="text-[#828fa3] uppercase">In Progress</h2>
-              </div>
-              {renderTasksByColumn("In Progress")}
-            </div>
-            <div className="flex-1  flex flex-col  w-[320px]">
-              <div className="flex items-center gap-x-2 mb-4 ">
-                <div className="bg-[#67E2AE] w-3 rounded-full h-3"></div>
-                <h2 className="text-[#828fa3] uppercase">Done</h2>
-              </div>
-              {renderTasksByColumn("Done")}
-            </div>
-          </div>
+          <MainContent renderTasksByColumn={renderTasksByColumn} />
         ) : (
-          <figure className="h-full  mx-auto flex justify-between items-center">
-            <img
-              className="object-cover h-[calc(100vh_-_17rem)]"
-              src={prodouctDataImg}
-              alt=""
-            />
-          </figure>
+          <MainContentDataNotLoaded />
         )}
-        <div className="mt-0 h-full dark:text-gray-200 p-6 flex dark:bg-[#2B2C37] rounded-md duration-300  bg-gray-200  ">
-          <div className="mt-auto hover:text-gray-500 cursor-pointer duration-300 flex items-center gap-x-2 ml-auto">
-            <IoIosAdd />
-            <h1 onClick={() => setIsAddModalOpen(true)}>Add new task</h1>
-          </div>
-        </div>
+        <AddNewTaskButton setIsAddModalOpen={setIsAddModalOpen} />
         {isAddModalOpen && (
           <Add
-            setIsAddModalOpen={setIsAddModalOpen}
-            newTaskData={newTaskData}
-            setNewTaskData={setNewTaskData}
+            addModalProps={addModalProps}
           />
         )}
       </section>
     </>
   );
 }
+
+const MainContent = (props: {
+  renderTasksByColumn: (value: string) => ReactNode;
+}) => {
+  const { renderTasksByColumn } = props;
+  return (
+    <div className="flex flex-wrap flex-1  gap-x-4  flex-col mx-auto  md:flex-row">
+      <MainContentColumn
+        renderTasksByColumn={renderTasksByColumn}
+        content="Not Started"
+      />
+      <MainContentColumn
+        renderTasksByColumn={renderTasksByColumn}
+        content="In Progress"
+      />
+      <MainContentColumn
+        renderTasksByColumn={renderTasksByColumn}
+        content="Done"
+      />
+    </div>
+  );
+};
+
+const MainContentDataNotLoaded = () => {
+  return (
+    <figure className="h-full  mx-auto flex justify-between items-center">
+      <img
+        className="object-cover h-[calc(100vh_-_17rem)]"
+        src={prodouctDataImg}
+        alt=""
+      />
+    </figure>
+  );
+};
+
+const MainContentIsLoading = () => {
+  return (
+    <div className="flex flex-wrap flex-1 gap-x-2 justify-center">
+      {new Array(9).fill(0).map((_, index) => (
+        <div
+          key={index}
+          className="w-[100%] rounded-md md:w-[48%] lg:w-[32%]  h-[96px] bg-gray-400  animate-pulse mb-3"
+        ></div>
+      ))}
+    </div>
+  );
+};
+
+const AddNewTaskButton = (props: {
+  setIsAddModalOpen: (value: boolean) => void;
+}) => {
+  return (
+    <div className="mt-0 h-full dark:text-gray-200 p-6 flex dark:bg-[#2B2C37] rounded-md duration-300  bg-gray-200  ">
+      <div className="mt-auto hover:text-gray-500 cursor-pointer duration-300 flex items-center gap-x-2 ml-auto">
+        <IoIosAdd />
+        <h1 onClick={() => props.setIsAddModalOpen(true)}>Add new task</h1>
+      </div>
+    </div>
+  );
+};
