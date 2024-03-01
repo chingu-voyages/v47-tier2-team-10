@@ -15,7 +15,7 @@ export interface Tasks {
   column: string;
 }
 
-//
+// data types
 
 export interface FeedbackProps {
   id: string;
@@ -60,7 +60,7 @@ export interface IconDataProps {
   subText: string;
 }
 
-//
+// firebase
 
 export interface FirebaseConfig {
   apiKey: string;
@@ -69,4 +69,14 @@ export interface FirebaseConfig {
   storageBucket: string;
   messagingSenderId: string;
   appId: string;
+}
+
+
+// user props
+
+export interface UserDataProps {
+  email: string;
+  password: string;
+  confirmPassword: string;
+  username: string
 }

@@ -8,26 +8,22 @@ import {
 import { auth } from "../../../firebase/firebase";
 import { useNavigate } from "react-router-dom";
 import { authContext } from "../../../context/AuthContext";
+import AuthButtonUi from "../../Ui/AuthButtonUi";
+import LoginModal from "./LoginModal";
+import { UserDataProps } from "../../../types/typings";
 
-interface UserDataProps {
-  username: string;
-  password: string;
-}
-interface UiProps {
-  errorMessage: string;
-  successMessage: string;
-}
-const Login = () => {
+
+
+export default function Login() {
   const navigate = useNavigate();
   const { user, setUser, loginModal, setLoginModal } = useContext(authContext);
 
   const [userData, setUserData] = useState<UserDataProps>({
     password: "",
     username: "",
+    confirmPassword: "",
+    email: "",
   });
-
-  const [username, setUsername] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [successMessage, setSuccessMessage] = useState<string>("");
 
@@ -38,7 +34,6 @@ const Login = () => {
 
     return () => unsubscribe();
   }, [auth, setUser]);
-  // setLoginModal(false);
 
   const handleLogin = async () => {
     if (!userData) {
@@ -48,13 +43,14 @@ const Login = () => {
     try {
       await signInWithEmailAndPassword(
         auth,
-        userData?.username,
-        userData?.password
+        userData.username,
+        userData.password
       );
+      // gets all current users data
       const user = auth.currentUser;
+      console.log(user);
       setUser(user);
       setSuccessMessage("Success");
-      console.log("nice");
       setTimeout(() => {
         setLoginModal(false);
         setSuccessMessage("");
@@ -64,6 +60,9 @@ const Login = () => {
       }, 2000);
     } catch (error) {
       setError("Invalid username or password. Please try again.");
+      setTimeout(() => {
+        setError("");
+      }, 2000);
       console.error("Login failed:", error);
     }
   };
@@ -79,7 +78,7 @@ const Login = () => {
 
   const handleForgotPassword = async () => {
     try {
-      await sendPasswordResetEmail(auth, username);
+      await sendPasswordResetEmail(auth, userData.username);
       setError("");
       setSuccessMessage("Password reset email sent successfully!");
       // setLoginModal(false);
@@ -90,109 +89,31 @@ const Login = () => {
     }
   };
 
-  const openModal = () => setLoginModal(true);
   const closeModal = () => {
     setLoginModal(false);
     setSuccessMessage("");
   };
 
+  const loginProps = {
+    userData,
+    setUserData,
+    error,
+    successMessage,
+    handleLogin,
+    handleForgotPassword,
+    closeModal,
+  };
+
+  const authProps = {
+    setLoginModal,
+    user,
+    handleLogout,
+  };
+
   return (
     <div className="justify-center">
-      {user ? (
-        <button
-          onClick={handleLogout}
-          className="bg-green-500 text-white px-4 py-2 duration-300 rounded-md hover:bg-[#2d8630]"
-        >
-          Logout
-        </button>
-      ) : (
-        <button
-          onClick={openModal}
-          className="bg-green-500 text-white px-4 py-2 duration-300 rounded-md hover:bg-[#2d8630]"
-        >
-          Login
-        </button>
-      )}
-
-      {loginModal && (
-        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
-          <div
-            className="absolute bg-black opacity-50  inset-0"
-            onClick={closeModal}
-          ></div>
-          <div className="max-w-md mx-auto p-4 bg-white w-[500px] flex flex-col  py-12 shadow-md rounded-md relative z-10">
-            <h2 className="text-2xl font-semibold mb-4">Login</h2>
-            <form onSubmit={(e) => e.preventDefault()}>
-              <div className="mb-4 flex flex-col">
-                <label
-                  htmlFor="username"
-                  className="block mr-auto text-sm font-medium text-gray-600"
-                >
-                  Username:
-                </label>
-                <input
-                  type="text"
-                  id="username"
-                  className="mt-1 p-2 border rounded-md w-full"
-                  value={userData.username}
-                  onChange={(event) => {
-                    setUserData((prevValue) => {
-                      return {
-                        ...prevValue,
-                        username: event.target.value,
-                      };
-                    });
-                  }}
-                />
-              </div>
-              <div className="mb-4 flex flex-col">
-                <label
-                  htmlFor="password"
-                  className="block text-sm mr-auto font-medium text-gray-600"
-                >
-                  Password:
-                </label>
-                <input
-                  type="password"
-                  id="password"
-                  className="mt-1 p-2 border rounded-md w-full"
-                  value={userData.password}
-                  onChange={(event) => {
-                    setUserData((prevData) => {
-                      return {
-                        ...prevData,
-                        password: event.target.value,
-                      };
-                    });
-                  }}
-                />
-              </div>
-              {error && <p className="text-red-500 mb-4">{error}</p>}
-              {successMessage && (
-                <p className="text-green-500 mb-4">{successMessage}</p>
-              )}
-              <div className="flex space-x-2 flex-1">
-                <button
-                  type="submit"
-                  onClick={handleLogin}
-                  className="bg-green-500 w-full text-white px-4 py-2 rounded-md hover:bg-green-600"
-                >
-                  Login
-                </button>
-                <button
-                  type="button"
-                  onClick={handleForgotPassword}
-                  className="bg-blue-500 w-full text-white px-4 py-2 rounded-md hover:bg-red-600"
-                >
-                  Forgot Password?
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
+      <AuthButtonUi authProps={authProps} />
+      {loginModal && <LoginModal loginProps={loginProps} />}
     </div>
   );
-};
-
-export default Login;
+}

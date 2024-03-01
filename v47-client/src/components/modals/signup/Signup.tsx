@@ -1,52 +1,53 @@
 import React, { useContext, useState } from "react";
 import {
-  getAuth,
+  User,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../../../firebase/firebase";
 import { authContext } from "../../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import SignupModal from "./SignupModal";
+import { UserDataProps } from "../../../types/typings";
 
-const Signup = () => {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [confirmPassword, setConfirmPassword] = useState<string>("");
+export default function Signup() {
+  const navgiate = useNavigate();
+  const [userData, setUserData] = useState<UserDataProps>({
+    confirmPassword: "",
+    email: "",
+    password: "",
+    username: "",
+  });
   const [error, setError] = useState<string>("");
   const [successMessage, setSuccessMessage] = useState<string>("");
-  const { signupModal, setSignupModal } = useContext(authContext);
-
-  const navgiate = useNavigate();
+  const { signupModal, setSignupModal, user } = useContext(authContext);
 
   const handleSignup = async () => {
     try {
-      if (password !== confirmPassword) {
+      if (userData.password !== userData.confirmPassword) {
         setError("Passwords don't match");
         return;
       }
-
-      const auth = getAuth();
-
       try {
-        await createUserWithEmailAndPassword(auth, email, password);
+        await createUserWithEmailAndPassword(
+          auth,
+          userData.email,
+          userData.password
+        );
         setError("");
         setSuccessMessage(
           "Signup successfully! Now, Go back to our main page and log in as our new member<3"
         );
-        closeModal();
+        setSignupModal(false);
         navgiate("/ProductPage");
-        // console.log('Signup successfully!');
-      } catch (createError) {
+      } catch (error) {
         setError("Signup failed. Please try again.");
-        console.error("Signup failed:", createError);
+        console.error("Signup failed:", error);
       }
     } catch (error) {
       console.error("Unexpected error:", error);
     }
   };
-
-  const openModal = () => setSignupModal(true);
-  const closeModal = () => setSignupModal(false);
 
   const handleGuestSignIn = async () => {
     try {
@@ -54,99 +55,55 @@ const Signup = () => {
       setSuccessMessage(
         "Signup successfully! Now, Go back to our main page and log in as our new member<3"
       );
-      closeModal();
+      setSignupModal(false);
       navgiate("/ProductPage");
     } catch (error) {
-      console.log(error);
+      console.log(error, "error signing as guest");
     }
+  };
+
+  const buttonProps = {
+    user,
+    setSignupModal,
+  };
+
+  const signupModalProps = {
+    userData,
+    setUserData,
+    error,
+    successMessage,
+    handleGuestSignIn,
+    setSignupModal,
+    handleSignup,
   };
 
   return (
     <div>
-      <button
-        onClick={openModal}
-        className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600"
-      >
-        Signup
-      </button>
-      {signupModal && (
-        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
-          <div
-            className="absolute bg-black opacity-50  inset-0"
-            onClick={closeModal}
-          ></div>
-          <div className="max-w-md mx-auto mt-8 p-4  w-[500px] flex flex-col  py-12 bg-white shadow-md rounded-md z-50">
-            {/* <h1 className='text-2xl font-bold mb-4'>Welcome aboard!</h1> */}
-            <h2 className="text-2xl font-bold mb-4">Signup</h2>
-            <form onSubmit={(e) => e.preventDefault()}>
-              <button
-                onClick={() => handleGuestSignIn()}
-                className="bg-green-500 mb-4 w-full text-white px-4 py-2 rounded-md hover:bg-green-600"
-              >
-                Guest Sign Up
-              </button>
-              <div className="mb-4  flex flex-col">
-                <label
-                  htmlFor="email"
-                  className="block mr-auto text-sm font-medium text-gray-600"
-                >
-                  Email:
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  className="mt-1 p-2 border rounded-md w-full"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div className="mb-4 flex flex-col">
-                <label
-                  htmlFor="password"
-                  className="block mr-auto text-sm font-medium text-gray-600"
-                >
-                  Password:
-                </label>
-                <input
-                  type="password"
-                  id="password"
-                  className="mt-1 p-2 border rounded-md w-full"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              <div className="mb-4 flex flex-col">
-                <label
-                  htmlFor="confirmPassword"
-                  className="block text-sm mr-auto font-medium text-gray-600"
-                >
-                  Confirm Password:
-                </label>
-                <input
-                  type="password"
-                  id="confirmPassword"
-                  className="mt-1 p-2 border rounded-md w-full"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                />
-              </div>
-              {error && <p className="text-red-500 mb-4">{error}</p>}
-              {successMessage && (
-                <p className="text-green-500 mb-4">{successMessage}</p>
-              )}
-              <button
-                type="button"
-                onClick={handleSignup}
-                className="bg-green-500 w-full text-white px-4 py-2 rounded-md hover:bg-green-600"
-              >
-                Signup
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
+      <Button buttonProps={buttonProps} />
+      {signupModal && <SignupModal signupModalProps={signupModalProps} />}
     </div>
   );
-};
+}
 
-export default Signup;
+interface ButtonProps {
+  buttonProps: {
+    user: User | null;
+    setSignupModal: (value: boolean) => void;
+  };
+}
+
+const Button = (props: ButtonProps) => {
+  const { buttonProps } = props;
+  return (
+    <>
+      {!buttonProps.user && (
+        <button
+          onClick={() => buttonProps.setSignupModal(true)}
+          className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600"
+        >
+          Sign Up
+        </button>
+      )}
+    </>
+  );
+};
