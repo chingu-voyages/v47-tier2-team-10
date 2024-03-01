@@ -113,16 +113,21 @@ export default function Add(props: AddProps) {
 interface ButtonProps {
   handleClickValue: () => void;
   textValue: string;
+  handleAddNewTask: () => void;
 }
-const Button = ({ handleClickValue, textValue }: ButtonProps) => {
+const Button = ({
+  handleClickValue,
+  textValue,
+  handleAddNewTask,
+}: ButtonProps) => {
   return (
     <button
-      type="button"
       className={`py-2 rounded ${
         textValue === "Cancel"
           ? "px-8 text-gray-700 hover:opacity-70 duration-300 bg-gray-300 "
           : "bg-green-500  hover:brightness-125  duration-300   text-white px-10"
       }`}
+      onKeyDown={(e) => e.key === "Enter" && handleAddNewTask()}
       onClick={handleClickValue}
     >
       {textValue}
@@ -142,10 +147,12 @@ const Buttons = (props: Buttons) => {
   return (
     <div className="flex justify-between">
       <Button
+        handleAddNewTask={buttonsProps.handleAddNewTask}
         handleClickValue={() => buttonsProps.setIsAddModalOpen(false)}
         textValue={"Cancel"}
       />
       <Button
+        handleAddNewTask={buttonsProps.handleAddNewTask}
         handleClickValue={() => buttonsProps.handleAddNewTask()}
         textValue={"add"}
       />
