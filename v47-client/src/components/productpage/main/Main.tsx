@@ -21,19 +21,14 @@ export interface NewTaskDataProps {
 
 export default function Main(props: MainProps) {
   const { isAddModalOpen, setIsAddModalOpen } = props;
+  const { filteredData } = useContext(filteredDataContext);
+  const { isLoading } = useContext(isLoadingContext);
   const [newTaskData, setNewTaskData] = useState<NewTaskDataProps>({
     taskDescription: "",
     taskName: "",
     days: "",
     column: "",
   });
-  const [editTaskData, setEditTaskData] = useState<string>("");
-  const [editTaskInput, setEditTaskInput] = useState<string>("");
-  const [editTaskColumnInput, setEditTaskColumnInput] = useState<string>("");
-  const [editTaskNameInput, setEditTaskNameInput] = useState<string>("");
-  const { filteredData } = useContext(filteredDataContext);
-  const { isLoading } = useContext(isLoadingContext);
-
   const [newEditTaskData, setNewEditTaskData] = useState<NewTaskDataProps>({
     column: "",
     days: "",
@@ -52,20 +47,14 @@ export default function Main(props: MainProps) {
         (task) => task.column.toLowerCase() === column.toLowerCase()
       );
       return tasksInColumn.map((task, id) => {
-        return (
-          <TaskList
-            setEditTaskNameInput={setEditTaskNameInput}
-            editTaskNameInput={editTaskNameInput}
-            editTaskColumnInput={editTaskColumnInput}
-            setEditTaskColumnInput={setEditTaskColumnInput}
-            setEditTaskInput={setEditTaskInput}
-            editTaskInput={editTaskInput}
-            editTaskData={editTaskData}
-            setEditTaskData={setEditTaskData}
-            key={id}
-            {...task}
-          />
-        );
+        const taskProps = {
+          ...task,
+        };
+        const props = {
+          taskListProps,
+          taskProps,
+        };
+        return <TaskList {...props} key={id} />;
       });
     });
   };

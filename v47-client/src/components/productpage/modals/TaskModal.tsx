@@ -2,38 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { filteredDataContext } from "../../../context/FilteredDataContext";
 import { IoIosClose } from "react-icons/io";
 import { capitalizeEachWord } from "../../../utils/helperFunctions";
+import { TaskListProps } from "../main/TaskList";
 
-interface TaskModalProps {
-  days: any;
-  taskDescription: any;
-  taskName: any;
-  editTaskData: string;
-  setEditTaskData: (value: string) => void;
-  setIsTaskModalOpen: (value: boolean) => void;
-  editTaskInput: string;
-  setEditTaskInput: (value: string) => void;
-  setEditTaskNameInput: (value: string) => void;
-  editTaskNameInput: string;
-  editTaskColumnInput: string;
-  setEditTaskColumnInput: (value: string) => void;
-  column: string;
+interface Props extends TaskListProps {
+  taskDescription: string;
 }
 
-export default function TaskModal({
-  days,
-  taskDescription,
-  taskName,
-  editTaskData,
-  setEditTaskData,
-  setIsTaskModalOpen,
-  editTaskInput,
-  setEditTaskInput,
-  setEditTaskNameInput,
-  editTaskNameInput,
-  editTaskColumnInput,
-  setEditTaskColumnInput,
-  column,
-}: TaskModalProps) {
+export default function TaskModal(props: Props) {
+  const { taskListProps, taskProps, taskDescription } = props;
   const { filteredData, setFilteredData } = useContext(filteredDataContext);
   const [editCalendar, setEditCalendar] = useState(false);
   const [editTaskName, setEditTaskName] = useState(false);
@@ -53,6 +29,9 @@ export default function TaskModal({
     });
     setFilteredData(updateData);
 
+
+    // i dont like this functionality its pretty bad
+
     if (value === "days") {
       setEditCalendar(!editCalendar);
     } else if (value === "taskName") {
@@ -64,13 +43,39 @@ export default function TaskModal({
     }
   };
 
+
   useEffect(() => {
-    setEditTaskData(days);
-    setEditTaskInput(taskName);
-    setEditTaskNameInput(taskDescription);
-    setEditTaskColumnInput(column);
-    console.log(filteredData, editTaskNameInput);
+    taskListProps.setNewEditTaskData((prevTask) => {
+      return {
+        ...prevTask,
+        column: taskProps.column,
+        days: taskProps.days,
+        taskDescription: taskProps.taskDescription,
+        taskName: taskProps.taskName,
+      };
+    });
+  }, [filteredData]);
+
+  useEffect(() => {
+    console.log(
+      taskListProps.newEditTaskData.taskDescription,
+      "task desc",
+      "tasknae",
+      taskListProps.newEditTaskData.taskName
+    );
   }, []);
+
+  const handleEditInput = (propertyName: string, value: string) => {
+    taskListProps.setNewEditTaskData((prevValue) => {
+      return {
+        ...prevValue,
+        [propertyName]: value,
+      };
+    });
+  };
+
+
+  //  this whole place needs to get refactored i am pretty confused on what exactly is going on
 
   return (
     <div className="fixed px-12 mdpx-12 top-1/2  left-1/2 w-[100vw] h-[100vh] bg-black bg-opacity-60 z-50 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center">
@@ -80,7 +85,7 @@ export default function TaskModal({
       >
         <div className="p-4 pb-0 ml-auto">
           <IoIosClose
-            onClick={() => setIsTaskModalOpen(false)}
+            // onClick={() => setIsTaskModalOpen(false)}
             className="text-2xl duration-300 hover:scale-125 active:scale-90 cursor-pointer"
           />
         </div>
@@ -92,20 +97,32 @@ export default function TaskModal({
             <>
               <textarea
                 className="font-semibold pt-3 px-2 resize-none whitespace-normal word-wrap break-word  bg-gray-100 truncate text-sm focus:outline-none flex-1 flex"
-                value={editTaskNameInput}
-                onChange={(e) => setEditTaskNameInput(e.target.value)}
+                value={taskListProps.newEditTaskData.taskName}
+                onChange={(e) =>
+                  handleEditInput(
+                    taskListProps.newEditTaskData.taskName,
+                    e.target.value
+                  )
+                }
               ></textarea>
               <button
-                onClick={() => handleEdit("taskDescription", editTaskNameInput)}
+                onClick={() =>
+                  handleEdit(
+                    "taskDescription",
+                    taskListProps.newEditTaskData.taskName
+                  )
+                }
                 className="ml-auto bg-gray-100  px-4 py-1 duration-300 hover:opacity-60  rounded-md"
               >
-                Confirm
+                Confirmc
               </button>
             </>
           ) : (
             <>
               <h1 className="font-semibold text-sm">
-                {capitalizeEachWord(taskDescription)}
+                {capitalizeEachWord(
+                  taskListProps.newEditTaskData.taskDescription
+                )}
               </h1>
               <button
                 onClick={() => setIsEditTaskNameOpen(!isEditTaskNameOpen)}
@@ -121,13 +138,13 @@ export default function TaskModal({
             <input
               type="date"
               className="bg-gray-100 whitespace-normal word-wrap break-word  ronunded-md"
-              value={editTaskData}
-              onClick={() => setEditCalendar(!editCalendar)}
-              onChange={(e) => setEditTaskData(e.target.value)}
+              // value={editTaskData}
+              // onClick={() => setEditCalendar(!editCalendar)}
+              // onChange={(e) => setEditTaskData(e.target.value)}
             />
             {editCalendar && (
               <button
-                onClick={() => handleEdit("days", editTaskData)}
+                // onClick={() => handleEdit("days", editTaskData)}
                 className="bg-gray-100  px-4 py-1 duration-300 hover:opacity-60  rounded-md"
               >
                 Confirm
@@ -139,11 +156,11 @@ export default function TaskModal({
               <>
                 <textarea
                   className="font-semibold whitespace-normal word-wrap break-word  p-2 resize-none bg-gray-100  min-h-[100px] truncate text-sm focus:outline-none flex-1 flex"
-                  value={editTaskInput}
-                  onChange={(e) => setEditTaskInput(e.target.value)}
+                  // value={editTaskInput}
+                  // onChange={(e) => setEditTaskInput(e.target.value)}
                 ></textarea>
                 <button
-                  onClick={() => handleEdit("taskName", editTaskInput)}
+                  // onClick={() => handleEdit("taskName", editTaskInput)}
                   className="bg-gray-100  px-4 py-1 duration-300 hover:opacity-60  rounded-md"
                 >
                   Confirm
@@ -154,7 +171,7 @@ export default function TaskModal({
                 <textarea
                   disabled
                   className="w-full p-2 min-h-[100px] bg-gray-100 focus:outline-none resize-none"
-                  value={capitalizeEachWord(taskName)}
+                  // value={capitalizeEachWord(taskName)}
                 ></textarea>
                 <button
                   onClick={() => setEditTaskName(!editTaskName)}
@@ -170,12 +187,12 @@ export default function TaskModal({
               <>
                 <textarea
                   className="font-semibold p-2 whitespace-normal word-wrap break-word  resize-none bg-gray-100  min-h-[100px] truncate text-sm focus:outline-none flex-1 flex"
-                  value={editTaskColumnInput}
-                  onChange={(e) => setEditTaskColumnInput(e.target.value)}
+                  // value={editTaskColumnInput}
+                  // onChange={(e) => setEditTaskColumnInput(e.target.value)}
                   placeholder={`Format as either: 'Not Started', 'In Progress', 'Done'`}
                 ></textarea>
                 <button
-                  onClick={() => handleEdit("column", editTaskColumnInput)}
+                  // onClick={() => handleEdit("column", editTaskColumnInput)}
                   className="bg-gray-100  px-4 py-1 duration-300 hover:opacity-60  rounded-md"
                 >
                   Confirm
@@ -186,7 +203,7 @@ export default function TaskModal({
                 <textarea
                   disabled
                   className="w-full p-2 min-h-[100px] whitespace-normal word-wrap break-word  bg-gray-100 focus:outline-none resize-none"
-                  value={capitalizeEachWord(column)}
+                  // value={capitalizeEachWord(column)}
                 ></textarea>
                 <button
                   onClick={() => setIsEditColumnOpen(!isEditColumnOpen)}
@@ -200,7 +217,7 @@ export default function TaskModal({
         </form>
         <div className="border-t p-4 flex flex-1">
           <button
-            onClick={() => setIsTaskModalOpen(false)}
+            // onClick={() => setIsTaskModalOpen(false)}
             className="ml-auto bg-gray-100  px-4 py-1 duration-300 hover:opacity-60  rounded-md"
           >
             Close

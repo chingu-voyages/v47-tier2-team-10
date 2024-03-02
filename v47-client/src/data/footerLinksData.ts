@@ -1,6 +1,9 @@
+import { FooterLinksProps } from "../types/typings";
 
 
-export const footerLinks = [
+
+
+export const footerLinks: FooterLinksProps[] = [
   {
     title: "Useful Links",
     links: [

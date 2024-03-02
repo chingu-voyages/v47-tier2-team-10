@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { filteredDataContext } from "../../../context/FilteredDataContext";
 
-
 // idk why but this doesnt work without putting it as any
 // when its a string it just complains? possible fixx
 // change both task.taskname to lowercase and pass taskname
@@ -18,7 +17,7 @@ export default function MenuModal({ taskName }: Props) {
       return {
         ...data,
         Tasks: data.Tasks.filter((task) => {
-          console.log(task.taskName !== taskName)
+          console.log(task.taskName !== taskName);
           return task.taskName !== taskName;
         }),
       };

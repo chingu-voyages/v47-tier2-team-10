@@ -38,10 +38,11 @@ interface Links {
   link: string;
 }
 
-export interface footerLinksProps {
+export interface FooterLinksProps {
   title: string;
-  links: Links;
+  links: Links[]
 }
+
 
 export interface SocialMediaProps {
   id: string;
@@ -71,12 +72,11 @@ export interface FirebaseConfig {
   appId: string;
 }
 
-
 // user props
 
 export interface UserDataProps {
   email: string;
   password: string;
   confirmPassword: string;
-  username: string
+  username: string;
 }
