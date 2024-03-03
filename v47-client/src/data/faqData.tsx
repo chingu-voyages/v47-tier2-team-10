@@ -1,12 +1,10 @@
-
-
 export interface FaqDataProps {
-  id: number
-  question: string
-  answer: string
+  id: number;
+  question: string;
+  answer: string;
 }
 
-const faqData: FaqDataProps[] = [
+export const faqData: FaqDataProps[] = [
   {
     id: 1,
     question: "What is your product?",
@@ -26,5 +24,3 @@ const faqData: FaqDataProps[] = [
       "There is an email address and our team members LinkedIn in our main page. check it out:) ",
   },
 ];
-
-export default faqData;

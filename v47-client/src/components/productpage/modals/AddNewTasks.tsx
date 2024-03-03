@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
-import InputFields from "./resuable/InputFields";
+import InputFields from "./modalUi/InputFields";
 import { filteredDataContext } from "../../../context/FilteredDataContext";
-import Portal from "./Portal/Portal";
+import Portal from "./modalUi/Portal";
 import { NewTaskDataProps } from "../main/Main";
-import { SelectContent } from "./FormContent";
+import SelectContent from "./modalUi/SelectContent";
 
 interface AddProps {
   addModalProps: {
@@ -13,7 +13,7 @@ interface AddProps {
   };
 }
 
-export default function Add(props: AddProps) {
+export default function AddNewTasks(props: AddProps) {
   const { addModalProps } = props;
   const { setFilteredData } = useContext(filteredDataContext);
 

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import MenuModal from "../modals/MenuModal.tsx";
 import { NewTaskDataProps } from "./Main.tsx";
-import NewTaskModal from "../modals/NewTaskModal.tsx";
+import NewTaskModal from "../modals/editTask/NewTaskModal.tsx";
 import TaskListCardContent from "./TaskListCardContent.tsx";
 
 export interface TaskProps {

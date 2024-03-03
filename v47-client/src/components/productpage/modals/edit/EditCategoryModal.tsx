@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
-import InputFields from "../resuable/InputFields";
-import Button from "../resuable/Button";
+import InputFields from "../modalUi/InputFields";
+import Button from "../modalUi/Button";
 import { productDataContext } from "../../../../context/ProductDataContext";
-import Portal from "../Portal/Portal";
+import Portal from "../modalUi/Portal";
 import { capitalizeEachWord } from "../../../../utils/helperFunctions";
 
 interface EditModalProps {

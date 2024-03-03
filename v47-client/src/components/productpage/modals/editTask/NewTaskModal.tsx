@@ -1,5 +1,5 @@
 import { IoIosClose } from "react-icons/io";
-import { TaskProps } from "../main/TaskList";
+import { TaskProps } from "../../main/TaskList";
 import FormContent from "./FormContent";
 
 export interface TaskModalProps {

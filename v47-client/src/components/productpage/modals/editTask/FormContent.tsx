@@ -1,6 +1,7 @@
 import { TaskModalProps } from "./NewTaskModal";
 import { ReactNode, useContext, useEffect } from "react";
-import { filteredDataContext } from "../../../context/FilteredDataContext";
+import { filteredDataContext } from "../../../../context/FilteredDataContext";
+import SelectContent from "../modalUi/SelectContent";
 
 export default function FormContent(props: TaskModalProps) {
   const { taskProp, setIsTaskModalOpen } = props;
@@ -108,26 +109,6 @@ const InputContent = (props: InputContentProps) => {
       value={value}
       onChange={(e) => onChangeValue(e.target.value)}
     />
-  );
-};
-
-interface SelectContentProps {
-  handleInputContent: (value: string, value2: string) => void;
-  column: string;
-}
-
-export const SelectContent = (props: SelectContentProps) => {
-  const { column, handleInputContent } = props;
-  return (
-    <select
-      className="hover:opacity-60 duration-100 cursor-pointer"
-      onChange={(e) => handleInputContent("column", e.target.value)}
-      value={column}
-    >
-      <option value="Not Started">Not Started</option>
-      <option value="In Progress">In Progress</option>
-      <option value="Done">Done</option>
-    </select>
   );
 };
 

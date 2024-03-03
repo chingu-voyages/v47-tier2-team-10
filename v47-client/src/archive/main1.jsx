@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import TaskList from "../components/productpage/main/TaskList";
 import { IoIosAdd } from "react-icons/io";
-import Add from "../components/productpage/modals/Add";
+import Add from "../components/productpage/modals/AddNewTasks";
 import DragnDrop from "./DragnDrop";
 import { filteredDataContext } from "../context/FilteredDataContext";
 import { isLoadingContext } from "../context/IsLoadingContext";

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import Button from "../resuable/Button";
+import Button from "../modalUi/Button";
 import { productDataContext } from "../../../../context/ProductDataContext";
-import Portal from "../Portal/Portal";
+import Portal from "../modalUi/Portal";
 
 interface Props {
   setIsEditModalOpen: (value: boolean) => void;
@@ -27,10 +27,11 @@ function EditModal(props: Props) {
 
     productData.forEach((category) => {
       if (category.categoryName === categoryName) {
-        const updatedActivtyTypes = category.activityTypes.map((activity: any) =>
-          activity.activityName === activityName
-            ? { ...activity, activityName: editActivityNameInput }
-            : activity
+        const updatedActivtyTypes = category.activityTypes.map(
+          (activity: any) =>
+            activity.activityName === activityName
+              ? { ...activity, activityName: editActivityNameInput }
+              : activity
         );
         updatedCategory = { ...category, activityTypes: updatedActivtyTypes };
         updatedProductData = [...updatedProductData, updatedCategory];

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import Portal from "../Portal/Portal";
+import Portal from "../modalUi/Portal";
 import { productDataContext } from "../../../../context/ProductDataContext";
 
 interface AddNewActivityProps {

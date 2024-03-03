@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext, ReactNode } from "react";
 import TaskList from "./TaskList";
 import { IoIosAdd } from "react-icons/io";
-import Add from "../modals/Add";
 import { filteredDataContext } from "../../../context/FilteredDataContext";
 import { isLoadingContext } from "../../../context/IsLoadingContext";
 import { prodouctDataImg } from "../../../assets";
 import MainContentColumn from "./MainContentColumn";
+import AddNewTasks from "../modals/AddNewTasks";
 
 interface MainProps {
   isAddModalOpen: boolean;
@@ -76,7 +76,7 @@ export default function Main(props: MainProps) {
           <MainContentDataNotLoaded />
         )}
         <AddNewTaskButton setIsAddModalOpen={setIsAddModalOpen} />
-        {isAddModalOpen && <Add addModalProps={addModalProps} />}
+        {isAddModalOpen && <AddNewTasks addModalProps={addModalProps} />}
       </section>
     </>
   );

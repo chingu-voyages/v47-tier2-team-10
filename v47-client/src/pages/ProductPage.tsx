@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import LeftNav from "../components/productpage/LeftNav/LeftNav";
-import Header from "../components/productpage/header/Header";
+import Header from "../components/productpage/Header";
 import Main from "../components/productpage/main/Main";
 import { productDataContext } from "../context/ProductDataContext";
 import { isLoadingContext } from "../context/IsLoadingContext";
@@ -28,7 +28,6 @@ export default function ProductPage() {
     };
     fetchProductData();
   }, []);
-
 
   return (
     <div className="bg-gray-50 dark:bg-slate-900 duration-300  overflow-clip h-screen">
