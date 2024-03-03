@@ -6,18 +6,21 @@
         "activityName": "Projects",
         "Tasks": [
           {
+            "id": 15,
             "taskName": "Update Recipes Project Backlog",
             "taskDescription": "Update the project backlog tasks",
             "days": "2024-02-17",
             "column": "Not Started"
           },
           {
+            "id": 1,
             "taskName": "Study The First Node Js Lecture",
-            "taskDescription": "",
+            "taskDescription": "Study Node Js",
             "days": "2024-02-17",
             "column": "Done"
           },
           {
+            "id": 2,
             "taskName": "Update The dailyTasks sheet with the backlog tasks",
             "taskDescription": "add the filtering feature to Done",
             "days": "2024-02-17",
@@ -29,12 +32,14 @@
         "activityName": "Blog Posts",
         "Tasks": [
           {
+            "id": 3,
             "taskName": "Publish The recent Blog Post Draft to hashnode",
             "taskDescription": "Publish the latest blog post",
             "days": "2024-02-17",
             "column": "Done"
           },
           {
+            "id": 4,
             "taskName": "Write a New headline in a Blog Post Draft",
             "taskDescription": "Write a catchy headline for a new blog post",
             "days": "2024-02-17",
@@ -51,6 +56,7 @@
         "activityName": "Node Js Course",
         "Tasks": [
           {
+            "id": 5,
             "taskName": "Plan The Node Js Course Progress By Month",
             "taskDescription": "Set Up A Plan For The Next Month Of Node Js Learning",
             "days": "2024-02-17",
@@ -58,6 +64,7 @@
           },
 
           {
+            "id": 6,
             "taskName": "Study The First Node Js Lecture",
             "taskDescription": "",
             "days": "2024-02-17",
@@ -69,12 +76,14 @@
         "activityName": "MongoDB",
         "Tasks": [
           {
+            "id": 7,
             "taskName": "Plan The MongoDB Course Progress By Month",
             "taskDescription": "Set Up A Plan For The Next Month Of Node Js Learning",
             "days": "2024-02-17",
             "column": "Not Started"
           },
           {
+            "id": 8,
             "taskName": "Study The First MongoDB Lecture",
             "taskDescription": "",
             "days": "2024-02-17",
@@ -91,12 +100,14 @@
         "activityName": "Backlog",
         "Tasks": [
           {
+            "id": 9,
             "taskName": "Add The New Features list",
             "taskDescription": "",
             "days": "2024-02-17",
             "column": "In Progress"
           },
           {
+            "id": 10,
             "taskName": "Add The New PRs To InReview",
             "taskDescription": "",
             "days": "2024-02-17",
@@ -108,12 +119,14 @@
         "activityName": "Coding",
         "Tasks": [
           {
+            "id": 11,
             "taskName": "Work On The Sidebar",
             "taskDescription": "Add The Sections Links",
             "days": "2024-02-17",
             "column": "Not Started"
           },
           {
+            "id": 12,
             "taskName": "Refactor The Filtering Feature Code",
             "taskDescription": "",
             "days": "2024-02-17",
@@ -130,12 +143,14 @@
         "activityName": "Voyage",
         "Tasks": [
           {
+            "id": 18,
             "taskName": "Conduct The Project Planning Meeting",
             "taskDescription": "Conduct The Project Planning Meeting To Discuss Our Ideas",
             "days": "2024-02-17",
             "column": "Done"
           },
           {
+            "id": 19,
             "taskName": "Create The UI/UX Design For The DailyTasks Project",
             "taskDescription": "Create The UI/UX Design For The DailyTasks Project Based On The Team Discussion",
             "days": "2024-02-17",
@@ -147,12 +162,14 @@
         "activityName": "Pair Programming",
         "Tasks": [
           {
+            "id": 13,
             "taskName": "Create When2Meet Link",
             "taskDescription": "Create When2Meet Link To Introduce Yourselves",
             "days": "2024-02-17",
             "column": "In Progress"
           },
           {
+            "id": 14,
             "taskName": "Attend The Introduction Meeting With Someone",
             "taskDescription": "",
             "days": "2024-02-17",

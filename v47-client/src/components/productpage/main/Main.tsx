@@ -17,6 +17,7 @@ export interface NewTaskDataProps {
   taskName: string;
   days: string;
   column: string;
+  id: number;
 }
 
 export default function Main(props: MainProps) {
@@ -28,18 +29,15 @@ export default function Main(props: MainProps) {
     taskName: "",
     days: "",
     column: "",
+    id: 0,
   });
   const [newEditTaskData, setNewEditTaskData] = useState<NewTaskDataProps>({
     column: "",
     days: "",
     taskDescription: "",
     taskName: "",
+    id: 0,
   });
-
-  const taskListProps = {
-    newEditTaskData,
-    setNewEditTaskData,
-  };
 
   const renderTasksByColumn = (column: string) => {
     return filteredData.map((data) => {
@@ -47,14 +45,16 @@ export default function Main(props: MainProps) {
         (task) => task.column.toLowerCase() === column.toLowerCase()
       );
       return tasksInColumn.map((task, id) => {
-        const taskProps = {
-          ...task,
+        const taskProp = {
+          column: task.column,
+          days: task.days,
+          taskDescription: task.taskDescription,
+          taskName: task.taskName,
+          id: task.id,
+          newEditTaskData,
+          setNewEditTaskData,
         };
-        const props = {
-          taskListProps,
-          taskProps,
-        };
-        return <TaskList {...props} key={id} />;
+        return <TaskList taskProp={taskProp} key={id} />;
       });
     });
   };

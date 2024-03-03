@@ -3,6 +3,7 @@ import InputFields from "./resuable/InputFields";
 import { filteredDataContext } from "../../../context/FilteredDataContext";
 import Portal from "./Portal/Portal";
 import { NewTaskDataProps } from "../main/Main";
+import { SelectContent } from "./FormContent";
 
 interface AddProps {
   addModalProps: {
@@ -27,12 +28,17 @@ export default function Add(props: AddProps) {
       return;
     }
 
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(addModalProps.newTaskData.days)) {
+      alert("Format Days as YYYY-MM-DD");
+      return;
+    }
     setFilteredData((prevData) => {
       const newTask: NewTaskDataProps = {
         days: addModalProps.newTaskData.days,
         taskDescription: addModalProps.newTaskData.taskDescription,
         taskName: addModalProps.newTaskData.taskName,
         column: addModalProps.newTaskData.column,
+        id: Math.floor(Math.random() * 10000000),
       };
 
       const newData = prevData.map((item) => {
@@ -48,6 +54,7 @@ export default function Add(props: AddProps) {
       taskName: "",
       column: "",
       days: "",
+      id: 0,
     });
     addModalProps.setIsAddModalOpen(false);
   };
@@ -97,12 +104,16 @@ export default function Add(props: AddProps) {
             value={addModalProps.newTaskData.days}
             placeholder={"format as YYYY-MM-DD"}
           />
-          <InputFields
-            headerText="Column"
-            onChangeValue={(value) => handleInputChange("column", value)}
-            value={addModalProps.newTaskData.column}
-            placeholder={`Pick either: 'Not Started', 'In Progress', 'Done' `}
-          />
+          <div className="mb-6">
+            <h1 className="block text-gray-700 text-sm font-semibold mb-2">
+              Column
+            </h1>
+            <SelectContent
+              column={addModalProps.newTaskData.column}
+              handleInputContent={handleInputChange}
+            />
+          </div>
+
           <Buttons buttonsProps={buttonsProps} />
         </form>
       </div>

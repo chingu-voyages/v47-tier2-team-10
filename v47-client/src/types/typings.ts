@@ -13,6 +13,7 @@ export interface Tasks {
   taskDescription: string;
   days: string;
   column: string;
+  id: number
 }
 
 // data types
@@ -40,9 +41,8 @@ interface Links {
 
 export interface FooterLinksProps {
   title: string;
-  links: Links[]
+  links: Links[];
 }
-
 
 export interface SocialMediaProps {
   id: string;
